@@ -38,6 +38,9 @@ class CommandMeta(type):
 
 @add_metaclass(CommandMeta)
 class Command(object):
+    inputs = []
+    output = None
+
     @classmethod
     def load_commands(cls, module):
         if isinstance(module, six.string_types):
