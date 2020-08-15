@@ -11,6 +11,7 @@ black = "*"
 ply = "3.11"
 six = "*"
 click = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"

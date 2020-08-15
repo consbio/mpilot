@@ -1,21 +1,19 @@
 from __future__ import absolute_import
+from __future__ import unicode_literals
 
-import os
-
-from .commands import Command
-from .exceptions import CommandDoesNotExist, DuplicateResult
+from .commands import Command, Argument
+from .exceptions import CommandDoesNotExist, DuplicateResult, MissingParameters, NoSuchParameter, ResultDoesNotExist
+from .params import ResultParameter, ListParameter
 from .parser.parser import Parser
+from .utils import flatten
 
 
 class Program(object):
     """ A program consists of connected MPilot commands, and the arguments that will be used to run them """
 
     def __init__(self, working_dir=None):
-        # Commands lookup, in the form of {result: (command, arguments_list), ...}
+        # Commands lookup, in the form of {result_name: command, ...}
         self.commands = {}
-
-        # A mapping of commands to their dependents, in the form of {result: dependents_list, ...}
-        self.dependents = {}
 
         self.working_dir = working_dir
 
@@ -24,45 +22,101 @@ class Program(object):
         """ Creates a program from MPilot source code """
 
         program = cls(working_dir)
-        commands = Parser().parse(source)
+        command_nodes = Parser().parse(source)
 
-        results = {c.result for c in commands}
+        # Check for duplicate result names
+        result_names = set()
+        for node in command_nodes:
+            if node.result_name in result_names:
+                raise DuplicateResult(node.result_name, node.lineno)
+            result_names.add(node.result_name)
 
-        for command_node in commands:
-            command = Command.find_by_name(command_node.command)
+        # Resolve parsed results into `Command` instances
+        program.resolve_commands(command_nodes)
 
-            if command is None:
-                raise CommandDoesNotExist(command_node.command, command_node.lineno)
+        return program
 
-            arguments = None  # Todo: validate arguments
+    def resolve_commands(self, command_nodes):
+        """ Creates `Command `instances from a parsed source file """
 
-            program.add_command(command_node.result, command, arguments, command_node.lineno)
+        nodes_by_name = {node.result_name: node for node in command_nodes}
+        commands_by_name = {}
 
-    @classmethod
-    def from_file(cls, path):
-        """ Creates a program from an MPilot command file """
+        def resolve_list(param_type, li, lineno):
+            if isinstance(param_type, ListParameter):
+                return [resolve_list(param_type.value_type, x.value, lineno) for x in li]
+            elif isinstance(param_type, ResultParameter):
+                return [resolve_result(x.value, lineno) for x in li]
+            else:
+                return li
 
-        with open(path) as f:
-            return cls.from_source(f.read(), working_dir=os.path.dirname(path))
+        def resolve_result(result_name, lineno):
+            result_command = commands_by_name.get(result_name)
+            if result_command is not None:
+                return result_command
 
-    def add_command(self, result, command, arguments, lineno=None):
-        """
-        Adds a command to the program. Result names must be unique. A duplicate result name will raise a
-        `DuplicateReulst` exception.
+            try:
+                return resolve_command(nodes_by_name[result_name])
+            except KeyError:
+                raise ResultDoesNotExist(result_name, lineno)
 
-        :param result: The command result name
-        :param command: A command class
-        :param arguments: A dictionary of arguments to be passed to the command when it's executed
-        :param lineno: An optional line number representing the line this command appears in the original source
-        """
+        def resolve_command(node):
+            if node.result_name in commands_by_name:
+                return commands_by_name[node.result_name]
 
-        if result in self.commands:
-            raise DuplicateResult(result, lineno)
+            command_cls = Command.find_by_name(node.command)
 
-        self.commands[result] = (command, arguments)
+            if command_cls is None:
+                raise CommandDoesNotExist(node.command, node.lineno)
 
-    def remove_command(self, result):
-        pass  # Todo
+            params = {arg.name: (arg.value.value, arg.lineno) for arg in node.arguments}
+            missing_params = set(name for name in command_cls.required_inputs.keys()).difference(
+                name for name in params.keys()
+            )
 
-    def execute(self):
-        """ Runs the program. """
+            if missing_params:
+                raise MissingParameters(command_cls, missing_params, node.lineno)
+
+            arguments = []
+            for name, (value, lineno) in params.items():
+                if name not in command_cls.inputs.keys():
+                    raise NoSuchParameter(command_cls, name, lineno)
+
+                param_inst = command_cls.inputs[name]
+
+                # Resolve references to other results
+                if isinstance(param_inst, ResultParameter):
+                    result_command = resolve_result(value, lineno)
+                    value = result_command
+
+                # Resolve lists
+                elif isinstance(param_inst, ListParameter):
+                    value = resolve_list(param_inst.value_type, value, lineno)
+
+                arguments.append(Argument(name, param_inst.clean(value, self, lineno), lineno))
+
+            command = command_cls(node.result_name, arguments, self, lineno)
+            commands_by_name[node.result_name] = command
+            return command
+
+        self.commands = [resolve_command(node) for node in command_nodes]
+
+    def run(self):
+        # Build dependency lookup
+        dependents = {}  # {result_name, [dependent_name, ...], ...}
+
+        for command in self.commands:
+            references = []
+            for argument in command.arguments:
+                if isinstance(argument.value, Command):
+                    references.append(argument.value.result_name)
+                if isinstance(argument.value, (list, tuple)):
+                    references += [x for x in flatten(argument.value) if isinstance(x, Command)]
+
+            for reference in references:
+                dependents[reference] = dependents.get(reference, set())
+                dependents[reference].add(command.result_name)
+
+        # Find and run leaf nodes (commands without any dependents)
+        for command in (command for command in self.commands if not dependents.get(command.result_name)):
+            command.run()

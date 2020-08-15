@@ -3,7 +3,7 @@ from collections import namedtuple
 from ply import yacc, lex
 from ply.lex import TOKEN
 
-CommandNode = namedtuple("CommandNode", ("result", "command", "arguments", "lineno"))
+CommandNode = namedtuple("CommandNode", ("result_name", "command", "arguments", "lineno"))
 ArgumentNode = namedtuple("ArgumentNode", ("name", "value", "lineno"))
 ExpressionNode = namedtuple("ExpressionNode", ("value", "lineno"))
 

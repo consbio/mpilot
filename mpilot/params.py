@@ -1,6 +1,7 @@
 import os
 from numbers import Number
 
+import numpy
 import six
 
 from mpilot.commands import Command
@@ -56,9 +57,9 @@ class BooleanParameter(Parameter):
             return bool(value)
 
         if isinstance(value, six.string_types):
-            if value.lower() == 'true':
+            if value.lower() == "true":
                 return True
-            elif value.lower() == 'false':
+            elif value.lower() == "false":
                 return False
 
             try:
@@ -92,37 +93,23 @@ class ResultParameter(Parameter):
         self.output_type = output_type
 
     def clean(self, value, program=None, lineno=None):
-        if isinstance(value, Command):
-            result = value.result
-
-            if self.output_type is not None:
-                return self.output_type.clean(result, program, lineno)
-            return result
-
-        if not isinstance(value, six.string_types):
+        if not isinstance(value, Command):
             raise ParameterNotValid(value, "Result", lineno)
-
-        if isinstance(value, bytes):
-            value = value.decode()
-
-        try:
-            command = program.commands[value][0]
-        except KeyError:
-            raise ResultDoesNotExist(value, lineno)
-
-        if command.output is None:
-            raise ResultTypeNotValid(value, lineno)
 
         if self.output_type is None:
             return value
 
-        if hasattr(self.output_type, "accepts"):
-            is_valid = self.output_type.accepts(command.output.__class__)
-        else:
-            is_valid = issubclass(command.output.__class__, self.__class__)
+        if value.is_finished:
+            self.output_type.clean(value.result, program, lineno)
+            return value
+        elif value.output is not None:
+            if hasattr(self.output_type, "accepts"):
+                is_valid = self.output_type.accepts(value.output.__class__)
+            else:
+                is_valid = issubclass(value.output.__class__, self.output_type.__class__)
 
-        if not is_valid:
-            raise ResultTypeNotValid(value, lineno)
+            if not is_valid:
+                raise ResultTypeNotValid(value, lineno)
 
         return value
 
@@ -138,3 +125,27 @@ class ListParameter(Parameter):
             raise ParameterNotValid(value, "List", lineno)
 
         return [self.value_type.clean(item, program, lineno) for item in value]
+
+
+class DataParameter(Parameter):
+    def clean(self, value, program=None, lineno=None):
+        if not isinstance(value, numpy.ndarray):
+            raise ParameterNotValid(value, "Data Array", lineno)
+
+        return value
+
+
+class DataTypeParameter(StringParameter):
+    def __init__(self, valid_types={"Float": float, "Integer": int}, **kwargs):
+        super(DataTypeParameter, self).__init__(**kwargs)
+
+        self.valid_types = valid_types
+
+    def clean(self, value, program=None, lineno=None):
+        if value in self.valid_types.values():
+            return value
+
+        try:
+            return self.valid_types[value]
+        except KeyError:
+            raise ParameterNotValid(value, "Data Type ({})".format(",".join(self.valid_types.keys())), lineno)

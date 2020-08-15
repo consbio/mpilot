@@ -1,9 +1,11 @@
 from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import os
 import sys
 
 import click
+import six
 
 from ..commands import Command
 from ..exceptions import MPilotError, ProgramError
@@ -35,8 +37,9 @@ def main(path):
 
     try:
         program = Program.from_source(source)
+        program.run()
     except MPilotError as ex:
-        sys.stderr.write("\n".join(("ERROR: There was a problem running the MPilot command file.", str(ex))))
+        sys.stderr.write("\n".join(("ERROR: There was a problem running the MPilot command file.", six.text_type(ex))))
         sys.stderr.write("\n")
 
         if isinstance(ex, ProgramError) and ex.lineno is not None:

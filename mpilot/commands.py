@@ -2,13 +2,16 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import pkgutil
+from collections import namedtuple
 from importlib import import_module
 from importlib.util import module_from_spec
 
 import six
 from six import add_metaclass
 
-from mpilot.exceptions import MPilotError
+from mpilot.exceptions import MPilotError, MissingParameters, NoSuchParameter
+
+Argument = namedtuple("Argument", ("name", "value", "lineno"))
 
 
 class CommandMeta(type):
@@ -17,6 +20,7 @@ class CommandMeta(type):
     _commands_by_name = {}
 
     def __new__(cls, name, bases, attrs):
+        attrs.update({"inputs": attrs.get("inputs", {}), "output": attrs.get("output", None)})
         new_class = super(CommandMeta, cls).__new__(cls, name, bases, attrs)
 
         # Use the `name` attribute if this class defines one. Otherwise, use the class name itself.
@@ -32,15 +36,13 @@ class CommandMeta(type):
         cls._commands_by_name[command_name] = new_class
 
         new_class._command_by_name = cls._commands_by_name
+        new_class.required_inputs = {name: param for name, param in attrs["inputs"].items() if param.required}
 
         return new_class
 
 
 @add_metaclass(CommandMeta)
 class Command(object):
-    inputs = []
-    output = None
-
     @classmethod
     def load_commands(cls, module):
         if isinstance(module, six.string_types):
@@ -61,3 +63,52 @@ class Command(object):
         """ Finds and returns a command matching `name` """
 
         return cls._command_by_name.get(name)
+
+    def __init__(self, result_name, arguments=(), program=None, lineno=None):
+        self.result_name = result_name
+        self.arguments = arguments
+        self.program = program
+        self.lineno = lineno
+
+        self.argument_lines = {arg.name: arg.lineno for arg in arguments}
+
+        self.is_running = False
+        self.is_finished = False
+        self._result = None
+
+    @property
+    def result(self):
+        if not self.is_finished:
+            self.run()
+
+        return self._result
+
+    def validate_params(self, params):
+        required_inputs = [key for key, value in self.inputs.items() if value.required]
+        all_inputs = [key for key in self.inputs.keys()]
+
+        missing_params = set(required_inputs).difference(params.keys())
+        if missing_params:
+            raise MissingParameters(self.result_name, missing_params, self.lineno)
+
+        cleaned = {}
+        for name, value in params.items():
+            if name not in all_inputs:
+                raise NoSuchParameter(self.result_name, name, self.argument_lines.get(name))
+
+            cleaned[name] = self.inputs[name].clean(value, self.program, self.argument_lines.get(name))
+
+        return cleaned
+
+    def run(self):
+        if self.is_running:
+            pass  # Raise recursive error
+
+        if not self.is_finished:
+            self.is_running = True
+            self._result = self.execute(**self.validate_params({arg.name: arg.value for arg in self.arguments}))
+            self.is_running = False
+            self.is_finished = True
+
+    def execute(self, **kwargs):
+        raise NotImplemented
