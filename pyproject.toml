@@ -1,3 +1,32 @@
 [tool.black]
 line-length = 120
 target-version = ['py38']
+
+[tool.poetry]
+name = "mpilot"
+version = "1.0.0"
+description = "MPilot is a plugin-based, environmental modeling framework"
+authors = ["Conservation Biology Institute"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "~2.7 || >=3.6"
+ply = "^3.11"
+six = "^1.15.0"
+click = "^7.1.2"
+numpy = [
+    { version = "^1.19.4", python = ">=3.6" },
+    { version = "^1.16.6", python = "~2.7" }
+]
+netCDF4 = "^1.5.4"
+
+[tool.poetry.dev-dependencies]
+pytest = [
+    { version = "^6.1.2", python = ">=3.6" },
+    { version = "^4.6.11", python = "~2.7" }
+]
+black = { version = "^20.8b1", python = ">=3.6" }
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
