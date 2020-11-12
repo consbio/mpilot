@@ -7,3 +7,15 @@ def flatten(li):
                 yield list_item
         else:
             yield item
+
+
+def insure_fuzzy(arr, fuzzy_min, fuzzy_max):
+    """ Limits all array values in-place to fuzzy_min and fuzzy_max and returns the array """
+
+    arr[arr > fuzzy_max] = fuzzy_max
+    arr[arr < fuzzy_min] = fuzzy_min
+
+    if arr.mask:
+        arr.data[arr.mask] = arr.fill_value
+
+    return arr

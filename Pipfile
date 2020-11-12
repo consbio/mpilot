@@ -12,6 +12,7 @@ ply = "3.11"
 six = "*"
 click = "*"
 numpy = "*"
+netcdf4 = "*"
 
 [requires]
 python_version = "3.8"

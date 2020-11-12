@@ -15,8 +15,9 @@ LINE_CONTEX_LENGTH = 3
 
 
 @click.command()
+@click.argument("library")
 @click.argument("path")
-def main(path):
+def main(library, path):
     if not os.path.exists(path):
         sys.stderr.write(
             "\n".join(
@@ -33,7 +34,9 @@ def main(path):
         lines = [line.strip("\n\r") for line in f.readlines()]
     source = "\n".join(lines)
 
-    Command.load_commands('mpilot.libraries')
+    Command.load_commands("mpilot.libraries.eems.basic")
+    if library == "eems-csv":
+        Command.load_commands("mpilot.libraries.csv")
 
     try:
         program = Program.from_source(source)
@@ -51,7 +54,7 @@ def main(path):
             sys.stderr.write("\n")
             sys.stderr.write("--> {}".format(lines[idx]))
             sys.stderr.write("\n")
-            sys.stderr.write("\n".join((" " * 4 + line for line in lines[idx + 1 : end])))
+            sys.stderr.write("\n".join((" " * 4 + line for line in lines[idx + 1:end])))
             sys.stderr.write("\n")
 
         sys.exit(-1)
