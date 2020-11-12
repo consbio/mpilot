@@ -10,9 +10,7 @@ from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 class Copy(Command):
     """ Copies the data from another field """
 
-    inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
-    }
+    inputs = {"InFieldName": params.ResultParameter(params.DataParameter())}
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -170,6 +168,7 @@ class Normalize(Command):
         "StartVal": params.NumberParameter(required=False),
         "EndVal": params.NumberParameter(required=False),
     }
+    output = params.DataParameter()
 
     def execute(self, **kwargs):
         arr = kwargs["InFieldName"].result
@@ -187,7 +186,7 @@ class PrintVars(Command):
 
     inputs = {
         "InFieldNames": params.ListParameter(params.ResultParameter()),
-        "OutFileName": params.PathParameter(required=False)
+        "OutFileName": params.PathParameter(required=False),
     }
     output = params.BooleanParameter()
 
@@ -196,11 +195,10 @@ class PrintVars(Command):
         out_path = kwargs.get("OutFileName")
 
         if out_path:
-            with open(out_path, 'w') as f_out:
+            with open(out_path, "w") as f_out:
                 f_out.write("\n".join("{}: {}".format(c.result_name, c.result) for c in commands))
         else:
             for command in kwargs["InFieldNames"]:
                 print("{}: {}".format(command.result_name, command.result))
 
         return True
-
