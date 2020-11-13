@@ -150,6 +150,7 @@ class Parser(object):
                    | STRING
                    | number
                    | list
+                   | tuple
                    | boolean
         """
 
@@ -216,6 +217,51 @@ class Parser(object):
         """
 
         p[0] = p[1]
+
+    def p_tuple(self, p):
+        """
+        tuple : LBRACK tuple_pairs RBRACK
+        """
+
+        p[0] = {pair[0]: pair[1] for pair in p[2]}
+
+    def p_tuple_pairs(self, p):
+        """
+        tuple_pairs : tuple_pair COMMA tuple_pairs
+        """
+
+        p[0] = [p[1]] + p[3]
+
+    def p_tuple_pairs_pair(self, p):
+        """
+        tuple_pairs : tuple_pair COMMA
+                    | tuple_pair
+        """
+
+        p[0] = [p[1]]
+
+    def p_tuple_pair(self, p):
+        """
+        tuple_pair : tuple_part COLON tuple_part
+        """
+
+        p[0] = (p[1], p[3])
+
+    def p_tuple_part(self, p):
+        """
+        tuple_part : STRING
+                   | PLAIN_STRING
+                   | ID
+        """
+
+        p[0] = p[1]
+
+    def p_tuple_part_id(self, p):
+        """
+        tuple_part : ID tuple_part
+        """
+
+        p[0] = "{} {}".format(p[1], p[2])
 
     def p_boolean(self, p):
         """

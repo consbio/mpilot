@@ -4,8 +4,7 @@ from numbers import Number
 import numpy
 import six
 
-from mpilot.commands import Command
-from mpilot.exceptions import ParameterNotValid, PathDoesNotExist, ResultDoesNotExist, ResultTypeNotValid
+from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid
 
 
 class Parameter:
@@ -93,7 +92,9 @@ class ResultParameter(Parameter):
         self.output_type = output_type
 
     def clean(self, value, program=None, lineno=None):
-        if not isinstance(value, Command):
+        from . import commands
+
+        if not isinstance(value, commands.Command):
             raise ParameterNotValid(value, "Result", lineno)
 
         if self.output_type is None:
@@ -125,6 +126,14 @@ class ListParameter(Parameter):
             raise ParameterNotValid(value, "List", lineno)
 
         return [self.value_type.clean(item, program, lineno) for item in value]
+
+
+class TupleParameter(Parameter):
+    def clean(self, value, program=None, lineno=None):
+        if not (value == [] or isinstance(value, dict)):
+            raise ParameterNotValid(value, "Tuple", lineno)
+
+        return {six.text_type(k): six.text_type(v) for k, v in value.items()} if value else {}
 
 
 class DataParameter(Parameter):

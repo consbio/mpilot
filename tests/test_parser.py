@@ -94,3 +94,23 @@ def test_parse_list():
     commands = Parser().parse("A = Command(P = [1, 2, 3])")
     assert isinstance(commands[0].arguments[0].value.value, list)
     assert commands[0].arguments[0].value.value == [ExpressionNode(1, 1), ExpressionNode(2, 1), ExpressionNode(3, 1)]
+
+    commands = Parser().parse("A = Command(P = [1])")
+    assert isinstance(commands[0].arguments[0].value.value, list)
+    assert commands[0].arguments[0].value.value == [ExpressionNode(1, 1)]
+
+    commands = Parser().parse("A = Command(P = [])")
+    assert isinstance(commands[0].arguments[0].value.value, list)
+    assert commands[0].arguments[0].value.value == []
+
+
+def test_parse_tuple():
+    """ Tests that tuples parse correctly """
+
+    commands = Parser().parse("A = Command(P = [A: a b c, B: b])")
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {"A": "a b c", "B": "b"}
+
+    commands = Parser().parse('A = Command(P = ["A": "a b c"])')
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {"A": "a b c"}

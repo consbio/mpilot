@@ -16,6 +16,7 @@ from mpilot.libraries.eems.basic import (
     Normalize,
     PrintVars,
 )
+from mpilot.parser.parser import ArgumentNode
 from ..utils import create_command_with_result
 
 
@@ -32,6 +33,12 @@ def test_copy():
     # Changing the copy shouldn't change the original
     result[0] = 10
     assert arr[0] == 0
+
+
+def test_metadata():
+    cmd = Copy("CopyResult", arguments=[ArgumentNode("Metadata", {"A": "a"}, 0)])
+
+    assert cmd.metadata == {"A": "a"}
 
 
 def test_a_minus_b():

@@ -10,6 +10,7 @@ import six
 from six import add_metaclass
 
 from mpilot.exceptions import MPilotError, MissingParameters, NoSuchParameter
+from mpilot.params import TupleParameter
 
 Argument = namedtuple("Argument", ("name", "value", "lineno"))
 
@@ -19,13 +20,17 @@ class CommandMeta(type):
 
     _commands_by_name = {}
 
-    def __new__(cls, name, bases, attrs):
+    def __new__(mcs, name, bases, attrs):
         attrs.update({"inputs": attrs.get("inputs", {}), "output": attrs.get("output", None)})
-        new_class = super(CommandMeta, cls).__new__(cls, name, bases, attrs)
+
+        # Add an optional "Metadata" input to all commands
+        attrs["inputs"]["Metadata"] = TupleParameter(required=False)
+
+        new_class = super(CommandMeta, mcs).__new__(mcs, name, bases, attrs)
 
         # Use the `name` attribute if this class defines one. Otherwise, use the class name itself.
         command_name = attrs.get("name", name)
-        if command_name in cls._commands_by_name:
+        if command_name in mcs._commands_by_name:
             raise MPilotError(
                 "A command named '{}' has been declared more than once. Command names must be unique.".format(
                     command_name
@@ -33,9 +38,9 @@ class CommandMeta(type):
             )
 
         new_class.name = command_name
-        cls._commands_by_name[command_name] = new_class
+        mcs._commands_by_name[command_name] = new_class
 
-        new_class._command_by_name = cls._commands_by_name
+        new_class._command_by_name = mcs._commands_by_name
         new_class.required_inputs = {name: param for name, param in attrs["inputs"].items() if param.required}
 
         return new_class
@@ -82,6 +87,13 @@ class Command(object):
             self.run()
 
         return self._result
+
+    @property
+    def metadata(self):
+        for arg in self.arguments:
+            if arg.name == "Metadata":
+                return self.inputs["Metadata"].clean(arg.value, self.program, self.argument_lines.get(arg.name))
+        return {}
 
     def validate_params(self, params):
         required_inputs = [key for key, value in self.inputs.items() if value.required]
