@@ -26,6 +26,7 @@ pytest = [
     { version = "^4.6.11", python = "~2.7" }
 ]
 black = { version = "^20.8b1", python = ">=3.6" }
+mock = { version = "^3.0.5", python = "~2.7" }
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

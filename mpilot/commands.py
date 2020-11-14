@@ -3,14 +3,18 @@ from __future__ import unicode_literals
 
 import pkgutil
 from collections import namedtuple
-from importlib import import_module
-from importlib.util import module_from_spec
 
 import six
 from six import add_metaclass
 
 from mpilot.exceptions import MPilotError, MissingParameters, NoSuchParameter
 from mpilot.params import TupleParameter
+
+if six.PY3:
+    from importlib import import_module
+    from importlib.util import module_from_spec
+else:
+    import imp
 
 Argument = namedtuple("Argument", ("name", "value", "lineno"))
 
@@ -54,14 +58,22 @@ class Command(object):
             if isinstance(module, bytes):
                 module = module.decode()
 
-            module = import_module(module)
+            if six.PY3:
+                module = import_module(module)
+            else:
+                module = imp.load_module(module)
 
         if hasattr(module, "__path__"):
-            for info, name, _ in pkgutil.iter_modules(module.__path__):
-                spec = info.find_spec(name)
-                new_module = module_from_spec(spec)
-                spec.loader.exec_module(new_module)
-                cls.load_commands(new_module)
+            if six.PY3:
+                for info, name, _ in pkgutil.iter_modules(module.__path__):
+                    spec = info.find_spec(name)
+                    new_module = module_from_spec(spec)
+                    spec.loader.exec_module(new_module)
+                    cls.load_commands(new_module)
+            else:
+                for module_loader, name, _ in pkgutil.iter_modules(module.__path__):
+                    new_module = module_loader.load_module(name)
+                    cls.load_commands(new_module)
 
     @classmethod
     def find_by_name(cls, name):

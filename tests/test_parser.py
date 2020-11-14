@@ -1,3 +1,5 @@
+import six
+
 from mpilot.parser.parser import Parser, CommandNode, ArgumentNode, ExpressionNode
 
 
@@ -76,11 +78,11 @@ def test_parse_quoted_string():
     """ Tests that strings delineated with quotes parse correctly """
 
     commands = Parser().parse('A = Command(P = "/Path/To/123.txt")')
-    assert isinstance(commands[0].arguments[0].value.value, str)
+    assert isinstance(commands[0].arguments[0].value.value, six.string_types)
     assert commands[0].arguments[0].value.value == "/Path/To/123.txt"
 
     commands = Parser().parse("A = Command(P = '/Path/To/123.txt')")
-    assert isinstance(commands[0].arguments[0].value.value, str)
+    assert isinstance(commands[0].arguments[0].value.value, six.string_types)
     assert commands[0].arguments[0].value.value == "/Path/To/123.txt"
 
     # Ensure escapes and symbols not allowed in plain strings work correctly in quoted strings

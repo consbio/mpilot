@@ -7,7 +7,7 @@ import six
 from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid
 
 
-class Parameter:
+class Parameter(object):
     def __init__(self, required=True):
         self.required = required
 

@@ -1,4 +1,11 @@
-from unittest.mock import mock_open, patch
+from __future__ import division
+
+import six
+
+if six.PY3:
+    from unittest.mock import mock_open, patch
+else:
+    from mock import mock_open, patch
 
 import numpy
 
