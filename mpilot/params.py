@@ -4,7 +4,8 @@ from numbers import Number
 import numpy
 import six
 
-from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid
+from .arguments import Argument
+from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid, ResultDoesNotExist
 
 
 class Parameter(object):
@@ -94,6 +95,12 @@ class ResultParameter(Parameter):
     def clean(self, value, program=None, lineno=None):
         from . import commands
 
+        if isinstance(value, six.string_types):
+            try:
+                value = program.commands[value]
+            except KeyError:
+                raise ResultDoesNotExist(value, lineno=lineno)
+
         if not isinstance(value, commands.Command):
             raise ParameterNotValid(value, "Result", lineno)
 
@@ -110,7 +117,7 @@ class ResultParameter(Parameter):
                 is_valid = issubclass(value.output.__class__, self.output_type.__class__)
 
             if not is_valid:
-                raise ResultTypeNotValid(value, lineno)
+                raise ResultTypeNotValid(value.result_name, lineno)
 
         return value
 
@@ -125,7 +132,9 @@ class ListParameter(Parameter):
         if not isinstance(value, (list, tuple)):
             raise ParameterNotValid(value, "List", lineno)
 
-        return [self.value_type.clean(item, program, lineno) for item in value]
+        return [
+            self.value_type.clean(item.value if isinstance(item, Argument) else item, program, lineno) for item in value
+        ]
 
 
 class TupleParameter(Parameter):

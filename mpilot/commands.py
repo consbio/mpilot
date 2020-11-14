@@ -81,7 +81,7 @@ class Command(object):
 
         return cls._command_by_name.get(name)
 
-    def __init__(self, result_name, arguments=(), program=None, lineno=None):
+    def __init__(self, result_name, arguments=[], program=None, lineno=None):
         self.result_name = result_name
         self.arguments = arguments
         self.program = program
