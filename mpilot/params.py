@@ -76,7 +76,7 @@ class PathParameter(StringParameter):
         self.must_exist = must_exist
 
     def clean(self, value, program=None, lineno=None):
-        super().clean(value, program, lineno)
+        super(PathParameter, self).clean(value, program, lineno)
 
         if not os.path.isabs(value):
             value = os.path.join(program.working_dir, value)

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import six
 from six import python_2_unicode_compatible
 

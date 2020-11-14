@@ -1,5 +1,4 @@
 from __future__ import absolute_import
-from __future__ import unicode_literals
 
 import os
 import sys
@@ -54,7 +53,7 @@ def main(library, path):
             sys.stderr.write("\n")
             sys.stderr.write("--> {}".format(lines[idx]))
             sys.stderr.write("\n")
-            sys.stderr.write("\n".join((" " * 4 + line for line in lines[idx + 1:end])))
+            sys.stderr.write("\n".join((" " * 4 + line for line in lines[idx + 1 : end])))
             sys.stderr.write("\n")
 
         sys.exit(-1)
