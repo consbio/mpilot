@@ -36,6 +36,8 @@ def main(library, path):
     Command.load_commands("mpilot.libraries.eems.basic")
     if library == "eems-csv":
         Command.load_commands("mpilot.libraries.eems.csv")
+    elif library == "eems-netcdf":
+        Command.load_commands("mpilot.libraries.eems.netcdf")
 
     try:
         program = Program.from_source(source)
