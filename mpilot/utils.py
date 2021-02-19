@@ -1,3 +1,6 @@
+from numpy.ma import is_masked
+
+
 def flatten(li):
     """ Flattens a list of lists of any depth to a 1D list and returns a generator """
 
@@ -15,7 +18,7 @@ def insure_fuzzy(arr, fuzzy_min, fuzzy_max):
     arr[arr > fuzzy_max] = fuzzy_max
     arr[arr < fuzzy_min] = fuzzy_min
 
-    if arr.mask:
+    if is_masked(arr):
         arr.data[arr.mask] = arr.fill_value
 
     return arr

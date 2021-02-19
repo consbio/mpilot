@@ -87,7 +87,9 @@ def test_weighted_sum():
     b_command = create_command_with_result("BResult", b)
     c_command = create_command_with_result("CResult", c)
 
-    result = WeightedSum("SumResult").execute(InFieldNames=[a_command, b_command, c_command], Weights=weights)
+    result = WeightedSum("SumResult").execute(
+        InFieldNames=[a_command, b_command, c_command], Weights=weights
+    )
 
     assert (result == answer).all()
 
@@ -102,7 +104,9 @@ def test_multiply():
     b_command = create_command_with_result("BResult", b)
     c_command = create_command_with_result("CResult", c)
 
-    result = Multiply("MultResult").execute(InFieldNames=[a_command, b_command, c_command])
+    result = Multiply("MultResult").execute(
+        InFieldNames=[a_command, b_command, c_command]
+    )
 
     assert (result == answer).all()
 
@@ -130,7 +134,9 @@ def test_minimum():
     b_command = create_command_with_result("BResult", b)
     c_command = create_command_with_result("CResult", c)
 
-    result = Minimum("MinResult").execute(InFieldNames=[a_command, b_command, c_command])
+    result = Minimum("MinResult").execute(
+        InFieldNames=[a_command, b_command, c_command]
+    )
 
     assert (result == answer).all()
 
@@ -145,7 +151,9 @@ def test_maximum():
     b_command = create_command_with_result("BResult", b)
     c_command = create_command_with_result("CResult", c)
 
-    result = Maximum("MaxResult").execute(InFieldNames=[a_command, b_command, c_command])
+    result = Maximum("MaxResult").execute(
+        InFieldNames=[a_command, b_command, c_command]
+    )
 
     assert (result == answer).all()
 
@@ -176,7 +184,9 @@ def test_weighted_mean():
     b_command = create_command_with_result("BResult", b)
     c_command = create_command_with_result("CResult", c)
 
-    result = WeightedMean("MeanResult").execute(InFieldNames=[a_command, b_command, c_command], Weights=weights)
+    result = WeightedMean("MeanResult").execute(
+        InFieldNames=[a_command, b_command, c_command], Weights=weights
+    )
 
     return (result == answer).all()
 
@@ -205,7 +215,11 @@ def test_print_vars():
 
     mock = mock_open()
     with patch("mpilot.libraries.eems.basic.open", mock):
-        PrintVars("PrintResult").execute(InFieldNames=[a_command, b_command, c_command], OutFileName="out.txt")
+        PrintVars("PrintResult").execute(
+            InFieldNames=[a_command, b_command, c_command], OutFileName="out.txt"
+        )
 
     mock.assert_called_once_with("out.txt", "w")
-    mock().write.assert_called_once_with("\n".join(("AResult: [1 2 3]", "BResult: [4 5 6]", "CResult: [9 8 7]")))
+    mock().write.assert_called_once_with(
+        "\n".join(("AResult: [1 2 3]", "BResult: [4 5 6]", "CResult: [9 8 7]"))
+    )
