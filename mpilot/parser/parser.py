@@ -146,11 +146,10 @@ class Parser(object):
     def p_expression(self, p):
         """
         expression : ID
-                   | PLAIN_STRING
+                   | plain_string
                    | STRING
                    | number
                    | list
-                   | tuple
                    | boolean
         """
 
@@ -162,6 +161,21 @@ class Parser(object):
         """
 
         p[0] = ExpressionNode("{} {}".format(p[1], str(p[2].value)), p.lineno(1))
+
+    def p_plain_string(self, p):
+        """
+        plain_string : PLAIN_STRING
+                     | ID
+        """
+
+        p[0] = p[1]
+
+    def p_plain_string_with_colon(self, p):
+        """
+        plain_string : plain_string COLON plain_string
+        """
+
+        p[0] = p[1] + ":" + p[3]
 
     def p_number(self, p):
         """
@@ -218,19 +232,19 @@ class Parser(object):
 
         p[0] = p[1]
 
-    def p_tuple(self, p):
+    def p_element_tuple_pairs(self, p):
         """
-        tuple : LBRACK tuple_pairs RBRACK
+        elements : tuple_pairs
         """
 
-        p[0] = {pair[0]: pair[1] for pair in p[2]}
+        p[0] = p[1]
 
     def p_tuple_pairs(self, p):
         """
         tuple_pairs : tuple_pair COMMA tuple_pairs
         """
 
-        p[0] = [p[1]] + p[3]
+        p[0] = dict(list(p[3].items()) + [p[1]])
 
     def p_tuple_pairs_pair(self, p):
         """
@@ -238,30 +252,16 @@ class Parser(object):
                     | tuple_pair
         """
 
-        p[0] = [p[1]]
+        p[0] = dict([p[1]])
 
     def p_tuple_pair(self, p):
         """
-        tuple_pair : tuple_part COLON tuple_part
+        tuple_pair : STRING COLON expression
+                   | PLAIN_STRING COLON expression
+                   | ID COLON expression
         """
 
         p[0] = (p[1], p[3])
-
-    def p_tuple_part(self, p):
-        """
-        tuple_part : STRING
-                   | PLAIN_STRING
-                   | ID
-        """
-
-        p[0] = p[1]
-
-    def p_tuple_part_id(self, p):
-        """
-        tuple_part : ID tuple_part
-        """
-
-        p[0] = "{} {}".format(p[1], p[2])
 
     def p_boolean(self, p):
         """

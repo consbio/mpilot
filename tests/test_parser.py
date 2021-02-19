@@ -19,7 +19,12 @@ def test_parse():
     commands = Parser().parse(source.strip())
 
     assert commands == [
-        CommandNode("Result_A", "Command1", [ArgumentNode("Param_A", ExpressionNode("Foo", 2), 2)], 1),
+        CommandNode(
+            "Result_A",
+            "Command1",
+            [ArgumentNode("Param_A", ExpressionNode("Foo", 2), 2)],
+            1,
+        ),
         CommandNode(
             "Result_B",
             "Command2",
@@ -73,6 +78,11 @@ def test_parse_plain_string():
     assert isinstance(commands[0].arguments[0].value.value, str)
     assert commands[0].arguments[0].value.value == "Foo Bar"
 
+    # Make sure plain strings can contain colons
+    commands = Parser().parse(r"A = Command(P = C:\path\to\thing)")
+    assert isinstance(commands[0].arguments[0].value.value, str)
+    assert commands[0].arguments[0].value.value == r"C:\path\to\thing"
+
 
 def test_parse_quoted_string():
     """ Tests that strings delineated with quotes parse correctly """
@@ -95,7 +105,11 @@ def test_parse_list():
 
     commands = Parser().parse("A = Command(P = [1, 2, 3])")
     assert isinstance(commands[0].arguments[0].value.value, list)
-    assert commands[0].arguments[0].value.value == [ExpressionNode(1, 1), ExpressionNode(2, 1), ExpressionNode(3, 1)]
+    assert commands[0].arguments[0].value.value == [
+        ExpressionNode(1, 1),
+        ExpressionNode(2, 1),
+        ExpressionNode(3, 1),
+    ]
 
     commands = Parser().parse("A = Command(P = [1])")
     assert isinstance(commands[0].arguments[0].value.value, list)
@@ -109,10 +123,13 @@ def test_parse_list():
 def test_parse_tuple():
     """ Tests that tuples parse correctly """
 
-    commands = Parser().parse("A = Command(P = [A: a b c, B: b])")
-    assert isinstance(commands[0].arguments[0].value.value, dict)
-    assert commands[0].arguments[0].value.value == {"A": "a b c", "B": "b"}
-
     commands = Parser().parse('A = Command(P = ["A": "a b c"])')
     assert isinstance(commands[0].arguments[0].value.value, dict)
-    assert commands[0].arguments[0].value.value == {"A": "a b c"}
+    assert commands[0].arguments[0].value.value == {"A": ExpressionNode("a b c", 1)}
+
+    commands = Parser().parse("A = Command(P = [A: a b c, B: b])")
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {
+        "A": ExpressionNode("a b c", 1),
+        "B": ExpressionNode("b", 1),
+    }
