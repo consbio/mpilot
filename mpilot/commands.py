@@ -104,6 +104,12 @@ class Command(object):
                 return self.inputs["Metadata"].clean(arg.value, self.program, self.argument_lines.get(arg.name))
         return {}
 
+    def get_argument_value(self, name, default=None):
+        for arg in self.arguments:
+            if arg.name == name:
+                return arg.value
+        return default
+
     def validate_params(self, params):
         required_inputs = [key for key, value in self.inputs.items() if value.required]
         all_inputs = [key for key in self.inputs.keys()]
