@@ -7,7 +7,8 @@ from mpilot.exceptions import (
     NoSuchParameter,
     ParameterNotValid,
     ResultDoesNotExist,
-    ResultTypeNotValid, CommandDoesNotExist,
+    ResultTypeNotValid,
+    CommandDoesNotExist,
 )
 from mpilot.program import Program
 
@@ -117,3 +118,11 @@ def test_invalid_result_type():
         program = Program.from_source(source)
         program.run()
     assert exc.value.result == "Result_A"
+
+
+def test_convert_from_eems():
+    source = r"READ(InFileName = C:\path\to\file.gdb, InFieldName = Foo)"
+
+    program = Program.from_source(source)
+    assert "EEMSRead" in str(type(program.commands["Foo"]))
+    assert program.commands["Foo"].result_name == "Foo"

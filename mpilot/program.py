@@ -4,8 +4,8 @@ from .arguments import Argument, ListArgument
 from .commands import Command
 from .exceptions import CommandDoesNotExist, DuplicateResult, MissingParameters, NoSuchParameter
 from .params import ResultParameter
-from .parser.parser import Parser
-from .utils import flatten
+from .parser.parser import Parser, ProgramNode
+from .utils import flatten, EEMS_COMMANDS, convert_eems2_commands
 
 
 class Program(object):
@@ -32,9 +32,12 @@ class Program(object):
             )
 
         program = cls(working_dir)
-        command_nodes = Parser().parse(source)
+        program_node = Parser().parse(source)
 
-        for node in command_nodes:
+        if program_node.version == 2 or any(node.command in EEMS_COMMANDS for node in program_node.commands):
+            program_node = ProgramNode(convert_eems2_commands(program_node.commands), 3)
+
+        for node in program_node.commands:
             command_cls = Command.find_by_name(node.command)
             if not command_cls:
                 raise CommandDoesNotExist(node.command, node.lineno)

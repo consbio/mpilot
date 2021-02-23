@@ -3,6 +3,7 @@ from collections import namedtuple
 from ply import yacc, lex
 from ply.lex import TOKEN
 
+ProgramNode = namedtuple("ProgramNode", ("commands", "version"))
 CommandNode = namedtuple("CommandNode", ("result_name", "command", "arguments", "lineno"))
 ArgumentNode = namedtuple("ArgumentNode", ("name", "value", "lineno"))
 ExpressionNode = namedtuple("ExpressionNode", ("value", "lineno"))
@@ -79,13 +80,14 @@ class Parser(object):
     def __init__(self):
         self.parser = yacc.yacc(module=self, debug=False)
         self.lexer = Lexer().lexer
+        self.eems_v2 = False
 
     def p_program(self, p):
         """
         program : commands
         """
 
-        p[0] = p[1]
+        p[0] = ProgramNode(p[1], 2 if self.eems_v2 else 3)
 
     def p_commands(self, p):
         """
@@ -107,6 +109,14 @@ class Parser(object):
         """
 
         p[0] = CommandNode(p[1], p[3], p[4], p.lineno(3))
+
+    def p_eems2_command(self, p):
+        """
+        command : ID arguments
+        """
+
+        self.eems_v2 = True
+        p[0] = CommandNode(None, p[1], p[2], p.lineno(1))
 
     def p_arguments(self, p):
         """

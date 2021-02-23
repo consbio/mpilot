@@ -6,9 +6,14 @@ class MPilotError(Exception):
     pass
 
 
+@python_2_unicode_compatible
 class ProgramError(MPilotError):
-    def __init__(self, lineno=None):
-        self.lineno = lineno
+    def __init__(self, lineno=None, message=None):
+        self.lineno = lineno,
+        self.message = message
+
+    def __str__(self):
+        return self.message or "ProgramError"
 
 
 @python_2_unicode_compatible

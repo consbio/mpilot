@@ -1,4 +1,38 @@
+from copy import deepcopy
+
 from numpy.ma import is_masked
+
+from mpilot.exceptions import ProgramError
+from mpilot.parser.parser import CommandNode
+
+
+EEMS_COMMANDS = {
+    "READ": "EEMSRead",
+    "CVTTOFUZZY": "CvtToFuzzy",
+    "CVTTOFUZZYCURVE": "CvtToFuzzyCurve",
+    "CVTTOFUZZYCAT": "CvtToFuzzyCat",
+    "MEANTOMID": "MeanToMid",
+    "COPYFIELD": "Copy",
+    "NOT": "FuzzyNot",
+    "OR": "FuzzyOr",
+    "AND": "FuzzyAnd",
+    "ORNEG": "FuzzyAnd",
+    "XOR": "FuzzyXOr",
+    "SUM": "Sum",
+    "MULT": "Multiply",
+    "DIVIDE": "ADividedByB",
+    "MIN": "Minimum",
+    "MAX": "Maximum",
+    "MEAN": "Mean",
+    "UNION": "FuzzyUnion",
+    "DIF": "AMinusB",
+    "SELECTEDUNION": "FuzzySelectedUnion",
+    "WTDUNION": "FuzzyWeightedUnion",
+    "WTDMEAN": "WeightedMean",
+    "WTDSUM": "WeightedSum",
+    "SCORERANGEBENEFIT": "ScoreRangeBenefit",
+    "SCORERANGECOST": "ScoreRangeCost",
+}
 
 
 def flatten(li):
@@ -22,3 +56,32 @@ def insure_fuzzy(arr, fuzzy_min, fuzzy_max):
         arr.data[arr.mask] = arr.fill_value
 
     return arr
+
+
+def convert_eems2_commands(command_nodes):
+    """ Converts command nodes returned by the parser to their MPilot equivalents """
+
+    converted = []
+
+    for node in command_nodes:
+        try:
+            converted.append(
+                CommandNode(
+                    node.result_name
+                    or next(
+                        arg.value.value
+                        for arg in node.arguments
+                        if arg.name == "InFieldName"
+                    ),
+                    EEMS_COMMANDS.get(node.command, node.command),
+                    deepcopy(node.arguments),
+                    node.lineno,
+                )
+            )
+        except StopIteration:
+            raise ProgramError(
+                lineno=node.lineno,
+                message="Cannot convert from EEMS 2.0: No InFieldName argument for command without a result name.",
+            )
+
+    return converted
