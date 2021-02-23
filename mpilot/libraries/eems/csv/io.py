@@ -13,13 +13,16 @@ from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 class EEMSRead(Command):
     """ Reads a variable from a file """
 
+    display_name = "Read"
     inputs = {
         "InFileName": params.PathParameter(must_exist=True),
         "InFieldName": params.StringParameter(),
         "ReturnType": params.DataTypeParameter(required=False),  # Not used
         "NewFieldName": params.StringParameter(required=False),  # Not used
         "MissingVal": params.NumberParameter(required=False),
-        "DataType": params.DataTypeParameter(required=False, valid_types={"Float": float, "Integer": int}),
+        "DataType": params.DataTypeParameter(
+            required=False, valid_types={"Float": float, "Integer": int}
+        ),
     }
     output = params.DataParameter()
 
@@ -38,7 +41,11 @@ class EEMSRead(Command):
             try:
                 idx = headers.index(field_name)
             except ValueError:
-                raise InvalidDataFile("The data file doesn't contain the header {}: {}".format(field_name, path))
+                raise InvalidDataFile(
+                    "The data file doesn't contain the header {}: {}".format(
+                        field_name, path
+                    )
+                )
 
             values = []
             for row in reader:
@@ -48,7 +55,9 @@ class EEMSRead(Command):
         fill_value = kwargs.get("MissingVal")
         data_type = kwargs.get("DataType", float)
         if fill_value is not None:
-            data = numpy.ma.array(values, mask=False, dtype=data_type, fill_value=data_type(fill_value))
+            data = numpy.ma.array(
+                values, mask=False, dtype=data_type, fill_value=data_type(fill_value)
+            )
             mask = numpy.ma.where(data == data_type(fill_value), True, False)
 
         data = numpy.ma.array(values, mask=False, dtype=data_type)
@@ -61,9 +70,12 @@ class EEMSRead(Command):
 
 
 class EEMSWrite(SameArrayShapeMixin, Command):
+    display_name = "Write"
     inputs = {
         "OutFileName": params.PathParameter(must_exist=False),
-        "OutFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter())),
+        "OutFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        ),
     }
 
     def execute(self, **kwargs):

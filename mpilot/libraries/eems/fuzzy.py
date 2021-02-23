@@ -37,6 +37,7 @@ class CvtToFuzzy(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "TrueThreshold": params.NumberParameter(required=False),
@@ -82,6 +83,7 @@ class CvtToFuzzyZScore(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy by Z Score"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "TrueThresholdZScore": params.NumberParameter(),
@@ -116,6 +118,7 @@ class CvtToFuzzyCat(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy by Category"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "RawValues": params.ListParameter(params.NumberParameter()),
@@ -151,6 +154,7 @@ class CvtToFuzzyCurve(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy Curve"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "RawValues": params.ListParameter(params.NumberParameter()),
@@ -205,6 +209,7 @@ class MeanToMid(CvtToFuzzyCurve):
 
     is_fuzzy = True
 
+    display_name = "Mean to Mid"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "IgnoreZeros": params.BooleanParameter(),
@@ -232,7 +237,7 @@ class MeanToMid(CvtToFuzzyCurve):
         return super(MeanToMid, self).execute(
             InFieldName=kwargs["InFieldName"],
             RawValues=[low_value, low_mean, mean_value, high_mean, high_value],
-            FuzzyValues=kwargs["FuzzyValues"]
+            FuzzyValues=kwargs["FuzzyValues"],
         )
 
 
@@ -241,6 +246,7 @@ class CvtToFuzzyCurveZScore(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy Curve by Z Score"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "ZScoreValues": params.ListParameter(params.NumberParameter()),
@@ -300,6 +306,7 @@ class CvtToBinary(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Convert to Fuzzy Binary"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "Threshold": params.NumberParameter(),
@@ -330,6 +337,7 @@ class FuzzyUnion(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy Union"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -358,6 +366,7 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy Weighted Union"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -391,6 +400,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy Selected Union"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -456,6 +466,7 @@ class FuzzyOr(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy Or"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -482,6 +493,7 @@ class FuzzyAnd(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy And"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -508,6 +520,7 @@ class FuzzyXOr(SameArrayShapeMixin, FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy XOr"
     inputs = {
         "InFieldNames": params.ListParameter(
             params.ResultParameter(params.DataParameter())
@@ -557,6 +570,7 @@ class FuzzyNot(FuzzyCommand):
 
     is_fuzzy = True
 
+    display_name = "Fuzzy Not"
     inputs = {"InFieldName": params.ResultParameter(params.DataParameter())}
     output = params.DataParameter()
 
@@ -576,6 +590,7 @@ class CvtFromFuzzy(FuzzyCommand):
 
     is_fuzzy = False
 
+    display_name = "Convert from Fuzzy"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "TrueThreshold": params.NumberParameter(),

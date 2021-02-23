@@ -12,6 +12,7 @@ from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 class Copy(Command):
     """ Copies the data from another field """
 
+    display_name = "Copy"
     inputs = {"InFieldName": params.ResultParameter(params.DataParameter())}
     output = params.DataParameter()
 
@@ -22,6 +23,7 @@ class Copy(Command):
 class AMinusB(SameArrayShapeMixin, Command):
     """ Performs A - B """
 
+    display_name = "A Minus B"
     inputs = {"A": params.DataParameter(), "B": params.DataParameter()}
     output = params.DataParameter()
 
@@ -36,7 +38,12 @@ class AMinusB(SameArrayShapeMixin, Command):
 class Sum(SameArrayShapeMixin, Command):
     """ Sums input variables """
 
-    inputs = {"InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter()))}
+    display_name = "Sum"
+    inputs = {
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        )
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -53,8 +60,11 @@ class Sum(SameArrayShapeMixin, Command):
 class WeightedSum(SameArrayShapeMixin, Command):
     """ Takes the weighted sum of input variables """
 
+    display_name = "Weighted Sum"
     inputs = {
-        "InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter())),
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        ),
         "Weights": params.ListParameter(params.NumberParameter()),
     }
     output = params.DataParameter()
@@ -74,7 +84,12 @@ class WeightedSum(SameArrayShapeMixin, Command):
 class Multiply(SameArrayShapeMixin, Command):
     """ Multiplies input variables """
 
-    inputs = {"InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter()))}
+    display_name = "Multiply"
+    inputs = {
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        )
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -91,7 +106,11 @@ class Multiply(SameArrayShapeMixin, Command):
 class ADividedByB(SameArrayShapeMixin, Command):
     """ Performs A / B """
 
-    inputs = {"A": params.ResultParameter(params.DataParameter()), "B": params.ResultParameter(params.DataParameter())}
+    display_name = "A Divided By B"
+    inputs = {
+        "A": params.ResultParameter(params.DataParameter()),
+        "B": params.ResultParameter(params.DataParameter()),
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -105,7 +124,12 @@ class ADividedByB(SameArrayShapeMixin, Command):
 class Minimum(SameArrayShapeMixin, Command):
     """ Takes the minimum input variables """
 
-    inputs = {"InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter()))}
+    display_name = "Minimum"
+    inputs = {
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        )
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -118,7 +142,12 @@ class Minimum(SameArrayShapeMixin, Command):
 class Maximum(SameArrayShapeMixin, Command):
     """ Takes the maximum input variables """
 
-    inputs = {"InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter()))}
+    display_name = "Maximum"
+    inputs = {
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        )
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -131,7 +160,12 @@ class Maximum(SameArrayShapeMixin, Command):
 class Mean(SameArrayShapeMixin, Command):
     """ Mean of input variables """
 
-    inputs = {"InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter()))}
+    display_name = "Mean"
+    inputs = {
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        )
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
@@ -144,8 +178,11 @@ class Mean(SameArrayShapeMixin, Command):
 class WeightedMean(SameArrayShapeMixin, Command):
     """ Takes the weighted mean of input variables """
 
+    display_name = "Weighted Mean"
     inputs = {
-        "InFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter())),
+        "InFieldNames": params.ListParameter(
+            params.ResultParameter(params.DataParameter())
+        ),
         "Weights": params.ListParameter(params.NumberParameter()),
     }
     output = params.DataParameter()
@@ -165,6 +202,7 @@ class WeightedMean(SameArrayShapeMixin, Command):
 class Normalize(Command):
     """ Normalizes the data from another field to range (default 0:1) """
 
+    display_name = "Normalize"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter()),
         "StartVal": params.NumberParameter(required=False),
@@ -186,6 +224,7 @@ class Normalize(Command):
 class PrintVars(Command):
     """ Prints each variable in a list of variable names. """
 
+    display_name = "Print variable(s) to screen or file"
     inputs = {
         "InFieldNames": params.ListParameter(params.ResultParameter()),
         "OutFileName": params.PathParameter(required=False),
@@ -198,7 +237,11 @@ class PrintVars(Command):
 
         if out_path:
             with open(out_path, "w") as f_out:
-                f_out.write("\n".join("{}: {}".format(c.result_name, c.result) for c in commands))
+                f_out.write(
+                    "\n".join(
+                        "{}: {}".format(c.result_name, c.result) for c in commands
+                    )
+                )
         else:
             for command in kwargs["InFieldNames"]:
                 print("{}: {}".format(command.result_name, command.result))

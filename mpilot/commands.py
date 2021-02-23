@@ -41,6 +41,7 @@ class CommandMeta(type):
 
         new_class.name = command_name
         mcs._commands_by_name[command_name] = new_class
+        new_class.display_name = attrs.get("display_name", command_name)
 
         new_class._command_by_name = mcs._commands_by_name
         new_class.required_inputs = {name: param for name, param in attrs["inputs"].items() if param.required}
