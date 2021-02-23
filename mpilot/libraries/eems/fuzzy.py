@@ -200,6 +200,42 @@ class CvtToFuzzyCurve(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
+class MeanToMid(CvtToFuzzyCurve):
+    """ Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data """
+
+    is_fuzzy = True
+
+    inputs = {
+        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "IgnoreZeros": params.BooleanParameter(),
+        "FuzzyValues": params.ListParameter(params.NumberParameter()),
+    }
+    output = params.DataParameter()
+
+    def execute(self, **kwargs):
+        arr = kwargs["InFieldName"].result
+        ignore_zeros = kwargs["IgnoreZeros"]
+
+        low_value = arr.min()
+        high_value = arr.max()
+
+        if ignore_zeros:
+            arr = arr[arr != 0]
+
+        mean_value = arr.mean()
+        below_mean = arr[arr <= mean_value]
+        above_mean = arr[arr > mean_value]
+
+        high_mean = above_mean.mean()
+        low_mean = below_mean.mean()
+
+        return super(MeanToMid, self).execute(
+            InFieldName=kwargs["InFieldName"],
+            RawValues=[low_value, low_mean, mean_value, high_mean, high_value],
+            FuzzyValues=kwargs["FuzzyValues"]
+        )
+
+
 class CvtToFuzzyCurveZScore(FuzzyCommand):
     """ Converts input values into fuzzy based on user-defined curve """
 

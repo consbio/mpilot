@@ -17,6 +17,7 @@ from mpilot.libraries.eems.fuzzy import (
     FuzzyXOr,
     FuzzyNot,
     CvtFromFuzzy,
+    MeanToMid,
 )
 from ..utils import create_command_with_result
 
@@ -83,6 +84,19 @@ def test_convert_to_fuzzy_curve():
     )
     result = CvtToFuzzyCurve("ConvertResult").execute(
         InFieldName=command, RawValues=[1.0, 3.0, 9.0], FuzzyValues=[-1.0, 0.0, 1.0]
+    )
+
+    assert (result.round(2) == answer).all()
+
+
+def test_mean_to_mid():
+    arr = numpy.ma.arange(10, dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array(
+        [-1.0, -0.6, -0.2, -0.12, -0.04, 0.08, 0.24, 0.4, 0.7, 1.0], dtype=float
+    )
+    result = MeanToMid("ConvertResult").execute(
+        InFieldName=command, IgnoreZeros=False, FuzzyValues=[-1.0, -0.2, 0.0, 0.4, 1.0]
     )
 
     assert (result.round(2) == answer).all()
