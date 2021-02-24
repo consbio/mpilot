@@ -4,15 +4,21 @@ from numbers import Number
 import numpy
 import six
 
+if six.PY3:
+    from typing import Any
+
 from .arguments import Argument
 from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid, ResultDoesNotExist
 
 
 class Parameter(object):
     def __init__(self, required=True):
+        # type: (bool) -> None
+
         self.required = required
 
     def clean(self, value, program=None, lineno=None):
+        # type: (Any, Any, int) -> Any
         """ Clean and validate a raw parameter value """
 
         return value

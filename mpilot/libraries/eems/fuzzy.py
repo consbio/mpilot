@@ -3,6 +3,10 @@ from __future__ import division
 from functools import reduce
 
 import numpy
+import six
+
+if six.PY3:
+    from typing import Union, Sequence
 
 from mpilot import params
 from mpilot.commands import Command
@@ -26,6 +30,8 @@ class FuzzyCommand(Command):
     is_fuzzy = False
 
     def validate_fuzzy_inputs(self, values, lineno=None):
+        # type: (Union[Sequence[Command], Command], int) -> None
+
         if not isinstance(values, (list, tuple)):
             values = [values]
 

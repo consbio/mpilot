@@ -288,6 +288,7 @@ class Parser(object):
             raise SyntaxError("Invalid syntax at end of statement")
 
     def parse(self, source):
+        # type: (str) -> ProgramNode
         """ Parses the source text and returns a list of `CommandNode` objects """
 
         return self.parser.parse(source, lexer=self.lexer, tracking=True)

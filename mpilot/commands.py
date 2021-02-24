@@ -7,6 +7,10 @@ from importlib import import_module
 import six
 from six import add_metaclass
 
+if six.PY3:
+    from typing import Union, List, Any, Dict
+    from types import ModuleType
+
 from mpilot.exceptions import MPilotError, MissingParameters, NoSuchParameter
 from mpilot.params import TupleParameter
 
@@ -57,6 +61,8 @@ class CommandMeta(type):
 class Command(object):
     @classmethod
     def load_commands(cls, module):
+        # type: (Union[str, ModuleType]) -> None
+
         if isinstance(module, six.string_types):
             if isinstance(module, bytes):
                 module = module.decode()
@@ -79,11 +85,14 @@ class Command(object):
 
     @classmethod
     def find_by_name(cls, name):
+        # type: (str) -> Command
         """ Finds and returns a command matching `name` """
 
         return cls._command_by_name.get(name)
 
     def __init__(self, result_name, arguments=[], program=None, lineno=None):
+        # type: (str, List[Any], Any, int) -> None
+
         self.result_name = result_name
         self.arguments = arguments
         self.program = program
@@ -104,6 +113,8 @@ class Command(object):
 
     @property
     def metadata(self):
+        # type: () -> Dict[str, str]
+
         for arg in self.arguments:
             if arg.name == "Metadata":
                 return self.inputs["Metadata"].clean(
@@ -112,12 +123,16 @@ class Command(object):
         return {}
 
     def get_argument_value(self, name, default=None):
+        # type: (str, Any) -> Any
+
         for arg in self.arguments:
             if arg.name == name:
                 return arg.value
         return default
 
     def validate_params(self, params):
+        # type: (Dict[str, Any]) -> Dict[str, Any]
+
         required_inputs = [key for key, value in self.inputs.items() if value.required]
         all_inputs = [key for key in self.inputs.keys()]
 

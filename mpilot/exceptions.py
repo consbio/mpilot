@@ -1,6 +1,9 @@
 import six
 from six import python_2_unicode_compatible
 
+if six.PY3:
+    from typing import Union, Sequence, Set, Any
+
 
 class MPilotError(Exception):
     pass
@@ -9,6 +12,8 @@ class MPilotError(Exception):
 @python_2_unicode_compatible
 class ProgramError(MPilotError):
     def __init__(self, lineno=None, message=None):
+        # type: (int, str) -> None
+
         self.lineno = lineno,
         self.message = message
 
@@ -19,6 +24,8 @@ class ProgramError(MPilotError):
 @python_2_unicode_compatible
 class CommandDoesNotExist(ProgramError):
     def __init__(self, name, lineno=None):
+        # type: (str, int) -> None
+
         super(CommandDoesNotExist, self).__init__(lineno)
 
         self.name = name
@@ -35,6 +42,8 @@ class CommandDoesNotExist(ProgramError):
 @python_2_unicode_compatible
 class DuplicateResult(ProgramError):
     def __init__(self, result, lineno=None):
+        # type: (str, int) -> None
+
         super(DuplicateResult, self).__init__(lineno)
 
         self.result = result
@@ -51,6 +60,8 @@ class DuplicateResult(ProgramError):
 @python_2_unicode_compatible
 class MissingParameters(ProgramError):
     def __init__(self, command, parameters, lineno=None):
+        # type: (Union[str, Any], Union[Sequence[str], Set[str]], int) -> None
+
         super(MissingParameters, self).__init__(lineno)
 
         self.command = command if isinstance(command, six.string_types) else command.name
@@ -70,6 +81,8 @@ class MissingParameters(ProgramError):
 @python_2_unicode_compatible
 class NoSuchParameter(ProgramError):
     def __init__(self, command, parameter, lineno=None):
+        # type: (Union[str, Any], str, int) -> None
+
         super(NoSuchParameter, self).__init__(lineno)
 
         self.command = command if isinstance(command, six.string_types) else command.name
@@ -87,6 +100,8 @@ class NoSuchParameter(ProgramError):
 @python_2_unicode_compatible
 class ParameterNotValid(ProgramError):
     def __init__(self, value, required_type, lineno=None):
+        # type: (Any, str, int) -> None
+
         super(ParameterNotValid, self).__init__(lineno)
 
         self.value = value
@@ -106,6 +121,8 @@ class ParameterNotValid(ProgramError):
 @python_2_unicode_compatible
 class PathDoesNotExist(ProgramError):
     def __init__(self, path, lineno=None):
+        # type: (str, int) -> None
+
         super(PathDoesNotExist, self).__init__(lineno)
 
         self.path = path
@@ -122,6 +139,8 @@ class PathDoesNotExist(ProgramError):
 @python_2_unicode_compatible
 class ResultDoesNotExist(ProgramError):
     def __init__(self, result, lineno=None):
+        # type: (str, int) -> None
+
         super(ResultDoesNotExist, self).__init__(lineno)
 
         self.result = result
@@ -138,6 +157,8 @@ class ResultDoesNotExist(ProgramError):
 @python_2_unicode_compatible
 class ResultTypeNotValid(ProgramError):
     def __init__(self, result, lineno=None):
+        # type: (str, int) -> None
+
         super(ResultTypeNotValid, self).__init__(lineno)
 
         self.result = result

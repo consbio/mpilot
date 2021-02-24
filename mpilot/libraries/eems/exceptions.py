@@ -1,11 +1,17 @@
+import six
 from six import python_2_unicode_compatible
 
 from mpilot.exceptions import ProgramError
+
+if six.PY3:
+    from typing import Tuple
 
 
 @python_2_unicode_compatible
 class EmptyDataFile(ProgramError):
     def __init__(self, path, lineno=None):
+        # type: (str, int) -> None
+
         super(EmptyDataFile, self).__init__(lineno)
 
         self.path = path
@@ -22,6 +28,8 @@ class EmptyDataFile(ProgramError):
 @python_2_unicode_compatible
 class InvalidDataFile(ProgramError):
     def __init__(self, problem, lineno=None):
+        # type: (str, int) -> None
+
         super(InvalidDataFile, self).__init__(lineno)
 
         self.problem = problem
@@ -35,6 +43,8 @@ class InvalidDataFile(ProgramError):
 @python_2_unicode_compatible
 class MixedArrayShapes(ProgramError):
     def __init__(self, shape_a, shape_b, lineno=None):
+        # type: (Tuple[int, ...], Tuple[int, ...], int) -> None
+
         super(MixedArrayShapes, self).__init__(lineno)
 
         self.shape_a = shape_a
@@ -54,6 +64,8 @@ class MixedArrayShapes(ProgramError):
 @python_2_unicode_compatible
 class InvalidDirection(ProgramError):
     def __init__(self, value, lineno=None):
+        # type: (str, int) -> NOne
+
         super(InvalidDirection, self).__init__(lineno)
 
         self.value = value
@@ -81,6 +93,8 @@ class InvalidThresholds(ProgramError):
 @python_2_unicode_compatible
 class MixedArrayLengths(ProgramError):
     def __init__(self, len_a, len_b, lineno=None):
+        # type: (int, int, int) -> None
+
         super(MixedArrayLengths, self).__init__(lineno)
 
         self.len_a = len_a
@@ -133,6 +147,8 @@ class InvalidNumberToConsider(ProgramError):
 @python_2_unicode_compatible
 class InvalidTruestOrFalsest(ProgramError):
     def __init__(self, value, lineno=None):
+        # type: (str, int) -> None
+
         super(InvalidTruestOrFalsest, self).__init__(lineno)
 
         self.value = value

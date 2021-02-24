@@ -1,6 +1,11 @@
 from copy import deepcopy
 
+import numpy
+import six
 from numpy.ma import is_masked
+
+if six.PY3:
+    from typing import Sequence, Any
 
 from mpilot.exceptions import ProgramError
 from mpilot.parser.parser import CommandNode
@@ -36,6 +41,7 @@ EEMS_COMMANDS = {
 
 
 def flatten(li):
+    # type: (Sequence[Any]) -> Sequence[Any]
     """ Flattens a list of lists of any depth to a 1D list and returns a generator """
 
     for item in li:
@@ -47,6 +53,7 @@ def flatten(li):
 
 
 def insure_fuzzy(arr, fuzzy_min, fuzzy_max):
+    # type: (numpy.ma.masked_array, float, float) -> numpy.ma.masked_array
     """ Limits all array values in-place to fuzzy_min and fuzzy_max and returns the array """
 
     arr[arr > fuzzy_max] = fuzzy_max
@@ -59,6 +66,7 @@ def insure_fuzzy(arr, fuzzy_min, fuzzy_max):
 
 
 def convert_eems2_commands(command_nodes):
+    # type: (Sequence[CommandNode]) -> Sequence[CommandNode]
     """ Converts command nodes returned by the parser to their MPilot equivalents """
 
     converted = []

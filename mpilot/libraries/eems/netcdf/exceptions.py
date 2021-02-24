@@ -6,6 +6,8 @@ from mpilot.exceptions import MPilotError
 @python_2_unicode_compatible
 class NoSuchVariable(MPilotError):
     def __init__(self, path, variable, lineno=None):
+        # type: (str, str, int) -> None
+
         super(NoSuchVariable, self).__init__(lineno)
 
         self.path = path
@@ -23,6 +25,8 @@ class NoSuchVariable(MPilotError):
 @python_2_unicode_compatible
 class InvalidPositiveData(MPilotError):
     def __init__(self, path, expected_type, lineno=None):
+        # type: (str, str, int) -> None
+
         super(InvalidPositiveData, self).__init__(lineno)
 
         self.path = path
@@ -42,6 +46,8 @@ class InvalidPositiveData(MPilotError):
 @python_2_unicode_compatible
 class InvalidFuzzyData(MPilotError):
     def __init__(self, path, lineno=None):
+        # type: (str, int) -> None
+
         super(InvalidPositiveData, self).__init__(lineno)
 
         self.path = path
