@@ -29,7 +29,10 @@ numpy = [
     { version = "^1.19.4", python = ">=3.6" },
     { version = "^1.16.6", python = "~2.7" }
 ]
-netCDF4 = { version = "^1.5.4", optional = true }
+netCDF4 = [
+    { version = "^1.5.4", python = ">=3.6", optional = true },
+    { version = "~1.4.3.2", python = "~2.7", optional = true }
+]
 
 [tool.poetry.dev-dependencies]
 pytest = [

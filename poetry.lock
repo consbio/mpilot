@@ -146,7 +146,7 @@ testing = ["packaging", "pep517", "unittest2", "importlib-resources (>=1.3)"]
 
 [[package]]
 name = "importlib-metadata"
-version = "3.5.0"
+version = "3.6.0"
 description = "Read metadata from Python packages"
 category = "dev"
 optional = false
@@ -203,6 +203,18 @@ description = "Experimental type system extensions for programs checked with the
 category = "dev"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "netcdf4"
+version = "1.4.3.2"
+description = "Provides an object-oriented python interface to the netCDF version 4 library."
+category = "main"
+optional = true
+python-versions = "*"
+
+[package.dependencies]
+cftime = "*"
+numpy = ">=1.7"
 
 [[package]]
 name = "netcdf4"
@@ -440,7 +452,7 @@ netcdf = ["netCDF4"]
 [metadata]
 lock-version = "1.1"
 python-versions = "~2.7 || >=3.6"
-content-hash = "9d8cd48c95857a3daf2d93de6b6204eff545640c5415fc3450962300d43b2a40"
+content-hash = "c17e164e8f60c504e3e770109ca555ccf44256c58992a5883cc8b557a37dbcd5"
 
 [metadata.files]
 appdirs = [
@@ -527,8 +539,8 @@ funcsigs = [
 importlib-metadata = [
     {file = "importlib_metadata-2.1.1-py2.py3-none-any.whl", hash = "sha256:c2d6341ff566f609e89a2acb2db190e5e1d23d5409d6cc8d2fe34d72443876d4"},
     {file = "importlib_metadata-2.1.1.tar.gz", hash = "sha256:b8de9eff2b35fb037368f28a7df1df4e6436f578fa74423505b6c6a778d5b5dd"},
-    {file = "importlib_metadata-3.5.0-py3-none-any.whl", hash = "sha256:31c5c29f17d064cc71bf6a005a8b25b3332787ab2e7362d5d258800ac825f471"},
-    {file = "importlib_metadata-3.5.0.tar.gz", hash = "sha256:2a851a30a1fd847cedd68c7c6bfb90e765db6265852f574e9d88bb40f96924ab"},
+    {file = "importlib_metadata-3.6.0-py3-none-any.whl", hash = "sha256:144acbe6ec34f170c4a362f52c2d03e82db7d012668ba57ff8f1e668905889b0"},
+    {file = "importlib_metadata-3.6.0.tar.gz", hash = "sha256:080d666daa2faedcc2e96c0c87d3cdb76325261c51650016784834733faa7897"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
@@ -548,6 +560,29 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 netcdf4 = [
+    {file = "netCDF4-1.4.3.2-cp27-cp27m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:5d68b70ae685599078fd82d0483a24b149e12a5aa2d013c870042e262efb9ae4"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27m-manylinux1_i686.whl", hash = "sha256:f062408d3420ee7ba65801a7f46757694840e2c7eeebc31a11a00ad51a417b94"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:8b318aae59a16990c71be3c1477d6e6dfdadb3ae4d1f9c1796b413f4b22e9d62"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27m-win32.whl", hash = "sha256:69f8db8437d73f67622a8263d2b427c57b75264c0755f4ab6d54f51cd00e95e0"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27m-win_amd64.whl", hash = "sha256:a77869f28f9e62fa58be5976004cd5ae2a464fc237734f24f451496425ee2ca3"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27mu-manylinux1_i686.whl", hash = "sha256:2cdfa8185657f12cbad35cdb3ab2c928c73b74d906477211f6b361e83a3aca4a"},
+    {file = "netCDF4-1.4.3.2-cp27-cp27mu-manylinux1_x86_64.whl", hash = "sha256:9463ba1d89d22d3d7e4e4b6318af1fc71a2a2fa6c53b0675022adfd1d6acc5a4"},
+    {file = "netCDF4-1.4.3.2-cp35-cp35m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:c1a2e1ac284cf631876c08f6382bd173d733aa6ab498c87e3a048b53adc68f41"},
+    {file = "netCDF4-1.4.3.2-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:19041d9932e64238a8054b8a7653f63f653e4ba90c0e4f50ddafd8f6c06bc653"},
+    {file = "netCDF4-1.4.3.2-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:456377e03940d758239cfdf3be125cd50e0724fcc819efb3b30800470fbe8a7c"},
+    {file = "netCDF4-1.4.3.2-cp35-cp35m-win32.whl", hash = "sha256:fc038392d78e622f6222294a6d62538f149f41b09bdd2a5bd8421f7e6a4914b5"},
+    {file = "netCDF4-1.4.3.2-cp35-cp35m-win_amd64.whl", hash = "sha256:326130b5c950e017a066c9ce9b97d1e6b6615d794975b1bea10cb277340b5dc6"},
+    {file = "netCDF4-1.4.3.2-cp36-cp36m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:9eb94aad6483f0ef078223eb79321467b90b270369245907f74b0cfa2ad4db8a"},
+    {file = "netCDF4-1.4.3.2-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:97ffc93e5f14a5dc8f1d31c5107182c8fc98598cb5bfee0d3c402a826aa4fb27"},
+    {file = "netCDF4-1.4.3.2-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:4323b8d94805439473fe8fd72fa46617cde762face81371541533061a11936f9"},
+    {file = "netCDF4-1.4.3.2-cp36-cp36m-win32.whl", hash = "sha256:ccd13ddd4f74ae74f774b81dc4e5eef38f3043794d752bed2ebd14bca8aa8789"},
+    {file = "netCDF4-1.4.3.2-cp36-cp36m-win_amd64.whl", hash = "sha256:b4d772226a712716ff7e139a0d9af3e54b88feac995e77333eafe99353949d9d"},
+    {file = "netCDF4-1.4.3.2-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl", hash = "sha256:29b055e88f3212931d3f1b43cbe23a43fd3a89b9d84b7308bcb2d33c1ec242d6"},
+    {file = "netCDF4-1.4.3.2-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:fa45d0473533bff86074fbe6662b1f3c0d35b77f861156b9a60c3e1415d76390"},
+    {file = "netCDF4-1.4.3.2-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:8f33605f7c157ccdcc39e1436dca8d9336270a897e2d35c60968a5df14237644"},
+    {file = "netCDF4-1.4.3.2-cp37-cp37m-win32.whl", hash = "sha256:094248504e1025e55786edd2a4e521d7da271a3211cbcfd0aa48e498ce35e469"},
+    {file = "netCDF4-1.4.3.2-cp37-cp37m-win_amd64.whl", hash = "sha256:edcd653782e8f11f036204900377a0d86af06964aac8e8ce1a01dfa44ccdb103"},
+    {file = "netCDF4-1.4.3.2.tar.gz", hash = "sha256:5ae0ea8658a83c4c62a76af5a764aad3b4608d7376f07deb143d00817901da9a"},
     {file = "netCDF4-1.5.6-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:573369b148aadc47e1da0e82b001412ecd7577f72ae742e2508e03d2cff2a2ce"},
     {file = "netCDF4-1.5.6-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:e0a2ff2caec5e492d55f8f2e4666876899bb504f70c7b3c71e31c2791f46fee2"},
     {file = "netCDF4-1.5.6-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:5a2c419fdca00fbf1d1c0fcd471cd136b6c4b9e32695c68111712bb6caefd2cf"},
