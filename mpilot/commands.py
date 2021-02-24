@@ -23,7 +23,9 @@ class CommandMeta(type):
     _commands_by_name = {}
 
     def __new__(mcs, name, bases, attrs):
-        attrs.update({"inputs": attrs.get("inputs", {}), "output": attrs.get("output", None)})
+        attrs.update(
+            {"inputs": attrs.get("inputs", {}), "output": attrs.get("output", None)}
+        )
 
         # Add an optional "Metadata" input to all commands
         attrs["inputs"]["Metadata"] = TupleParameter(required=False)
@@ -44,7 +46,9 @@ class CommandMeta(type):
         new_class.display_name = attrs.get("display_name", command_name)
 
         new_class._command_by_name = mcs._commands_by_name
-        new_class.required_inputs = {name: param for name, param in attrs["inputs"].items() if param.required}
+        new_class.required_inputs = {
+            name: param for name, param in attrs["inputs"].items() if param.required
+        }
 
         return new_class
 
@@ -61,11 +65,12 @@ class Command(object):
 
         if hasattr(module, "__path__"):
             if six.PY3:
-                for info, name, _ in pkgutil.iter_modules(module.__path__):
+                for info, name, _ in pkgutil.walk_packages(
+                    module.__path__, prefix=module.__name__ + "."
+                ):
                     spec = info.find_spec(name)
                     new_module = module_from_spec(spec)
                     spec.loader.exec_module(new_module)
-                    cls.load_commands(new_module)
             else:
                 for info in pkgutil.iter_modules(module.__path__):
                     name = info[1]
@@ -101,7 +106,9 @@ class Command(object):
     def metadata(self):
         for arg in self.arguments:
             if arg.name == "Metadata":
-                return self.inputs["Metadata"].clean(arg.value, self.program, self.argument_lines.get(arg.name))
+                return self.inputs["Metadata"].clean(
+                    arg.value, self.program, self.argument_lines.get(arg.name)
+                )
         return {}
 
     def get_argument_value(self, name, default=None):
@@ -121,9 +128,13 @@ class Command(object):
         cleaned = {}
         for name, value in params.items():
             if name not in all_inputs:
-                raise NoSuchParameter(self.result_name, name, self.argument_lines.get(name))
+                raise NoSuchParameter(
+                    self.result_name, name, self.argument_lines.get(name)
+                )
 
-            cleaned[name] = self.inputs[name].clean(value, self.program, self.argument_lines.get(name))
+            cleaned[name] = self.inputs[name].clean(
+                value, self.program, self.argument_lines.get(name)
+            )
 
         return cleaned
 
@@ -133,7 +144,9 @@ class Command(object):
 
         if not self.is_finished:
             self.is_running = True
-            self._result = self.execute(**self.validate_params({arg.name: arg.value for arg in self.arguments}))
+            self._result = self.execute(
+                **self.validate_params({arg.name: arg.value for arg in self.arguments})
+            )
             self.is_running = False
             self.is_finished = True
 
