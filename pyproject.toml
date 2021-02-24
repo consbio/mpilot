@@ -29,7 +29,7 @@ numpy = [
     { version = "^1.19.4", python = ">=3.6" },
     { version = "^1.16.6", python = "~2.7" }
 ]
-netCDF4 = "^1.5.4"
+netCDF4 = { version = "^1.5.4", optional = true }
 
 [tool.poetry.dev-dependencies]
 pytest = [
@@ -39,6 +39,9 @@ pytest = [
 black = { version = "^20.8b1", python = ">=3.6" }
 mock = { version = "^3.0.5", python = "~2.7" }
 setuptools = { version = "^44.1.1", python = "~2.7" }
+
+[tool.poetry.extras]
+netcdf = ["netCDF4"]
 
 [tool.poetry.scripts]
 mpilot = 'mpilot.cli.mpilot:main'

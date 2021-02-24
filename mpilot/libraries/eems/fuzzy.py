@@ -16,8 +16,10 @@ from mpilot.libraries.eems.exceptions import (
     InvalidTruestOrFalsest,
 )
 from mpilot.libraries.eems.mixins import SameArrayShapeMixin
-from mpilot.libraries.eems.netcdf.io import FUZZY_MAX, FUZZY_MIN
 from mpilot.utils import insure_fuzzy
+
+FUZZY_MIN = -1
+FUZZY_MAX = 1
 
 
 class FuzzyCommand(Command):

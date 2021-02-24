@@ -123,6 +123,7 @@ def test_invalid_result_type():
 def test_convert_from_eems():
     source = r"READ(InFileName = C:\path\to\file.gdb, InFieldName = Foo)"
 
+    Command.load_commands('mpilot.libraries.eems.netcdf')
     program = Program.from_source(source)
     assert "EEMSRead" in str(type(program.commands["Foo"]))
     assert program.commands["Foo"].result_name == "Foo"
