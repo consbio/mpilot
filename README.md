@@ -11,6 +11,12 @@ MPilot with EEMS can be installed with `pip`:
 $ pip install mpilot
 ```
 
+In order to run MPilot with NetCDF datasets, you'll need to install the NetCDF variant:
+
+```bash
+$ pip install mpilot[netcdf]
+```
+
 # Creating models
 MPilot models are contained in "command files", using a simple scripting language. Here is an example model, which 
 loads two columns of integer data from a CSV file, sums them, and writes the result to a second CSV file.
