@@ -33,6 +33,7 @@ class Lexer(object):
     ]
 
     t_ignore = " \t"
+    t_ignore_COMMENT = r'\#.*'
 
     t_COLON = ":"
     t_COMMA = ","
@@ -41,7 +42,7 @@ class Lexer(object):
     t_LBRACK = r"\["
     t_LPAREN = r"\("
     t_MINUS = "-"
-    t_PLAIN_STRING = r"[^\:\,\=\-\+\(\)\[\]\"\r\n]+"
+    t_PLAIN_STRING = r"[^\#\:\,\=\-\+\(\)\[\]\"\r\n]+"
     t_PLUS = r"\+"
     t_RBRACK = r"\]"
     t_RPAREN = r"\)"

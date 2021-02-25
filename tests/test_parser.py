@@ -142,3 +142,37 @@ def test_v2_source():
     program = Parser().parse("READ(InFileName = foo.gdb, InFieldName = Test)")
     assert program.version == 2
     assert program.commands[0].command == "READ"
+
+
+def test_parse_comments():
+    """ Tests that comments parse correctly (don't cause an exception, aren't interpreted) """
+
+    source = """
+    # This is a comment
+    Result_A = Command1(
+        Param_A = Foo
+    )
+    """
+
+    program = Parser().parse(source.strip())
+    assert program.commands == [CommandNode(
+        "Result_A",
+        "Command1",
+        [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
+        2,
+    )]
+
+    source = """
+    # Result_B = Command1(Param_A = Bar)
+    Result_A = Command1(
+        Param_A = Foo
+    )
+    """
+
+    program = Parser().parse(source.strip())
+    assert program.commands == [CommandNode(
+        "Result_A",
+        "Command1",
+        [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
+        2,
+    )]
