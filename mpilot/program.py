@@ -1,9 +1,16 @@
 from __future__ import absolute_import
 
+import pkgutil
+from collections import Counter
+from importlib import import_module
+
 import six
 
 if six.PY3:
-    from typing import Dict, Any, Union, TextIO
+    from importlib.util import module_from_spec
+
+    from typing import Dict, Any, Union, TextIO, Sequence
+    from types import ModuleType
 
 from .arguments import Argument, ListArgument
 from .commands import Command
@@ -12,24 +19,85 @@ from .exceptions import (
     DuplicateResult,
     MissingParameters,
     NoSuchParameter,
+    MPilotError,
 )
 from .params import ResultParameter, ListParameter
 from .parser.parser import Parser, ProgramNode
 from .utils import flatten, EEMS_COMMANDS, convert_eems2_commands
 
+EEMS_CSV_LIBRARIES = (
+    "mpilot.libraries.eems.basic",
+    "mpilot.libraries.eems.csv",
+    "mpilot.libraries.eems.fuzzy",
+)
+EEMS_NETCDF_LIBRARIES = (
+    "mpilot.libraries.eems.basic",
+    "mpilot.libraries.eems.netcdf",
+    "mpilot.libraries.eems.fuzzy",
+)
+
 
 class Program(object):
     """ A program consists of connected MPilot commands, and the arguments that will be used to run them """
 
-    def __init__(self, working_dir=None):
+    def __init__(self, libraries=EEMS_CSV_LIBRARIES, working_dir=None):
+        # type: (Sequence[str], str) -> None
+
         # Commands lookup, in the form of {result_name: command, ...}
         self.commands = {}
+
+        # Load command libraries
+        for lib in libraries:
+            self.load_commands(lib)
+
+        # Build a lookup of command classes by name
+        library_commands = [
+            info
+            for info in Command.get_commands()
+            if any(info.module.startswith(lib) for lib in libraries)
+        ]
+        duplicates = [name for name, ct in Counter(c.command.name for c in library_commands).items() if ct > 1]
+        if duplicates:
+            raise MPilotError(
+                "The following commands are duplicated in the libraries used in this program: {}".format(
+                    ", ".join(name for name in duplicates)
+                )
+            )
+
+        self.command_library = {
+            info.command.name: info.command for info in library_commands
+        }
 
         self.working_dir = working_dir
 
     @classmethod
-    def from_source(cls, source, working_dir=None):
-        # type: (str, str) -> Program
+    def load_commands(cls, module):
+        # type: (Union[str, ModuleType]) -> None
+        """ Discovers and loads commands from the given module and any sub modules """
+
+        if isinstance(module, six.string_types):
+            if isinstance(module, bytes):
+                module = module.decode()
+
+            module = import_module(module)
+
+        if hasattr(module, "__path__"):
+            if six.PY3:
+                for info, name, _ in pkgutil.walk_packages(
+                    module.__path__, prefix=module.__name__ + "."
+                ):
+                    spec = info.find_spec(name)
+                    new_module = module_from_spec(spec)
+                    spec.loader.exec_module(new_module)
+            else:
+                for info in pkgutil.iter_modules(module.__path__):
+                    name = info[1]
+                    new_module = import_module("{}.{}".format(module.__name__, name))
+                    cls.load_commands(new_module)
+
+    @classmethod
+    def from_source(cls, source, libraries=EEMS_CSV_LIBRARIES, working_dir=None):
+        # type: (str, Sequence[str], str) -> Program
         """ Creates a program from MPilot source code """
 
         def resolve_list(name, expression_node):
@@ -45,7 +113,7 @@ class Program(object):
                 list_linenos=[n.lineno for n in expression_node.value],
             )
 
-        program = cls(working_dir)
+        program = cls(libraries=libraries, working_dir=working_dir)
         program_node = Parser().parse(source)
 
         if program_node.version == 2 or any(
@@ -54,7 +122,7 @@ class Program(object):
             program_node = ProgramNode(convert_eems2_commands(program_node.commands), 3)
 
         for node in program_node.commands:
-            command_cls = Command.find_by_name(node.command)
+            command_cls = program.find_command_class(node.command)
             if not command_cls:
                 raise CommandDoesNotExist(node.command, node.lineno)
 
@@ -74,6 +142,11 @@ class Program(object):
             program.add_command(command_cls, node.result_name, arguments, node.lineno)
 
         return program
+
+    def find_command_class(self, name):
+        """ Looks up and returns a command class by name, or returns None if the command doesn't exist """
+
+        return self.command_library.get(name)
 
     def add_command(self, command_cls, result_name, arguments, lineno=None):
         # type: (type(Command), str, Dict[str, Any], int) -> None
@@ -163,10 +236,10 @@ class Program(object):
 
     def to_file(self, file_or_path):
         # type: (Union[TextIO, str]) -> None
-        if hasattr(file_or_path, 'write'):
+        if hasattr(file_or_path, "write"):
             f = file_or_path
         else:
-            f = open(file_or_path, 'w')
+            f = open(file_or_path, "w")
 
         f.write(self.to_string())
 

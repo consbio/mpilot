@@ -12,9 +12,9 @@ from mpilot.exceptions import (
     ParameterNotValid,
     ResultDoesNotExist,
     ResultTypeNotValid,
-    CommandDoesNotExist,
+    CommandDoesNotExist, MPilotError,
 )
-from mpilot.program import Program
+from mpilot.program import Program, EEMS_NETCDF_LIBRARIES, EEMS_CSV_LIBRARIES
 
 
 class SimpleCommand(Command):
@@ -51,14 +51,14 @@ class InvalidDependencyCommand(Command):
 
 def test_simple_command():
     source = "Result = SimpleCommand(A=Test, B=3, C=[1,2,3])"
-    program = Program.from_source(source)
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     program.run()
     assert program.commands["Result"].result == ["Test", 3, [1, 2, 3]]
 
 
 def test_optional_argument():
     source = "Result = SimpleCommand(A=Test, B=3, C=[1,2,3], D=Optional)"
-    program = Program.from_source(source)
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     program.run()
     assert program.commands["Result"].result == ["Test", 3, [1, 2, 3], "Optional"]
 
@@ -66,28 +66,28 @@ def test_optional_argument():
 def test_no_command():
     source = "Result = InvalidCommand()"
     with pytest.raises(CommandDoesNotExist) as exc:
-        Program.from_source(source)
+        Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     assert exc.value.name == "InvalidCommand"
 
 
 def test_missing_argument():
     source = "Result = SimpleCommand(A=Test)"
     with pytest.raises(MissingParameters) as exc:
-        Program.from_source(source)
+        Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     assert exc.value.parameters == {"B", "C"}
 
 
 def test_extra_argument():
     source = "Result = SimpleCommand(A=Test, B=3, C=[1,2,3], E=Invalid)"
     with pytest.raises(NoSuchParameter) as exc:
-        Program.from_source(source)
+        Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     assert exc.value.parameter == "E"
 
 
 def test_invalid_argument():
     source = "Result = SimpleCommand(A=Test, B=3, C=WrongType)"
     with pytest.raises(ParameterNotValid) as exc:
-        program = Program.from_source(source)
+        program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
         program.run()
     assert exc.value.value == "WrongType"
     assert exc.value.required_type == "List"
@@ -99,7 +99,7 @@ def test_result_parameter():
         Result_B = DependentCommand(A=Result_A)
     """
 
-    program = Program.from_source(source)
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     program.run()
     assert program.commands["Result_B"].result == ["Test", 3, [1, 2, 3]]
 
@@ -107,7 +107,7 @@ def test_result_parameter():
 def test_missing_result():
     source = "Result = DependentCommand(A=Result_A)"
     with pytest.raises(ResultDoesNotExist) as exc:
-        program = Program.from_source(source)
+        program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
         program.run()
     assert exc.value.result == "Result_A"
 
@@ -119,7 +119,7 @@ def test_invalid_result_type():
     """
 
     with pytest.raises(ResultTypeNotValid) as exc:
-        program = Program.from_source(source)
+        program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
         program.run()
     assert exc.value.result == "Result_A"
 
@@ -127,8 +127,7 @@ def test_invalid_result_type():
 def test_convert_from_eems():
     source = r"READ(InFileName = C:\path\to\file.gdb, InFieldName = Foo)"
 
-    Command.load_commands('mpilot.libraries.eems.netcdf')
-    program = Program.from_source(source)
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     assert "EEMSRead" in str(type(program.commands["Foo"]))
     assert program.commands["Foo"].result_name == "Foo"
 
@@ -152,7 +151,7 @@ Result = DependentCommand(
 )
     """.strip()
 
-    program = Program.from_source(source)
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ('tests',))
     s = program.to_string()
 
     assert s == answer
@@ -175,8 +174,9 @@ Result = DependentCommand(
             pass
 
 
-def test_loading_duplicate_library():
-    """ Tests that loading the same library twice doesn't result in a duplicate command error """
+def test_duplicate_commands_error():
+    """ Tests that loading libraries with duplicate commands causes an exception """
 
-    Command.load_commands('mpilot.libraries.eems.netcdf')
-    Command.load_commands('mpilot.libraries.eems.netcdf')
+    with pytest.raises(MPilotError) as exc:
+        Program(libraries=EEMS_CSV_LIBRARIES + EEMS_NETCDF_LIBRARIES)
+    assert "duplicated" in str(exc)

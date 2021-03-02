@@ -6,9 +6,8 @@ import sys
 import click
 import six
 
-from ..commands import Command
 from ..exceptions import MPilotError, ProgramError
-from ..program import Program
+from ..program import Program, EEMS_CSV_LIBRARIES, EEMS_NETCDF_LIBRARIES
 
 LINE_CONTEX_LENGTH = 3
 
@@ -43,18 +42,15 @@ def main(library, path, libraries):
         lines = [line.strip("\n\r") for line in f.readlines()]
     source = "\n".join(lines)
 
-    Command.load_commands("mpilot.libraries.eems.basic")
-    Command.load_commands("mpilot.libraries.eems.fuzzy")
-    if library == "eems-csv":
-        Command.load_commands("mpilot.libraries.eems.csv")
-    elif library == "eems-netcdf":
-        Command.load_commands("mpilot.libraries.eems.netcdf")
-
-    for lib in libraries:
-        Command.load_commands(lib)
+    if not libraries:
+        libraries = tuple()
 
     try:
-        program = Program.from_source(source)
+        program = Program.from_source(
+            source,
+            libraries=libraries
+            + (EEMS_CSV_LIBRARIES if library == "eems-csv" else EEMS_NETCDF_LIBRARIES),
+        )
         program.run()
     except MPilotError as ex:
         sys.stderr.write(
