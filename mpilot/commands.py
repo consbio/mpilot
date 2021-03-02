@@ -59,11 +59,17 @@ class CommandMeta(type):
 
 @add_metaclass(CommandMeta)
 class Command(object):
+    loaded_libraries = set()
+
     @classmethod
     def load_commands(cls, module):
         # type: (Union[str, ModuleType]) -> None
 
         if isinstance(module, six.string_types):
+            if module in cls.loaded_libraries:
+                return
+            cls.loaded_libraries.add(module)
+
             if isinstance(module, bytes):
                 module = module.decode()
 

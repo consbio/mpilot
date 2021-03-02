@@ -1,5 +1,3 @@
-from copy import deepcopy
-
 import numpy
 import six
 from numpy.ma import is_masked
@@ -69,6 +67,11 @@ def convert_eems2_commands(command_nodes):
     # type: (Sequence[CommandNode]) -> Sequence[CommandNode]
     """ Converts command nodes returned by the parser to their MPilot equivalents """
 
+    def find_argument(node, name):
+        for argument in node.arguments:
+            if argument.name == name:
+                return argument.value.value
+
     converted = []
 
     for node in command_nodes:
@@ -76,13 +79,14 @@ def convert_eems2_commands(command_nodes):
             converted.append(
                 CommandNode(
                     node.result_name
-                    or next(
-                        arg.value.value
-                        for arg in node.arguments
-                        if arg.name == "InFieldName"
-                    ),
+                    or find_argument(node, "NewFieldName")
+                    or find_argument(node, "InFieldName"),
                     EEMS_COMMANDS.get(node.command, node.command),
-                    deepcopy(node.arguments),
+                    [
+                        arg
+                        for arg in node.arguments
+                        if arg.name not in ("NewFieldName", "OutFileName")
+                    ],
                     node.lineno,
                 )
             )

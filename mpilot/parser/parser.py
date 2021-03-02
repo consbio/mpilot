@@ -67,7 +67,7 @@ class Lexer(object):
         t.value = t.value.strip("\"'").encode().decode("unicode_escape")
         return t
 
-    @TOKEN(r"\n+")
+    @TOKEN(r"[\r\n]+")
     def t_newline(self, t):
         t.lexer.lineno += len(t.value)
 

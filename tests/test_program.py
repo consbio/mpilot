@@ -127,3 +127,10 @@ def test_convert_from_eems():
     program = Program.from_source(source)
     assert "EEMSRead" in str(type(program.commands["Foo"]))
     assert program.commands["Foo"].result_name == "Foo"
+
+
+def test_loading_duplicate_library():
+    """ Tests that loading the same library twice doesn't result in a duplicate command error """
+
+    Command.load_commands('mpilot.libraries.eems.netcdf')
+    Command.load_commands('mpilot.libraries.eems.netcdf')
