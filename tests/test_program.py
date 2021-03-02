@@ -1,3 +1,7 @@
+import os
+import shutil
+from tempfile import mkdtemp
+
 import pytest
 
 from mpilot import params
@@ -127,6 +131,48 @@ def test_convert_from_eems():
     program = Program.from_source(source)
     assert "EEMSRead" in str(type(program.commands["Foo"]))
     assert program.commands["Foo"].result_name == "Foo"
+
+
+def test_serialization():
+    """ Tests that the program can generate a valid MPilot command file """
+
+    source = """
+        Simple = SimpleCommand(A=Foo, B=5.4, C=[1,2,.3])
+        Result = DependentCommand(A=Simple) 
+    """
+
+    answer = """
+Simple = SimpleCommand(
+    A = "Foo",
+    B = 5.4,
+    C = [1, 2, 0.3]
+)
+Result = DependentCommand(
+    A = Simple
+)
+    """.strip()
+
+    program = Program.from_source(source)
+    s = program.to_string()
+
+    assert s == answer
+
+    tmp_dir = mkdtemp()
+    try:
+        path = os.path.join(tmp_dir, 'test_path.mpt')
+        program.to_file(path)
+        with open(path) as f:
+            assert f.read() == answer
+
+        with open(os.path.join(tmp_dir, 'test_file.mpt'), 'w+') as f:
+            program.to_file(f)
+            f.seek(0)
+            assert f.read() == answer
+    finally:
+        try:
+            shutil.rmtree(tmp_dir)
+        except OSError:
+            pass
 
 
 def test_loading_duplicate_library():

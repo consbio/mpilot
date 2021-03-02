@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import six
 
 if six.PY3:
-    from typing import Dict, Any
+    from typing import Dict, Any, Union, TextIO
 
 from .arguments import Argument, ListArgument
 from .commands import Command
@@ -13,7 +13,7 @@ from .exceptions import (
     MissingParameters,
     NoSuchParameter,
 )
-from .params import ResultParameter
+from .params import ResultParameter, ListParameter
 from .parser.parser import Parser, ProgramNode
 from .utils import flatten, EEMS_COMMANDS, convert_eems2_commands
 
@@ -89,7 +89,7 @@ class Program(object):
             raise MissingParameters(command_cls, missing_params, lineno=lineno)
 
         command_args = []
-        for (name, value) in arguments.items():
+        for (name, value) in sorted(arguments.items()):
             if name not in command_cls.inputs:
                 raise NoSuchParameter(
                     command_cls,
@@ -105,6 +105,70 @@ class Program(object):
         self.commands[result_name] = command_cls(
             result_name, command_args, program=self, lineno=lineno
         )
+
+    def to_string(self):
+        # type: () -> str
+        """ Returns a string with commands formatted in the MPilot command file syntax """
+
+        def serialize_value(value, argument, command):
+            # type: (Any, Argument, Command) -> str
+
+            param = command.inputs[argument.name]
+
+            if isinstance(param, ResultParameter) or (
+                isinstance(param, ListParameter)
+                and isinstance(param.value_type, ResultParameter)
+            ):
+                return str(value)
+            if isinstance(value, six.string_types):
+                return '"{}"'.format(value)
+            else:
+                return str(value)
+
+        def serialize_argument(argument, command):
+            # type: (Argument, Command) -> str
+
+            if isinstance(argument, ListArgument):
+                return "[{}]".format(
+                    ", ".join(
+                        serialize_value(x, argument, command) for x in argument.value
+                    )
+                )
+            elif isinstance(argument.value, dict):
+                return "[{}]".format(
+                    ", ".join(
+                        '"{}": "{}"'.format(key, value)
+                        for key, value in argument.value.values()
+                    )
+                )
+            return serialize_value(argument.value, argument, command)
+
+        def serialize_command(command):
+            # type: (Command) -> str
+
+            return "{} = {}({})".format(
+                command.result_name,
+                command.name,
+                "\n    {}\n".format(
+                    ",\n    ".join(
+                        "{} = {}".format(a.name, serialize_argument(a, command))
+                        for a in command.arguments
+                    )
+                ),
+            )
+
+        return "\n".join(
+            serialize_command(command) for command in self.commands.values()
+        )
+
+    def to_file(self, file_or_path):
+        # type: (Union[TextIO, str]) -> None
+        if hasattr(file_or_path, 'write'):
+            f = file_or_path
+        else:
+            f = open(file_or_path, 'w')
+
+        f.write(self.to_string())
 
     def run(self):
         # Build dependency lookup

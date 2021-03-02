@@ -44,6 +44,7 @@ def main(library, path, libraries):
     source = "\n".join(lines)
 
     Command.load_commands("mpilot.libraries.eems.basic")
+    Command.load_commands("mpilot.libraries.eems.fuzzy")
     if library == "eems-csv":
         Command.load_commands("mpilot.libraries.eems.csv")
     elif library == "eems-netcdf":
