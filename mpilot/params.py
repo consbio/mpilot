@@ -8,7 +8,14 @@ if six.PY3:
     from typing import Any
 
 from .arguments import Argument
-from .exceptions import ParameterNotValid, PathDoesNotExist, ResultTypeNotValid, ResultDoesNotExist
+from .exceptions import (
+    ParameterNotValid,
+    PathDoesNotExist,
+    ResultTypeNotValid,
+    ResultDoesNotExist,
+    ProgramError,
+    InvalidRelativePath,
+)
 
 
 class Parameter(object):
@@ -33,7 +40,9 @@ class StringParameter(Parameter):
 
     @staticmethod
     def accepts(parameter_cls):
-        return issubclass(parameter_cls, (StringParameter, NumberParameter, PathParameter))
+        return issubclass(
+            parameter_cls, (StringParameter, NumberParameter, PathParameter)
+        )
 
 
 class NumberParameter(Parameter):
@@ -85,6 +94,8 @@ class PathParameter(StringParameter):
         super(PathParameter, self).clean(value, program, lineno)
 
         if not os.path.isabs(value):
+            if program.working_dir is None:
+                raise InvalidRelativePath(value, lineno)
             value = os.path.join(program.working_dir, value)
 
         if self.must_exist and not os.path.exists(value):
@@ -120,7 +131,9 @@ class ResultParameter(Parameter):
             if hasattr(self.output_type, "accepts"):
                 is_valid = self.output_type.accepts(value.output.__class__)
             else:
-                is_valid = issubclass(value.output.__class__, self.output_type.__class__)
+                is_valid = issubclass(
+                    value.output.__class__, self.output_type.__class__
+                )
 
             if not is_valid:
                 raise ResultTypeNotValid(value.result_name, lineno)
@@ -139,7 +152,10 @@ class ListParameter(Parameter):
             raise ParameterNotValid(value, "List", lineno)
 
         return [
-            self.value_type.clean(item.value if isinstance(item, Argument) else item, program, lineno) for item in value
+            self.value_type.clean(
+                item.value if isinstance(item, Argument) else item, program, lineno
+            )
+            for item in value
         ]
 
 
@@ -148,7 +164,11 @@ class TupleParameter(Parameter):
         if not (value == [] or isinstance(value, dict)):
             raise ParameterNotValid(value, "Tuple", lineno)
 
-        return {six.text_type(k): six.text_type(v) for k, v in value.items()} if value else {}
+        return (
+            {six.text_type(k): six.text_type(v) for k, v in value.items()}
+            if value
+            else {}
+        )
 
 
 class DataParameter(Parameter):
@@ -172,4 +192,8 @@ class DataTypeParameter(StringParameter):
         try:
             return self.valid_types[value]
         except KeyError:
-            raise ParameterNotValid(value, "Data Type ({})".format(",".join(self.valid_types.keys())), lineno)
+            raise ParameterNotValid(
+                value,
+                "Data Type ({})".format(",".join(self.valid_types.keys())),
+                lineno,
+            )

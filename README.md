@@ -37,7 +37,7 @@ APlusB = Sum(
 )
 Out = EEMSWrite(
     OutFileName = "output.csv",
-    OutFieldNames = [A, B]
+    OutFieldNames = [A, B, APlusB]
 )
 ```
 

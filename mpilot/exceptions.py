@@ -14,7 +14,7 @@ class ProgramError(MPilotError):
     def __init__(self, lineno=None, message=None):
         # type: (int, str) -> None
 
-        self.lineno = lineno,
+        self.lineno = lineno
         self.message = message
 
     def __str__(self):
@@ -51,7 +51,9 @@ class DuplicateResult(ProgramError):
     def __str__(self):
         return "\n".join(
             (
-                'Problem: The result name "{}" is duplicated in the command file.'.format(self.result),
+                'Problem: The result name "{}" is duplicated in the command file.'.format(
+                    self.result
+                ),
                 "Solution: Make sure that the result name for each command doesn't exist elsewhere in the model.",
             )
         )
@@ -64,7 +66,9 @@ class MissingParameters(ProgramError):
 
         super(MissingParameters, self).__init__(lineno)
 
-        self.command = command if isinstance(command, six.string_types) else command.name
+        self.command = (
+            command if isinstance(command, six.string_types) else command.name
+        )
         self.parameters = parameters
 
     def __str__(self):
@@ -85,13 +89,17 @@ class NoSuchParameter(ProgramError):
 
         super(NoSuchParameter, self).__init__(lineno)
 
-        self.command = command if isinstance(command, six.string_types) else command.name
+        self.command = (
+            command if isinstance(command, six.string_types) else command.name
+        )
         self.parameter = parameter
 
     def __str__(self):
         return "\n".join(
             (
-                'Problem: The command "{}" has no parameter named "{}".'.format(self.command, self.parameter),
+                'Problem: The command "{}" has no parameter named "{}".'.format(
+                    self.command, self.parameter
+                ),
                 "Solution: Make sure the parameters are correct for this command.",
             )
         )
@@ -111,7 +119,9 @@ class ParameterNotValid(ProgramError):
         return "\n".join(
             (
                 "Problem: A value of type {} was expected, but value {} of type {} was provided.".format(
-                    self.required_type, six.text_type(self.value), six.text_type(type(self.value))
+                    self.required_type,
+                    six.text_type(self.value),
+                    six.text_type(type(self.value)),
                 ),
                 "Solution: Make sure command parameters are correct.",
             )
@@ -132,6 +142,26 @@ class PathDoesNotExist(ProgramError):
             (
                 "Problem: The following path does not exist: {}".format(self.path),
                 "Solution: Double check the path and create it if necessary.",
+            )
+        )
+
+
+@python_2_unicode_compatible
+class InvalidRelativePath(ProgramError):
+    def __init__(self, path, lineno=None):
+        # type: (str, int) -> None
+
+        super(InvalidRelativePath, self).__init__(lineno)
+
+        self.path = path
+
+    def __str__(self):
+        return "\n".join(
+            (
+                "Problem: The following path is relative, but no working directory is set: {}".format(
+                    self.path
+                ),
+                "Solution: Use absolute paths for this command file.",
             )
         )
 
@@ -178,5 +208,8 @@ class ResultTypeNotValid(ProgramError):
 class RecursiveModelStructure(ProgramError):
     def __str__(self):
         return "\n".join(
-            ("Problem: The model is recursive.", "Solution: Double check that command references don't create a loop")
+            (
+                "Problem: The model is recursive.",
+                "Solution: Double check that command references don't create a loop",
+            )
         )

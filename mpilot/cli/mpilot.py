@@ -50,6 +50,7 @@ def main(library, path, libraries):
             source,
             libraries=libraries
             + (EEMS_CSV_LIBRARIES if library == "eems-csv" else EEMS_NETCDF_LIBRARIES),
+            working_dir=os.path.dirname(path),
         )
         program.run()
     except MPilotError as ex:
