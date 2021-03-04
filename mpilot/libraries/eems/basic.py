@@ -24,7 +24,10 @@ class AMinusB(SameArrayShapeMixin, Command):
     """ Performs A - B """
 
     display_name = "A Minus B"
-    inputs = {"A": params.DataParameter(), "B": params.DataParameter()}
+    inputs = {
+        "A": params.ResultParameter(params.DataParameter()),
+        "B": params.ResultParameter(params.DataParameter()),
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):

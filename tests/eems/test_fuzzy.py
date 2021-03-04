@@ -102,7 +102,7 @@ def test_mean_to_mid():
     assert (result.round(2) == answer).all()
 
 
-def test_convert_to_fuzzy_z_score():
+def test_convert_to_fuzzy_curve_z_score():
     arr = numpy.ma.arange(10, dtype=float)
     command = create_command_with_result("Result", arr)
     answer = numpy.ma.array(

@@ -9,7 +9,7 @@ import six
 if six.PY3:
     from importlib.util import module_from_spec
 
-    from typing import Dict, Any, Union, TextIO, Sequence
+    from typing import Dict, Any, Union, TextIO, Sequence, Type
     from types import ModuleType
 
 from .arguments import Argument, ListArgument
@@ -144,6 +144,7 @@ class Program(object):
         return program
 
     def find_command_class(self, name):
+        # type: (str) -> Type[Command]
         """ Looks up and returns a command class by name, or returns None if the command doesn't exist """
 
         return self.command_library.get(name)
@@ -236,6 +237,8 @@ class Program(object):
 
     def to_file(self, file_or_path):
         # type: (Union[TextIO, str]) -> None
+        """ Writes the program as an MPilot command file """
+
         if hasattr(file_or_path, "write"):
             f = file_or_path
         else:

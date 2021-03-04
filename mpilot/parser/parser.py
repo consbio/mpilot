@@ -290,6 +290,6 @@ class Parser(object):
 
     def parse(self, source):
         # type: (str) -> ProgramNode
-        """ Parses the source text and returns a list of `CommandNode` objects """
+        """ Parses the source text into a program structure """
 
         return self.parser.parse(source, lexer=self.lexer, tracking=True)

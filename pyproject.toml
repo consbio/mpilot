@@ -39,6 +39,12 @@ pytest = [
 black = { version = "^20.8b1", python = ">=3.6" }
 mock = { version = "^3.0.5", python = "~2.7" }
 setuptools = { version = "^44.1.1", python = "~2.7" }
+sphinx = [
+    { version = "^3.5.1", python = ">=3.6", optional = true }
+]
+furo = [
+    { version = "^2021.2.28b28", python = ">=3.6", optional = true }
+]
 
 [tool.poetry.extras]
 netcdf = ["netCDF4"]
