@@ -10,6 +10,7 @@ authors = ["Conservation Biology Institute"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/consbio/mpilot"
+homepage = "https://consbio.github.io/mpilot/"
 classifiers = [
     "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",

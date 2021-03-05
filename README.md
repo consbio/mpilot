@@ -3,6 +3,8 @@ MPilot is a plugin-based, environmental modeling framework based on a bottom-up,
 represented by a directed (not iterating) graph. MPilot is descended from the Environmental Evaluation Modeling System 
 (EEMS), which was initially a fuzzy logic modeling package based on EMDS.
 
+[MPilot Documentation](https://consbio.github.io/mpilot/)
+
 # Installing
 
 MPilot with EEMS can be installed with `pip`:
