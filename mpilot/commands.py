@@ -70,7 +70,6 @@ class Command(object):
 
         self.argument_lines = {arg.name: arg.lineno for arg in arguments}
 
-        self.is_running = False
         self.is_finished = False
         self._result = None
 
@@ -124,15 +123,11 @@ class Command(object):
         return cleaned
 
     def run(self):
-        if self.is_running:
-            pass  # Raise recursive error
-
         if not self.is_finished:
             self.is_running = True
             self._result = self.execute(
                 **self.validate_params({arg.name: arg.value for arg in self.arguments})
             )
-            self.is_running = False
             self.is_finished = True
 
     def execute(self, **kwargs):

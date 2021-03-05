@@ -13,7 +13,6 @@ from .exceptions import (
     PathDoesNotExist,
     ResultTypeNotValid,
     ResultDoesNotExist,
-    ProgramError,
     InvalidRelativePath,
 )
 
