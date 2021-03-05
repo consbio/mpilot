@@ -28,7 +28,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: libs-hdf5
-        key: ${{ runner.os }}-hdf5-v2
+        key: ${{ runner.os }}-hdf5-v3
     - name: Build HDF5
       if: steps.cache-hdf5.outputs.cache-hit != 'true'
       run: |

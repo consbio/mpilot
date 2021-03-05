@@ -27,7 +27,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: libs-hdf5
-        key: ${{ runner.os }}-hdf5
+        key: ${{ runner.os }}-hdf5-v3
     - name: Build HDF5
       if: steps.cache-hdf5.outputs.cache-hit != 'true'
       run: |
@@ -44,7 +44,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: libs-netcdf
-        key: ${{ runner.os }}-netcdf
+        key: ${{ runner.os }}-netcdf-v2
     - name: Build NetCDF
       if: steps.cache-netcdf.outputs.cache-hit != 'true'
       run: |
