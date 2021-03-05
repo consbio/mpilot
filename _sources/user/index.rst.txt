@@ -1,5 +1,5 @@
-Using MPilot
-============
+User Guide
+==========
 
 This documentation covers installing MPilot, the process of creating and running MPilot models, and the process of
 using the ``mpilot`` command-line program. It also includes a reference of all built-in MPilot commands, including the
