@@ -38,7 +38,7 @@ EEMS_NETCDF_LIBRARIES = (
 
 
 class Program(object):
-    """ A program consists of connected MPilot commands, and the arguments that will be used to run them """
+    """ A program consists of connected MPilot commands, and the arguments that will be used to run them. """
 
     def __init__(self, libraries=EEMS_CSV_LIBRARIES, working_dir=None):
         # type: (Sequence[str], str) -> None
@@ -56,7 +56,11 @@ class Program(object):
             for info in Command.get_commands()
             if any(info.module.startswith(lib) for lib in libraries)
         ]
-        duplicates = [name for name, ct in Counter(c.command.name for c in library_commands).items() if ct > 1]
+        duplicates = [
+            name
+            for name, ct in Counter(c.command.name for c in library_commands).items()
+            if ct > 1
+        ]
         if duplicates:
             raise MPilotError(
                 "The following commands are duplicated in the libraries used in this program: {}".format(
@@ -73,7 +77,9 @@ class Program(object):
     @classmethod
     def load_commands(cls, module):
         # type: (Union[str, ModuleType]) -> None
-        """ Discovers and loads commands from the given module and any sub modules """
+        """
+        Discovers and loads commands from the given module and any sub modules. This method is mostly used internally.
+        """
 
         if isinstance(module, six.string_types):
             if isinstance(module, bytes):
@@ -101,7 +107,7 @@ class Program(object):
         """ Creates a program from MPilot source code """
 
         def resolve_list(name, expression_node):
-            """ Recursively resolves parsed list expressions into ListArgument values """
+            """ Recursively resolves parsed list expressions into ListArgument values. """
 
             return ListArgument(
                 name,
@@ -145,13 +151,13 @@ class Program(object):
 
     def find_command_class(self, name):
         # type: (str) -> Type[Command]
-        """ Looks up and returns a command class by name, or returns None if the command doesn't exist """
+        """ Looks up and returns a command class by name, or returns None if the command doesn't exist. """
 
         return self.command_library.get(name)
 
     def add_command(self, command_cls, result_name, arguments, lineno=None):
-        # type: (type(Command), str, Dict[str, Any], int) -> None
-        """ Adds a command to the program """
+        # type: (Type[Command], str, Dict[str, Any], int) -> None
+        """ Adds a command to the program. """
 
         if result_name in self.commands:
             raise DuplicateResult(result_name, lineno=lineno)
@@ -182,7 +188,7 @@ class Program(object):
 
     def to_string(self):
         # type: () -> str
-        """ Returns a string with commands formatted in the MPilot command file syntax """
+        """ Returns a string with commands formatted in the MPilot command file syntax. """
 
         def serialize_value(value, argument, command):
             # type: (Any, Argument, Command) -> str
@@ -211,8 +217,8 @@ class Program(object):
             elif isinstance(argument.value, dict):
                 return "[{}]".format(
                     ", ".join(
-                        '"{}": "{}"'.format(key, value)
-                        for key, value in argument.value.values()
+                        '"{}": "{}"'.format(key, value.value)
+                        for key, value in argument.value.items()
                     )
                 )
             return serialize_value(argument.value, argument, command)
@@ -237,7 +243,7 @@ class Program(object):
 
     def to_file(self, file_or_path):
         # type: (Union[TextIO, str]) -> None
-        """ Writes the program as an MPilot command file """
+        """ Writes the program as an MPilot command file. """
 
         if hasattr(file_or_path, "write"):
             f = file_or_path

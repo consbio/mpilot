@@ -23,6 +23,8 @@ class ProgramError(MPilotError):
 
 @python_2_unicode_compatible
 class CommandDoesNotExist(ProgramError):
+    """ The command file contains a command that could not be found in the command libraries. """
+
     def __init__(self, name, lineno=None):
         # type: (str, int) -> None
 
@@ -41,6 +43,8 @@ class CommandDoesNotExist(ProgramError):
 
 @python_2_unicode_compatible
 class DuplicateResult(ProgramError):
+    """ The same result name was used more than once. """
+
     def __init__(self, result, lineno=None):
         # type: (str, int) -> None
 
@@ -61,6 +65,8 @@ class DuplicateResult(ProgramError):
 
 @python_2_unicode_compatible
 class MissingParameters(ProgramError):
+    """ A required command argument is missing. """
+
     def __init__(self, command, parameters, lineno=None):
         # type: (Union[str, Any], Union[Sequence[str], Set[str]], int) -> None
 
@@ -84,6 +90,8 @@ class MissingParameters(ProgramError):
 
 @python_2_unicode_compatible
 class NoSuchParameter(ProgramError):
+    """ An argument was provided that is not valid for the command. """
+
     def __init__(self, command, parameter, lineno=None):
         # type: (Union[str, Any], str, int) -> None
 
@@ -107,6 +115,8 @@ class NoSuchParameter(ProgramError):
 
 @python_2_unicode_compatible
 class ParameterNotValid(ProgramError):
+    """ The value is invalid for the given argument. """
+
     def __init__(self, value, required_type, lineno=None):
         # type: (Any, str, int) -> None
 
@@ -130,6 +140,8 @@ class ParameterNotValid(ProgramError):
 
 @python_2_unicode_compatible
 class PathDoesNotExist(ProgramError):
+    """ The path is required to exist, but doesn't. """
+
     def __init__(self, path, lineno=None):
         # type: (str, int) -> None
 
@@ -148,6 +160,8 @@ class PathDoesNotExist(ProgramError):
 
 @python_2_unicode_compatible
 class InvalidRelativePath(ProgramError):
+    """ A relative path was provided, but the program doesn't have a working directory """
+
     def __init__(self, path, lineno=None):
         # type: (str, int) -> None
 
@@ -168,6 +182,8 @@ class InvalidRelativePath(ProgramError):
 
 @python_2_unicode_compatible
 class ResultDoesNotExist(ProgramError):
+    """ A result was referenced which does not exist. """
+
     def __init__(self, result, lineno=None):
         # type: (str, int) -> None
 
@@ -186,6 +202,8 @@ class ResultDoesNotExist(ProgramError):
 
 @python_2_unicode_compatible
 class ResultTypeNotValid(ProgramError):
+    """ A specified result is not valid for the argument. """
+
     def __init__(self, result, lineno=None):
         # type: (str, int) -> None
 
@@ -206,6 +224,8 @@ class ResultTypeNotValid(ProgramError):
 
 @python_2_unicode_compatible
 class RecursiveModelStructure(ProgramError):
+    """ The model graph is contains circular references. """
+
     def __str__(self):
         return "\n".join(
             (

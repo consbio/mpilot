@@ -1,5 +1,5 @@
-Program
-=======
+:mod:`mpilot.program`
+=====================
 
 .. automodule:: mpilot.program
 
@@ -37,7 +37,27 @@ Program
 
     .. automethod:: find_command_class
 
-    .. automethod:: add_command
+    .. py:method:: add_command(command_cls: Type[Command], result_name: str, arguments: Dict[str, Any], lineno: int=None) -> None
+
+      Adds a command to the program and the arguments required to run it. This is the primary method used when
+      constructing a model programmatically. The command class can be obtained by importing it from the appropriate
+      module, or by using :py:meth:`find_command_class` to search for a command by name.
+
+      .. code-block:: python
+
+        p = Program()
+        read_cls = p.find_command_class('EEMSRead')
+        p.add_command(read_cls, 'Var_A', {'InFileName': 'input.csv', 'InFieldName': 'Var_A'})
+
+      :param Type[Command] command_cls: The class of the command to add. This can be obtained by calling
+        :py:meth:`find_command_class` with the name of the command.
+      :param str result_name: The name of the result. This is equivalent to the left side of the ``=`` in an MPilot
+        command file: ``<result> = <command>(<arguments>)``
+      :param Dict[str, Any] arguments: A dictionary of arguments to be sent to the command. E.g.,
+        ``{'InFileName': 'input.csv'}``
+      :param int lineno: *Optional*. The line number the command appears on. This should be the first line in which the
+        command occurs in the command file. This is used in error reporting by the command-line program, and may be
+        set to ``None`` when being used from Python.
 
     .. automethod:: to_string
 

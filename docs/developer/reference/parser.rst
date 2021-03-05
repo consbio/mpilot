@@ -1,5 +1,5 @@
-Parser
-======
+:mod:`mpilot.parser.parser`
+===========================
 
 The MPilot parser is responsible for lexing and parsing the command file source according to the
 `MPilot Spec <https://github.com/consbio/mpilot-spec>`_. It returns the command file structure expressed as a

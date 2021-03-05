@@ -137,7 +137,7 @@ def test_serialization():
 
     source = """
         Simple = SimpleCommand(A=Foo, B=5.4, C=[1,2,.3])
-        Result = DependentCommand(A=Simple) 
+        Result = DependentCommand(A=Simple, Metadata=[A:B])
     """
 
     answer = """
@@ -147,7 +147,8 @@ Simple = SimpleCommand(
     C = [1, 2, 0.3]
 )
 Result = DependentCommand(
-    A = Simple
+    A = Simple,
+    Metadata = ["A": "B"]
 )
     """.strip()
 
