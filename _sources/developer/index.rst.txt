@@ -23,10 +23,9 @@ If you plan to use NetCDF data in your MPilot models, you should install the Net
   `NetCDF documentation`_.
 
 .. toctree::
-   :hidden:
-   :includehidden:
+   :maxdepth: 3
 
-   reference/parser
-   reference/program
+   guides/index
+   reference/index
 
 .. _NetCDF documentation: https://www.unidata.ucar.edu/software/netcdf/docs/getting_and_building_netcdf.html

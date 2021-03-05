@@ -1,10 +1,10 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Program" href="program.html" /><link rel="prev" title="Developing with MPilot" href="../index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="mpilot.program" href="program.html" /><link rel="prev" title="mpilot.params" href="params.html" />
 
     <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
-        <title>Parser - MPilot documentation</title>
+        <title>mpilot.parser.parser - MPilot documentation</title>
       <link rel="stylesheet" href="../../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
     <link rel="stylesheet" href="../../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
@@ -118,8 +118,21 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Developing with MPilot</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Parser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="program.html">Program</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../guides/index.html">Programming Guides</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guides/working-with-models.html">Working with Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guides/creating-commands.html">Creating Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guides/creating-parameters.html">Creating Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Python Module Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -136,8 +149,8 @@
         <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="parser">
-<h1>Parser<a class="headerlink" href="#parser" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="mpilot-parser-parser">
+<h1><a class="reference internal" href="#module-mpilot.parser.parser" title="mpilot.parser.parser"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a><a class="headerlink" href="#mpilot-parser-parser" title="Permalink to this headline">¶</a></h1>
 <p>The MPilot parser is responsible for lexing and parsing the command file source according to the
 <a class="reference external" href="https://github.com/consbio/mpilot-spec">MPilot Spec</a>. It returns the command file structure expressed as a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">CommandNode</span></code>. The parser validates syntax and grammar, but does not validate for things like proper command
@@ -233,18 +246,18 @@ names, and names and types. Validation of the latter is handled by <code class="
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Program</div>
+                <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../index.html">
+          <a class="prev-page" href="params.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Developing with MPilot</div>
+                <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></div>
                 
               </div>
             </a>

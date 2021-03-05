@@ -1,10 +1,10 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Parser" href="parser.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="mpilot.parser.parser" href="parser.html" />
 
     <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
-        <title>Program - MPilot documentation</title>
+        <title>mpilot.program - MPilot documentation</title>
       <link rel="stylesheet" href="../../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
     <link rel="stylesheet" href="../../_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
@@ -118,8 +118,21 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Developing with MPilot</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="parser.html">Parser</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Program</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../guides/index.html">Programming Guides</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../guides/working-with-models.html">Working with Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guides/creating-commands.html">Creating Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guides/creating-parameters.html">Creating Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Python Module Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -137,7 +150,7 @@
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
         <div class="section" id="module-mpilot.program">
-<span id="program"></span><h1>Program<a class="headerlink" href="#module-mpilot.program" title="Permalink to this headline">¶</a></h1>
+<span id="mpilot-program"></span><h1><a class="reference internal" href="#module-mpilot.program" title="mpilot.program"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a><a class="headerlink" href="#module-mpilot.program" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="mpilot.program.Program">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.program.</span></code><code class="sig-name descname"><span class="pre">Program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">EEMS_CSV_LIBRARIES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program" title="Permalink to this definition">¶</a></dt>
@@ -174,7 +187,7 @@ relative paths are invalid and will raise an exception. Defaults to <code class=
 <dl class="py method">
 <dt id="mpilot.program.Program.load_commands">
 <em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">load_commands</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">module</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#mpilot.program.Program.load_commands" title="Permalink to this definition">¶</a></dt>
-<dd><p>Discovers and loads commands from the given module and any sub modules</p>
+<dd><p>Discovers and loads commands from the given module and any sub modules. This method is mostly used internally.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.from_source">
@@ -183,23 +196,45 @@ relative paths are invalid and will raise an exception. Defaults to <code class=
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.find_command_class">
-<code class="sig-name descname"><span class="pre">find_command_class</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">mpilot.commands.Command</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mpilot.program.Program.find_command_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Looks up and returns a command class by name, or returns None if the command doesn’t exist</p>
+<code class="sig-name descname"><span class="pre">find_command_class</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> → <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">mpilot.commands.Command</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#mpilot.program.Program.find_command_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks up and returns a command class by name, or returns None if the command doesn’t exist.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.add_command">
-<code class="sig-name descname"><span class="pre">add_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_cls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">mpilot.commands.CommandMeta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#mpilot.program.Program.add_command" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a command to the program</p>
+<code class="sig-name descname"><span class="pre">add_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_cls</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">Command</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#mpilot.program.Program.add_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a command to the program and the arguments required to run it. This is the primary method used when
+constructing a model programmatically. The command class can be obtained by importing it from the appropriate
+module, or by using <a class="reference internal" href="#mpilot.program.Program.find_command_class" title="mpilot.program.Program.find_command_class"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_command_class()</span></code></a> to search for a command by name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
+<span class="n">read_cls</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">find_command_class</span><span class="p">(</span><span class="s1">'EEMSRead'</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">read_cls</span><span class="p">,</span> <span class="s1">'Var_A'</span><span class="p">,</span> <span class="p">{</span><span class="s1">'InFileName'</span><span class="p">:</span> <span class="s1">'input.csv'</span><span class="p">,</span> <span class="s1">'InFieldName'</span><span class="p">:</span> <span class="s1">'Var_A'</span><span class="p">})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>command_cls</strong> (<em>Type</em><em>[</em><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><em>Command</em></a><em>]</em>) – The class of the command to add. This can be obtained by calling
+<a class="reference internal" href="#mpilot.program.Program.find_command_class" title="mpilot.program.Program.find_command_class"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_command_class()</span></code></a> with the name of the command.</p></li>
+<li><p><strong>result_name</strong> (<em>str</em>) – The name of the result. This is equivalent to the left side of the <code class="docutils literal notranslate"><span class="pre">=</span></code> in an MPilot
+command file: <code class="docutils literal notranslate"><span class="pre">&lt;result&gt;</span> <span class="pre">=</span> <span class="pre">&lt;command&gt;(&lt;arguments&gt;)</span></code></p></li>
+<li><p><strong>Any</strong><strong>] </strong><strong>arguments</strong> (<em>Dict</em><em>[</em><em>str</em><em>,</em>) – A dictionary of arguments to be sent to the command. E.g.,
+<code class="docutils literal notranslate"><span class="pre">{'InFileName':</span> <span class="pre">'input.csv'}</span></code></p></li>
+<li><p><strong>lineno</strong> (<em>int</em>) – <em>Optional</em>. The line number the command appears on. This should be the first line in which the
+command occurs in the command file. This is used in error reporting by the command-line program, and may be
+set to <code class="docutils literal notranslate"><span class="pre">None</span></code> when being used from Python.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.to_string">
 <code class="sig-name descname"><span class="pre">to_string</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> → <span class="pre">str</span><a class="headerlink" href="#mpilot.program.Program.to_string" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a string with commands formatted in the MPilot command file syntax</p>
+<dd><p>Returns a string with commands formatted in the MPilot command file syntax.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.to_file">
 <code class="sig-name descname"><span class="pre">to_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_or_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">TextIO</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> → <span class="pre">None</span><a class="headerlink" href="#mpilot.program.Program.to_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes the program as an MPilot command file</p>
+<dd><p>Writes the program as an MPilot command file.</p>
 </dd></dl>
 <dl class="py method">
 <dt id="mpilot.program.Program.run">
@@ -228,7 +263,7 @@ relative paths are invalid and will raise an exception. Defaults to <code class=
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Parser</div>
+                <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></div>
                 
               </div>
             </a>

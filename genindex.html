@@ -117,8 +117,21 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="developer/index.html">Developing with MPilot</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="developer/reference/parser.html">Parser</a></li>
-<li class="toctree-l2"><a class="reference internal" href="developer/reference/program.html">Program</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="developer/guides/index.html">Programming Guides</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer/guides/working-with-models.html">Working with Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/guides/creating-commands.html">Creating Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/guides/creating-parameters.html">Creating Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="developer/reference/index.html">Python Module Reference</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="developer/reference/program.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -139,7 +152,7 @@
 <section class="genindex-section">
   <h1 id="index">Index</h1>
   <div class="genindex-jumpbox">
-  <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a>
+  <a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a>
   </div>
 </section>
 <section id="A" class="genindex-section">
@@ -155,8 +168,6 @@
           <li><a href="user/lib-eems-basic.html#ADivideByB">built-in function</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     AMinusB()
 
@@ -164,6 +175,10 @@
           <li><a href="user/lib-eems-basic.html#AMinusB">built-in function</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.Argument">Argument (class in mpilot.arguments)</a>
+</li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode">ArgumentNode (class in mpilot.parser.parser)</a>
 </li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.CommandNode.arguments">arguments (mpilot.parser.parser.CommandNode attribute)</a>
@@ -176,6 +191,8 @@
   <h2>B</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.BooleanParameter">BooleanParameter (class in mpilot.params)</a>
+</li>
         <li>
     built-in function
 
@@ -247,9 +264,15 @@
   <h2>C</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.Parameter.clean">clean() (mpilot.params.Parameter method)</a>
+</li>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command">Command (class in mpilot.commands)</a>
+</li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.CommandNode.command">command (mpilot.parser.parser.CommandNode attribute)</a>
 </li>
         <li><a href="developer/reference/program.html#mpilot.program.Program.command_library">command_library (mpilot.program.Program attribute)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.CommandDoesNotExist">CommandDoesNotExist (class in mpilot.exceptions)</a>
 </li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.CommandNode">CommandNode (class in mpilot.parser.parser)</a>
 </li>
@@ -273,6 +296,8 @@
           <li><a href="user/lib-eems-fuzzy.html#CvtFromFuzzy">built-in function</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     CvtToBinary()
 
@@ -280,8 +305,6 @@
           <li><a href="user/lib-eems-fuzzy.html#CvtToBinary">built-in function</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     CvtToFuzzy()
 
@@ -321,6 +344,22 @@
   </tr></table>
 </section>
 
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.DataParameter">DataParameter (class in mpilot.params)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.DataTypeParameter">DataTypeParameter (class in mpilot.params)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.DuplicateResult">DuplicateResult (class in mpilot.exceptions)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
 <section id="E" class="genindex-section">
   <h2>E</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
@@ -345,6 +384,8 @@
           <li><a href="user/lib-eems-csv.html#EEMSWrite">built-in function</a>, <a href="user/lib-eems-netcdf.html#EEMSWrite">[1]</a>
 </li>
         </ul></li>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.execute">execute() (mpilot.commands.Command method)</a>
+</li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.ExpressionNode">ExpressionNode (class in mpilot.parser.parser)</a>
 </li>
     </ul></td>
@@ -414,13 +455,39 @@
   </tr></table>
 </section>
 
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.get_argument_value">get_argument_value() (mpilot.commands.Command method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.inputs">inputs (mpilot.commands.Command attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.InvalidRelativePath">InvalidRelativePath (class in mpilot.exceptions)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
 <section id="L" class="genindex-section">
   <h2>L</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.lineno">lineno (mpilot.parser.parser.ArgumentNode attribute)</a>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.Argument.lineno">lineno (mpilot.arguments.Argument attribute)</a>
 
         <ul>
+          <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.lineno">(mpilot.parser.parser.ArgumentNode attribute)</a>
+</li>
           <li><a href="developer/reference/parser.html#mpilot.parser.parser.CommandNode.lineno">(mpilot.parser.parser.CommandNode attribute)</a>
 </li>
           <li><a href="developer/reference/parser.html#mpilot.parser.parser.ExpressionNode.lineno">(mpilot.parser.parser.ExpressionNode attribute)</a>
@@ -428,6 +495,12 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.ListArgument.list_linenos">list_linenos (mpilot.arguments.ListArgument attribute)</a>
+</li>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.ListArgument">ListArgument (class in mpilot.arguments)</a>
+</li>
+        <li><a href="developer/reference/params.html#mpilot.params.ListParameter">ListParameter (class in mpilot.params)</a>
+</li>
         <li><a href="developer/reference/program.html#mpilot.program.Program.load_commands">load_commands() (mpilot.program.Program class method)</a>
 </li>
     </ul></td>
@@ -459,6 +532,8 @@
           <li><a href="user/lib-eems-fuzzy.html#MeanToMid">built-in function</a>
 </li>
         </ul></li>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.metadata">metadata (mpilot.commands.Command attribute)</a>
+</li>
         <li>
     Minimum()
 
@@ -466,15 +541,53 @@
           <li><a href="user/lib-eems-basic.html#Minimum">built-in function</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.MissingParameters">MissingParameters (class in mpilot.exceptions)</a>
+</li>
         <li>
     module
 
         <ul>
+          <li><a href="developer/reference/arguments.html#module-mpilot.arguments">mpilot.arguments</a>
+</li>
+          <li><a href="developer/reference/commands.html#module-mpilot.commands">mpilot.commands</a>
+</li>
+          <li><a href="developer/reference/exceptions.html#module-mpilot.exceptions">mpilot.exceptions</a>
+</li>
+          <li><a href="developer/reference/params.html#module-mpilot.params">mpilot.params</a>
+</li>
           <li><a href="developer/reference/parser.html#module-mpilot.parser.parser">mpilot.parser.parser</a>
 </li>
           <li><a href="developer/reference/program.html#module-mpilot.program">mpilot.program</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    mpilot.arguments
+
+        <ul>
+          <li><a href="developer/reference/arguments.html#module-mpilot.arguments">module</a>
+</li>
+        </ul></li>
+        <li>
+    mpilot.commands
+
+        <ul>
+          <li><a href="developer/reference/commands.html#module-mpilot.commands">module</a>
+</li>
+        </ul></li>
+        <li>
+    mpilot.exceptions
+
+        <ul>
+          <li><a href="developer/reference/exceptions.html#module-mpilot.exceptions">module</a>
+</li>
+        </ul></li>
+        <li>
+    mpilot.params
+
+        <ul>
+          <li><a href="developer/reference/params.html#module-mpilot.params">module</a>
 </li>
         </ul></li>
         <li>
@@ -491,6 +604,8 @@
           <li><a href="developer/reference/program.html#module-mpilot.program">module</a>
 </li>
         </ul></li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.MPilotError">MPilotError (class in mpilot.exceptions)</a>
+</li>
         <li>
     Multiply()
 
@@ -506,10 +621,12 @@
   <h2>N</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.name">name (mpilot.parser.parser.ArgumentNode attribute)</a>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.Argument.name">name (mpilot.arguments.Argument attribute)</a>
+
+        <ul>
+          <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.name">(mpilot.parser.parser.ArgumentNode attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
+        </ul></li>
         <li>
     Normalize()
 
@@ -518,6 +635,22 @@
 </li>
         </ul></li>
     </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.NoSuchParameter">NoSuchParameter (class in mpilot.exceptions)</a>
+</li>
+        <li><a href="developer/reference/params.html#mpilot.params.NumberParameter">NumberParameter (class in mpilot.params)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.output">output (mpilot.commands.Command attribute)</a>
+</li>
+    </ul></td>
   </tr></table>
 </section>
 
@@ -525,9 +658,19 @@
   <h2>P</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.Parameter">Parameter (class in mpilot.params)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.ParameterNotValid">ParameterNotValid (class in mpilot.exceptions)</a>
+</li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.Parser.parse">parse() (mpilot.parser.parser.Parser method)</a>
 </li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.Parser">Parser (class in mpilot.parser.parser)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.PathDoesNotExist">PathDoesNotExist (class in mpilot.exceptions)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.PathParameter">PathParameter (class in mpilot.params)</a>
 </li>
         <li>
     PrintVars()
@@ -536,9 +679,9 @@
           <li><a href="user/lib-eems-basic.html#PrintVars">built-in function</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="developer/reference/program.html#mpilot.program.Program">Program (class in mpilot.program)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.ProgramError">ProgramError (class in mpilot.exceptions)</a>
 </li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.ProgramNode">ProgramNode (class in mpilot.parser.parser)</a>
 </li>
@@ -550,12 +693,26 @@
   <h2>R</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.RecursiveModelStructure">RecursiveModelStructure (class in mpilot.exceptions)</a>
+</li>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.result">result (mpilot.commands.Command attribute)</a>
+</li>
         <li><a href="developer/reference/parser.html#mpilot.parser.parser.CommandNode.result_name">result_name (mpilot.parser.parser.CommandNode attribute)</a>
+</li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.ResultDoesNotExist">ResultDoesNotExist (class in mpilot.exceptions)</a>
 </li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="developer/reference/program.html#mpilot.program.Program.run">run() (mpilot.program.Program method)</a>
+        <li><a href="developer/reference/params.html#mpilot.params.ResultParameter">ResultParameter (class in mpilot.params)</a>
 </li>
+        <li><a href="developer/reference/exceptions.html#mpilot.exceptions.ResultTypeNotValid">ResultTypeNotValid (class in mpilot.exceptions)</a>
+</li>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.run">run() (mpilot.commands.Command method)</a>
+
+        <ul>
+          <li><a href="developer/reference/program.html#mpilot.program.Program.run">(mpilot.program.Program method)</a>
+</li>
+        </ul></li>
     </ul></td>
   </tr></table>
 </section>
@@ -563,6 +720,10 @@
 <section id="S" class="genindex-section">
   <h2>S</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="developer/reference/params.html#mpilot.params.StringParameter">StringParameter (class in mpilot.params)</a>
+</li>
+    </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     Sum()
@@ -585,6 +746,8 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="developer/reference/program.html#mpilot.program.Program.to_string">to_string() (mpilot.program.Program method)</a>
 </li>
+        <li><a href="developer/reference/params.html#mpilot.params.TupleParameter">TupleParameter (class in mpilot.params)</a>
+</li>
     </ul></td>
   </tr></table>
 </section>
@@ -593,9 +756,13 @@
   <h2>V</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.value">value (mpilot.parser.parser.ArgumentNode attribute)</a>
+        <li><a href="developer/reference/commands.html#mpilot.commands.Command.validate_params">validate_params() (mpilot.commands.Command method)</a>
+</li>
+        <li><a href="developer/reference/arguments.html#mpilot.arguments.Argument.value">value (mpilot.arguments.Argument attribute)</a>
 
         <ul>
+          <li><a href="developer/reference/parser.html#mpilot.parser.parser.ArgumentNode.value">(mpilot.parser.parser.ArgumentNode attribute)</a>
+</li>
           <li><a href="developer/reference/parser.html#mpilot.parser.parser.ExpressionNode.value">(mpilot.parser.parser.ExpressionNode attribute)</a>
 </li>
         </ul></li>

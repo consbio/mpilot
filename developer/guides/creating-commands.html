@@ -1,0 +1,340 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Creating Parameters" href="creating-parameters.html" /><link rel="prev" title="Working with Models" href="working-with-models.html" />
+
+    <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
+        <title>Creating Commands - MPilot documentation</title>
+      <link rel="stylesheet" href="../../_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
+    <link rel="stylesheet" href="../../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" href="../../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">MPilot  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">MPilot  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../user/index.html">Using MPilot</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../user/libraries-ref.html">MPilot Libraries Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label for="toctree-checkbox-2"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../user/lib-eems-csv.html">EEMS CSV I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/lib-eems-netcdf.html">EEMS NetCDF I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/lib-eems-basic.html">EEMS Basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../user/lib-eems-fuzzy.html">EEMS Fuzzy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">Developing with MPilot</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label for="toctree-checkbox-3"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">Programming Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label for="toctree-checkbox-4"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="working-with-models.html">Working with Models</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Creating Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="creating-parameters.html">Creating Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/index.html">Python Module Reference</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label for="toctree-checkbox-5"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/program.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="creating-commands">
+<h1>Creating Commands<a class="headerlink" href="#creating-commands" title="Permalink to this headline">¶</a></h1>
+<p>It’s a fairly simple task to create new MPilot commands for use in models. Let’s start with an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.commands</span> <span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span> <span class="nn">mpilot</span> <span class="kn">import</span> <span class="n">params</span>
+
+<span class="k">class</span> <span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'A'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
+    <span class="s1">'B'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'A'</span><span class="p">]</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'B'</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+</pre></div>
+</div>
+<p>This command, named <code class="docutils literal notranslate"><span class="pre">Add</span></code>, takes two numbers, <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> and returns their sum. It might be used in a model like
+this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Result = AddNumbers(
+  A = 5
+  B = 2
+)
+</pre></div>
+</div>
+<div class="section" id="command-name">
+<h2>Command Name<a class="headerlink" href="#command-name" title="Permalink to this headline">¶</a></h2>
+<p>By default, the class name will be used as the command name. In the above example, the class is named <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code>,
+and so it’s referenced as <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code> in the model file. Set the <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code> property
+to use a different name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s1">'Add'</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>Now this command must be referenced as <code class="docutils literal notranslate"><span class="pre">Add</span></code> in the model.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Result = Add( ... )
+</pre></div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code> attributes define the arguments the command will accept, and the type of output the
+command is expected to produce. See the <a class="reference internal" href="../reference/params.html#module-mpilot.params" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a> module for a full list of valid parameters, or
+<a class="reference internal" href="creating-parameters.html"><span class="doc">create your own</span></a>. Two of particular note that we’ll discuss here are
+<a class="reference internal" href="../reference/params.html#mpilot.params.ListParameter" title="mpilot.params.ListParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListParameter</span></code></a> and <a class="reference internal" href="../reference/params.html#mpilot.params.ResultParameter" title="mpilot.params.ResultParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultParameter</span></code></a>.</p>
+<div class="section" id="lists">
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<p>List parameters are useful any time your command needs to accept a list for an argument. Let’s change the example
+command at the top of the page to return the sum of many numbers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SumNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'Numbers'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">())</span>
+  <span class="p">}</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'Numbers'</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ListParameter</span></code> accepts a parameter as its first argument, indicating which type of value is expected by this list.
+In the above example, the list values are expected to be numbers and will cause an exception if they are not numbers
+and can’t be converted.</p>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>Result parameters accept the output of a previous command. As with lists, <code class="docutils literal notranslate"><span class="pre">ResultParameter</span></code> accepts a parameter as
+its first argument, indicating the expected output type of the command connected to it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Reverse</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'InFieldName'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">ResultParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()))</span>
+  <span class="p">}</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">())</span>
+
+  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">li</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'InFieldName]</span>
+    <span class="k">return</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we see a fairly deep nesting of parameters. Breaking it down, this that <code class="docutils literal notranslate"><span class="pre">InFieldName</span></code> is expected to be a
+result from another command, and that that result should be a list of numbers. The command returns a list in which the
+input list has been reversed.</p>
+<p>In this case, we have a result that is a list, but the reverse works too: a list of results:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">ResultParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">DataParameter</span><span class="p">()))</span>
+</pre></div>
+</div>
+<p>This would be accept a list of results from commands that return numpy arrays
+(<a class="reference internal" href="../reference/params.html#mpilot.params.DataParameter" title="mpilot.params.DataParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataParameter</span></code></a>).</p>
+</div>
+<div class="section" id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Any parameter can be marked as optional by passing <code class="docutils literal notranslate"><span class="pre">required=False</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">(),</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Be sure to account for missing optional parameters in the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="c1"># Defaults to an empty list if not provided</span>
+  <span class="n">numbers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Numbers'</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="creating-parameters.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Creating Parameters</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="working-with-models.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Working with Models</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Conservation Biology Institute
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../../_sources/developer/guides/creating-commands.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Creating Commands</a><ul>
+<li><a class="reference internal" href="#command-name">Command Name</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+<li><a class="reference internal" href="#results">Results</a></li>
+<li><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>
