@@ -65,7 +65,7 @@ jobs:
         poetry env use system
         poetry install -E netcdf
         poetry run pip install sphinx
-        poetry run pip install furo
+        poetry run pip install sphinx-material
     - name: Build documentation
       run: |
         cd docs && poetry run make html

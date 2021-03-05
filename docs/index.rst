@@ -9,11 +9,24 @@ This documentation is divided into two high-level sections: **Using MPilot**, in
 to run models; and **Developing with MPilot**, intended for programmers who are using MPilot in their Python code, are
 creating command libraries for MPilot, or are developing and improving the MPilot software itself.
 
+Table of Contents
+-----------------
 
 .. toctree::
+   :caption: Using MPilot
    :includehidden:
-   :maxdepth: 2
+   :maxdepth: 1
 
    user/index
+   user/libraries-ref
+
+.. toctree::
+   :caption: Developing with MPilot
+   :includehidden:
+   :maxdepth: 1
+
    developer/index
+   developer/guides/index
+   developer/reference/index
+
 

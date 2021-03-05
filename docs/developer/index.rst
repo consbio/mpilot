@@ -1,5 +1,5 @@
-Developing with MPilot
-======================
+Developer Resources
+===================
 
 This documentation covers using MPilot as a Python library, in order to: parse, run, create, and modify MPilot models;
 implement custom MPilot commands and parameter types; and integrate MPilot functionality into other software. It
@@ -23,7 +23,8 @@ If you plan to use NetCDF data in your MPilot models, you should install the Net
   `NetCDF documentation`_.
 
 .. toctree::
-   :maxdepth: 3
+   :caption: Table of Contents
+   :maxdepth: 2
 
    guides/index
    reference/index
