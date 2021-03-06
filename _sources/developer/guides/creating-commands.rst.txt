@@ -16,8 +16,8 @@ It's a fairly simple task to create new MPilot commands for use in models. Let's
     output = params.NumberParameter()
 
     def execute(self, **kwargs):
-      A = kwargs['A']
-      B = kwargs['B']
+      a = kwargs['A']
+      b = kwargs['B']
 
       return A + B
 
