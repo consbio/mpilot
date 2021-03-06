@@ -52,4 +52,10 @@ html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 html_static_path = ["_static"]
 
 # Sphinx Material Customization
-html_theme_options = {"master_doc": False}
+html_theme_options = {
+    "base_url": "https://consbio.github.io/mpilot/",
+    "master_doc": False,
+    "repo_name": "MPilot",
+    "repo_url": "https://github.com/consbio/mpilot",
+    "repo_type": "github",
+}
