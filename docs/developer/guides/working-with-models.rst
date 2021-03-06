@@ -135,7 +135,7 @@ Creating an MPilot command file
 --------------------------------
 
 Models can be serialized back to the MPilot Command File format using the :py:meth:`~mpilot.program.Program.to_string`
-and py:meth:`~mpilot.program.Program.to_file`.
+and :py:meth:`~mpilot.program.Program.to_file`.
 
 .. code-block:: python
 
