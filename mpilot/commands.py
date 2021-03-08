@@ -39,6 +39,7 @@ class CommandMeta(type):
         new_class.required_inputs = {
             name: param for name, param in attrs["inputs"].items() if param.required
         }
+        new_class.allow_extra_inputs = attrs.get("allow_extra_inputs", False)
 
         if not any(
             info.module == new_class.__module__
@@ -112,13 +113,17 @@ class Command(object):
         cleaned = {}
         for name, value in params.items():
             if name not in all_inputs:
-                raise NoSuchParameter(
-                    self.result_name, name, self.argument_lines.get(name)
-                )
+                if not self.allow_extra_inputs:
+                    raise NoSuchParameter(
+                        self.result_name, name, self.argument_lines.get(name)
+                    )
+                else:
+                    cleaned[name] = value
 
-            cleaned[name] = self.inputs[name].clean(
-                value, self.program, self.argument_lines.get(name)
-            )
+            else:
+                cleaned[name] = self.inputs[name].clean(
+                    value, self.program, self.argument_lines.get(name)
+                )
 
         return cleaned
 

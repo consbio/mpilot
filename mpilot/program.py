@@ -170,7 +170,7 @@ class Program(object):
 
         command_args = []
         for (name, value) in sorted(arguments.items()):
-            if name not in command_cls.inputs:
+            if name not in command_cls.inputs and not command_cls.allow_extra_inputs:
                 raise NoSuchParameter(
                     command_cls,
                     name,
@@ -259,16 +259,17 @@ class Program(object):
         for command in self.commands.values():
             references = []
             for argument in command.arguments:
-                value = command.inputs[argument.name].clean(
-                    argument.value, self, lineno=argument.lineno
-                )
-
-                if isinstance(command.inputs[argument.name], ResultParameter):
-                    references.append(
-                        value.result_name if isinstance(value, Command) else value
+                if argument.name in command.inputs:
+                    value = command.inputs[argument.name].clean(
+                        argument.value, self, lineno=argument.lineno
                     )
-                if isinstance(value, (list, tuple)):
-                    references += [x for x in flatten(value) if isinstance(x, Command)]
+
+                    if isinstance(command.inputs[argument.name], ResultParameter):
+                        references.append(
+                            value.result_name if isinstance(value, Command) else value
+                        )
+                    if isinstance(value, (list, tuple)):
+                        references += [x for x in flatten(value) if isinstance(x, Command)]
 
             for reference in references:
                 dependents[reference] = dependents.get(reference, set())
