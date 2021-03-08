@@ -307,6 +307,12 @@ appropriate parameter for their expected output. For example:</p>
 </div>
 </dd></dl>
 <dl class="py attribute">
+<dt id="mpilot.commands.Command.allow_extra_inputs">
+<code class="sig-name descname"><span class="pre">allow_extra_inputs</span></code><em class="property"><span class="pre">:</span> <span class="pre">bool</span></em><a class="headerlink" href="#mpilot.commands.Command.allow_extra_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> indicates that this command accepts any inputs not explicitly defined in <a class="reference internal" href="#mpilot.commands.Command.inputs" title="mpilot.commands.Command.inputs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">inputs</span></code></a>. Any extra
+inputs from the model will be passed unmodified to <a class="reference internal" href="#mpilot.commands.Command.execute" title="mpilot.commands.Command.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>. Defaults to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd></dl>
+<dl class="py attribute">
 <dt id="mpilot.commands.Command.result">
 <code class="sig-name descname"><span class="pre">result</span></code><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#mpilot.commands.Command.result" title="Permalink to this definition">¶</a></dt>
 <dd><p>The result from the command execution. Accessing this property will run the command if it hasn’t already been run.
@@ -407,7 +413,7 @@ command. This method should not be called directly.</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

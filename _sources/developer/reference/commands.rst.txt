@@ -30,6 +30,12 @@
           inputs = { ... }
           output = params.DataParameter()
 
+    .. py:attribute:: allow_extra_inputs
+      :type: bool
+
+      ``True`` indicates that this command accepts any inputs not explicitly defined in :py:attr:`inputs`. Any extra
+      inputs from the model will be passed unmodified to :py:meth:`execute`. Defaults to ``False``.
+
     .. py:attribute:: result
       :type: Any
 
