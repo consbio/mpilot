@@ -23,9 +23,7 @@ class Lexer(object):
         "INT",
         "LBRACK",
         "LPAREN",
-        "MINUS",
         "PLAIN_STRING",
-        "PLUS",
         "RBRACK",
         "RPAREN",
         "STRING",
@@ -41,9 +39,7 @@ class Lexer(object):
     t_FALSE = "False"
     t_LBRACK = r"\["
     t_LPAREN = r"\("
-    t_MINUS = "-"
-    t_PLAIN_STRING = r"[^\#\:\,\=\-\+\(\)\[\]\"\r\n]+"
-    t_PLUS = r"\+"
+    t_PLAIN_STRING = r"[^\#\:\,\=\(\)\[\]\"\r\n]+"
     t_RBRACK = r"\]"
     t_RPAREN = r"\)"
     t_TRUE = "True"
@@ -52,12 +48,12 @@ class Lexer(object):
     def t_ID(self, t):
         return t
 
-    @TOKEN(r"((\d+\.\d*)|(\.\d+))([eE][\+\-]?\d+)?")
+    @TOKEN(r"[\-\+]?((\d+\.\d*)|(\.\d+))([eE][\+\-]?\d+)?")
     def t_FLOAT(self, t):
         t.value = float(t.value)
         return t
 
-    @TOKEN(r"\d+")
+    @TOKEN(r"[\-\+]?\d+")
     def t_INT(self, t):
         t.value = int(t.value)
         return t
@@ -171,7 +167,7 @@ class Parser(object):
         expression : ID expression
         """
 
-        p[0] = ExpressionNode("{} {}".format(p[1], str(p[2].value)), p.lineno(1))
+        p[0] = ExpressionNode(p[1] + str(p[2].value), p.lineno(1))
 
     def p_plain_string(self, p):
         """
@@ -195,17 +191,6 @@ class Parser(object):
         """
 
         p[0] = p[1]
-
-    def p_number_unary(self, p):
-        """
-        number : PLUS number
-               | MINUS number
-        """
-
-        if p[1] == "-":
-            p[0] = p[2] * -1
-        else:
-            p[0] = p[2]
 
     def p_list(self, p):
         """

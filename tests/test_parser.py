@@ -74,15 +74,15 @@ def test_parse_plain_string():
     assert isinstance(commands[0].arguments[0].value.value, str)
     assert commands[0].arguments[0].value.value == "Foo"
 
-    # Make sure plain strings with spaces work correctly
-    commands = Parser().parse("A = Command(P = Foo Bar)").commands
-    assert isinstance(commands[0].arguments[0].value.value, str)
-    assert commands[0].arguments[0].value.value == "Foo Bar"
-
     # Make sure plain strings can contain colons
     commands = Parser().parse(r"A = Command(P = C:\path\to\thing)").commands
     assert isinstance(commands[0].arguments[0].value.value, str)
     assert commands[0].arguments[0].value.value == r"C:\path\to\thing"
+
+    # Make sure plain strings can contain + and -
+    commands = Parser().parse(r"A = Command(P = A+/-B)").commands
+    assert isinstance(commands[0].arguments[0].value.value, str)
+    assert commands[0].arguments[0].value.value == "A+/-B"
 
 
 def test_parse_quoted_string():
@@ -124,14 +124,14 @@ def test_parse_list():
 def test_parse_tuple():
     """ Tests that tuples parse correctly """
 
-    commands = Parser().parse('A = Command(P = ["A": "a b c"])').commands
+    commands = Parser().parse('A = Command(P = ["A": "abc"])').commands
     assert isinstance(commands[0].arguments[0].value.value, dict)
-    assert commands[0].arguments[0].value.value == {"A": ExpressionNode("a b c", 1)}
+    assert commands[0].arguments[0].value.value == {"A": ExpressionNode("abc", 1)}
 
-    commands = Parser().parse("A = Command(P = [A: a b c, B: b])").commands
+    commands = Parser().parse("A = Command(P = [A: abc, B: b])").commands
     assert isinstance(commands[0].arguments[0].value.value, dict)
     assert commands[0].arguments[0].value.value == {
-        "A": ExpressionNode("a b c", 1),
+        "A": ExpressionNode("abc", 1),
         "B": ExpressionNode("b", 1),
     }
 
