@@ -138,6 +138,12 @@ class Program(object):
                     arguments[argument_node.name] = resolve_list(
                         argument_node.name, argument_node.value
                     )
+                elif isinstance(argument_node.value.value, dict):
+                    arguments[argument_node.name] = Argument(
+                        argument_node.name,
+                        {k: v.value for k, v in argument_node.value.value.items()},
+                        argument_node.lineno,
+                    )
                 else:
                     arguments[argument_node.name] = Argument(
                         argument_node.name,
@@ -217,7 +223,7 @@ class Program(object):
             elif isinstance(argument.value, dict):
                 return "[{}]".format(
                     ", ".join(
-                        '"{}": "{}"'.format(key, value.value)
+                        '"{}": "{}"'.format(key, value)
                         for key, value in argument.value.items()
                     )
                 )
@@ -269,7 +275,9 @@ class Program(object):
                             value.result_name if isinstance(value, Command) else value
                         )
                     if isinstance(value, (list, tuple)):
-                        references += [x for x in flatten(value) if isinstance(x, Command)]
+                        references += [
+                            x for x in flatten(value) if isinstance(x, Command)
+                        ]
 
             for reference in references:
                 dependents[reference] = dependents.get(reference, set())

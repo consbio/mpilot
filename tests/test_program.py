@@ -103,6 +103,12 @@ def test_invalid_argument():
     assert exc.value.required_type == "List"
 
 
+def test_metadata():
+    source = 'Result = SimpleCommand(A=Test, B=3, C=5, Metadata=[DisplayName:"The Command"])'
+    program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ("tests",))
+    assert program.commands['Result'].metadata.get('DisplayName') == 'The Command'
+
+
 def test_result_parameter():
     source = """
         Result_A = SimpleCommand(A=Test, B=3, C=[1,2,3])
