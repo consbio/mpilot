@@ -68,5 +68,4 @@ jobs:
       env:
         POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
       run: |
-        poetry build -f sdist
-        poetry publish
+        poetry publish --build
