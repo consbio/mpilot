@@ -31,7 +31,7 @@ numpy = [
     { version = "<=1.16.6", python = "~2.7" }
 ]
 netCDF4 = [
-    { version = "^1.4.3.2", optional = true },
+    { version = "<1.5.6", optional = true },
 ]
 packaging = "*"
 
