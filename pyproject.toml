@@ -24,8 +24,8 @@ packages = [
 [tool.poetry.dependencies]
 python = "~2.7 || >=3.6"
 ply = "^3.11"
-six = "^1.15.0"
-click = "^7.1.2"
+six = "*"
+click = "<8.0"
 numpy = [
     { version = "^1.19.4", python = ">=3.6" },
     { version = "<=1.16.6", python = "~2.7" }
