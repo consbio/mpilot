@@ -189,6 +189,23 @@ def test_fuzzy_selected_union():
 
     assert (result == answer).all()
 
+    arr_1 = numpy.ma.array(
+        [-1, -0.5, 1, 0.5, 0.25, 0], mask=[False, False, False, False, False, True]
+    )
+    arr_2 = numpy.ma.array(
+        [1, 0.75, 0.5, 1, 0.5, 0], mask=[False, False, False, False, False, True]
+    )
+    command_1 = create_command_with_result("Result", arr_1, fuzzy=True)
+    command_2 = create_command_with_result("Result", arr_2, fuzzy=True)
+
+    result = FuzzySelectedUnion("UnionResult").execute(
+        InFieldNames=[command_1, command_2],
+        TruestOrFalsest="Truest",
+        NumberToConsider=2,
+    )
+
+    assert (result.compressed() == answer).all()
+
 
 def test_fuzzy_or():
     arr_1 = numpy.ma.array([-1, -0.5, 1, 0.5, 0.25])

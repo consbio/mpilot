@@ -28,15 +28,15 @@ six = "^1.15.0"
 click = "^7.1.2"
 numpy = [
     { version = "^1.19.4", python = ">=3.6" },
-    { version = "^1.16.6", python = "~2.7" }
+    { version = "^1.9.3", python = "~2.7" }
 ]
-netCDF4 = { version = "~1.4.3.2", optional = true }
+netCDF4 = [
+    { version = "^1.4.3.2", python = ">=3.6", optional = true },
+    { version = "^1.1.9", python = "~2.7", optional = true }
+]
+packaging = "*"
 
 [tool.poetry.dev-dependencies]
-pytest = [
-    { version = "^6.1.2", python = ">=3.6" },
-    { version = "^4.6.11", python = "~2.7" }
-]
 black = { version = "^20.8b1", python = ">=3.6" }
 mock = { version = "^3.0.5", python = "~2.7" }
 setuptools = { version = "^44.1.1", python = "~2.7" }

@@ -4,6 +4,7 @@ from functools import reduce
 
 import numpy
 import six
+from packaging import version
 
 if six.PY3:
     from typing import Union, Sequence
@@ -239,8 +240,8 @@ class MeanToMid(CvtToFuzzyCurve):
         below_mean = arr[arr <= mean_value]
         above_mean = arr[arr > mean_value]
 
-        high_mean = above_mean.mean()
-        low_mean = below_mean.mean()
+        high_mean = above_mean.compressed().mean()
+        low_mean = below_mean.compressed().mean()
 
         return super(MeanToMid, self).execute(
             InFieldName=kwargs["InFieldName"],
@@ -452,11 +453,23 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
             (arr.mask for arr in arrays[1:]),
             arrays[0].mask,
         )
-        stacked_arr = numpy.ma.array(
-            numpy.stack([arr.data for arr in arrays]),
-            mask=numpy.broadcast_to(
+
+        if version.parse(numpy.__version__) >= version.parse("1.10"):
+            stacked_mask = numpy.broadcast_to(
                 mask, [len(arrays)] + list(arrays[0].shape)
-            ).copy(),  # The array is un-writable (`.sort` will fail) without `.copy()`
+            )
+        else:
+            it = numpy.nditer(
+                mask,
+                flags=["multi_index", "refs_ok", "zerosize_ok"],
+                itershape=[len(arrays)] + list(arrays[0].shape),
+                order="C",
+            )
+            stacked_mask = it.itviews[0]
+
+        stacked_arr = numpy.ma.array(
+            numpy.vstack([arr.data for arr in arrays]),
+            mask=stacked_mask.copy()  # The array is un-writable (`.sort` will fail) without `.copy()`
         )
 
         stacked_arr.sort(axis=0, kind="heapsort")
@@ -554,9 +567,23 @@ class FuzzyXOr(SameArrayShapeMixin, FuzzyCommand):
             (arr.mask for arr in arrays[1:]),
             arrays[0].mask,
         )
+
+        if version.parse(numpy.__version__) >= version.parse("1.10"):
+            stacked_mask = numpy.broadcast_to(
+                mask, [len(arrays)] + list(arrays[0].shape)
+            )
+        else:
+            it = numpy.nditer(
+                mask,
+                flags=["multi_index", "refs_ok", "zerosize_ok"],
+                itershape=[len(arrays)] + list(arrays[0].shape),
+                order="C",
+            )
+            stacked_mask = it.itviews[0]
+
         stacked_arr = numpy.ma.array(
-            numpy.stack([arr.data for arr in arrays]),
-            mask=numpy.broadcast_to(mask, [len(arrays)] + list(arrays[0].shape)).copy(),
+            numpy.vstack([arr.data for arr in arrays]),
+            mask=stacked_mask.copy(),
         )
 
         stacked_arr.sort(axis=0, kind="heapsort")
