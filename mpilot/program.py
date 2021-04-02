@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import pkgutil
-from collections import Counter
+from collections import Counter, OrderedDict
 from importlib import import_module
 
 import six
@@ -132,7 +132,7 @@ class Program(object):
             if not command_cls:
                 raise CommandDoesNotExist(node.command, node.lineno)
 
-            arguments = {}
+            arguments = OrderedDict()
             for argument_node in node.arguments:
                 if isinstance(argument_node.value.value, list):
                     arguments[argument_node.name] = resolve_list(
@@ -175,7 +175,7 @@ class Program(object):
             raise MissingParameters(command_cls, missing_params, lineno=lineno)
 
         command_args = []
-        for (name, value) in sorted(arguments.items()):
+        for (name, value) in arguments.items():
             if name not in command_cls.inputs and not command_cls.allow_extra_inputs:
                 raise NoSuchParameter(
                     command_cls,

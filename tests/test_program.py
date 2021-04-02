@@ -35,7 +35,10 @@ class SimpleCommand(Command):
 
 
 class DependentCommand(Command):
-    inputs = {"A": params.ResultParameter(params.ListParameter())}
+    inputs = {
+        "A": params.ResultParameter(params.ListParameter()),
+        "Z": params.StringParameter(required=False),
+    }
     output = params.ListParameter()
 
     def execute(self, **kwargs):
@@ -104,9 +107,11 @@ def test_invalid_argument():
 
 
 def test_metadata():
-    source = 'Result = SimpleCommand(A=Test, B=3, C=5, Metadata=[DisplayName:"The Command"])'
+    source = (
+        'Result = SimpleCommand(A=Test, B=3, C=5, Metadata=[DisplayName:"The Command"])'
+    )
     program = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ("tests",))
-    assert program.commands['Result'].metadata.get('DisplayName') == 'The Command'
+    assert program.commands["Result"].metadata.get("DisplayName") == "The Command"
 
 
 def test_result_parameter():
@@ -160,7 +165,7 @@ def test_serialization():
 
     source = """
         Simple = SimpleCommand(A=Foo, B=5.4, C=[1,2,.3])
-        Result = DependentCommand(A=Simple, Metadata=[A:B, C: D])
+        Result = DependentCommand(Z=Foo, A=Simple, Metadata=[A:B])
     """
 
     answer = """
@@ -170,10 +175,10 @@ Simple = SimpleCommand(
     C = [1, 2, 0.3]
 )
 Result = DependentCommand(
+    Z = "Foo",
     A = Simple,
     Metadata = [
-        "A": "B",
-        "C": "D"
+        "A": "B"
     ]
 )
     """.strip()
