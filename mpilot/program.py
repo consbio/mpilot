@@ -221,9 +221,9 @@ class Program(object):
                     )
                 )
             elif isinstance(argument.value, dict):
-                return "[{}]".format(
-                    ", ".join(
-                        '"{}": "{}"'.format(key, value)
+                return "[\n{}\n    ]".format(
+                    ",\n".join(
+                        '        "{}": "{}"'.format(key, value)
                         for key, value in argument.value.items()
                     )
                 )
