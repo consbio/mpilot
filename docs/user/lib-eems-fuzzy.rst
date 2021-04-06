@@ -44,7 +44,7 @@ operations in fuzzy space, such as ``FuzzyOr`` and ``FuzzyAnd``.
   :param FuzzyValues: (:ref:`param-list` [:ref:`param-number`]) A list of fuzzy values that will be used to map values
     matching those in ``RawValues`` to fuzzy space. The ``RawValues`` and ``FuzzyValues`` lists must be the same size.
 
-.. function:: MeanToMid(InFieldName, IgnoreZeros, FuzzyValues)
+.. function:: CvtToFuzzyMeanToMid(InFieldName, IgnoreZeros, FuzzyValues)
 
   Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data.
 

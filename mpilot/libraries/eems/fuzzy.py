@@ -213,7 +213,7 @@ class CvtToFuzzyCurve(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class MeanToMid(CvtToFuzzyCurve):
+class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
     """ Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data """
 
     is_fuzzy = True
@@ -243,7 +243,7 @@ class MeanToMid(CvtToFuzzyCurve):
         high_mean = above_mean.compressed().mean()
         low_mean = below_mean.compressed().mean()
 
-        return super(MeanToMid, self).execute(
+        return super(CvtToFuzzyMeanToMid, self).execute(
             InFieldName=kwargs["InFieldName"],
             RawValues=[low_value, low_mean, mean_value, high_mean, high_value],
             FuzzyValues=kwargs["FuzzyValues"],
