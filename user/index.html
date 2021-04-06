@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -352,12 +353,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="user-guide">
 <h1 id="user-index--page-root">User Guide<a class="headerlink" href="#user-index--page-root" title="Permalink to this headline">¶</a></h1>
 <p>This documentation covers installing MPilot, the process of creating and running MPilot models, and the process of
 using the <code class="docutils literal notranslate"><span class="pre">mpilot</span></code> command-line program. It also includes a reference of all built-in MPilot commands, including the
 EEMS commands, used to created fuzzy logic models.</p>
-
+<section id="installing-mpilot">
 <h2 id="installing-mpilot">Installing MPilot<a class="headerlink" href="#installing-mpilot" title="Permalink to this headline">¶</a></h2>
 <p>MPilot requires the <a class="reference external" href="https://www.python.org/">Python</a> programming language. You will also need a program called
 <code class="docutils literal notranslate"><span class="pre">Pip</span></code>, which comes installed with all newer versions of Python. If you have an old version of Python, you may need to
@@ -376,8 +377,8 @@ EEMS commands, used to created fuzzy logic models.</p>
 the NetCDF C library is out of the scope of this document, but you can find more information about doing this in the
 <a class="reference external" href="https://www.unidata.ucar.edu/software/netcdf/docs/getting_and_building_netcdf.html">NetCDF documentation</a>.</p>
 </div>
-
-
+</section>
+<section id="a-quick-example">
 <h2 id="a-quick-example">A Quick Example<a class="headerlink" href="#a-quick-example" title="Permalink to this headline">¶</a></h2>
 <p>This example will help you understand the basics of creating and MPilot command file and running it using the <cite>mpilot</cite>
 command. In this example, we’ll read two variables from a CSV file, apply a <strong>Fuzzy Union</strong>, and write the result to a
@@ -444,8 +445,8 @@ between <code class="docutils literal notranslate"><span class="pre">-1</span></
 </div>
 <p>This should run quickly, and produce a new file, <code class="docutils literal notranslate"><span class="pre">output.csv</span></code>, which will contain the two input columns, <code class="docutils literal notranslate"><span class="pre">A</span></code> and
 <code class="docutils literal notranslate"><span class="pre">B</span></code>, as well as the result column, <code class="docutils literal notranslate"><span class="pre">Union</span></code>.</p>
-
-
+</section>
+<section id="the-mpilot-program">
 <h2 id="the-mpilot-program">The <code class="docutils literal notranslate"><span class="pre">mpilot</span></code> program<a class="headerlink" href="#the-mpilot-program" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">mpilot</span></code> is the command-line program used to run models. It is run with the <code class="docutils literal notranslate"><span class="pre">library</span></code> to use, and the path to the
 command file (model):</p>
@@ -454,8 +455,8 @@ command file (model):</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">library</span></code> can be either <code class="docutils literal notranslate"><span class="pre">eems-csv</span></code> to use EEMS commands intended for use with CSV data, or <code class="docutils literal notranslate"><span class="pre">eems-netcdf</span></code> to
 use EEMS commands intended for use with NetCDF data. Run <code class="docutils literal notranslate"><span class="pre">mpilot</span> <span class="pre">--help</span></code> for a full list of options.</p>
-
-
+</section>
+<section id="command-file-syntax">
 <h2 id="command-file-syntax">Command File Syntax<a class="headerlink" href="#command-file-syntax" title="Permalink to this headline">¶</a></h2>
 <p>MPilot models are expressed using the <cite>.mpt</cite> command file syntax. These files are easy to write and to understand. They
 consist of all the commands that make up the model.</p>
@@ -468,11 +469,11 @@ consist of all the commands that make up the model.</p>
 <p>Parameters are different for each command and may require a specific type of data (e.g., a number, or an output from a
 previous command). Each parameter takes the form of <code class="docutils literal notranslate"><span class="pre">&lt;parameter&gt;</span> <span class="pre">=</span> <span class="pre">&lt;value&gt;</span></code>, and multiple parameters are separated by
 commas.</p>
-
-
+</section>
+<section id="parameter-types">
 <h2 id="parameter-types">Parameter Types<a class="headerlink" href="#parameter-types" title="Permalink to this headline">¶</a></h2>
 <p>These are the parameter types that may be used by MPilot commands.</p>
-
+<section id="string">
 <span id="param-string"></span><h3 id="string">String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h3>
 <p>String parameters may be surrounded by quotes, or not. Strings not surrounded by quotes may not contain the following
 characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+()[]</span></code>:</p>
@@ -483,8 +484,8 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 <span class="n">Param</span> <span class="o">=</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">string</span><span class="o">.</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="number">
 <span id="param-number"></span><h3 id="number">Number<a class="headerlink" href="#number" title="Permalink to this headline">¶</a></h3>
 <p>Numbers may be integer of decimal values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integer</span>
@@ -494,63 +495,63 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 <span class="n">Param</span> <span class="o">=</span> <span class="mf">5.4</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="boolean">
 <span id="param-boolean"></span><h3 id="boolean">Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
 <p>A boolean parameter may be <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="n">true</span>
 <span class="n">Param</span> <span class="o">=</span> <span class="n">false</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="path">
 <span id="param-path"></span><h3 id="path">Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h3>
 <p>A path parameter is the same as a string, but must refer to a valid path. For some commands, the path must already exist
 (e.g., a read command) while for others it will be created (e.g., a write command):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="s2">"C:\path</span><span class="se">\t</span><span class="s2">o</span><span class="se">\f</span><span class="s2">ile.csv"</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="result">
 <span id="param-result"></span><h3 id="result">Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
 <p>A result parameter refers to the output of another command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">CommandA</span><span class="p">()</span>
 <span class="n">Out</span> <span class="o">=</span> <span class="n">Write</span><span class="p">(</span><span class="n">ResultParam</span> <span class="o">=</span> <span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="list">
 <span id="param-list"></span><h3 id="list">List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h3>
 <p>A list parameter contains any number of values of a specific type. For example, a list of strings, a list of numbers,
 or a list of results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="tuple">
 <span id="param-tuple"></span><h3 id="tuple">Tuple<a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h3>
 <p>A tuple parameter is similar to a list, but consists of any number of key/value pairs. Both the key and value are
 strings, and are separated by a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="p">[</span><span class="n">Color</span><span class="p">:</span><span class="s2">"Blue"</span><span class="p">]</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="data-type">
 <span id="param-data-type"></span><h3 id="data-type">Data Type<a class="headerlink" href="#data-type" title="Permalink to this headline">¶</a></h3>
 <p>One of several possible data types, such as “Float” or “Integer”, determined by the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="n">Float</span>
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+<section id="built-in-command-libraries">
 <h2 id="built-in-command-libraries">Built-In Command Libraries<a class="headerlink" href="#built-in-command-libraries" title="Permalink to this headline">¶</a></h2>
 <p>MPilot includes built-in commands, currently limited to those used for creating EEMS models. A full reference of
 built-in commands is at <a class="reference internal" href="libraries-ref.html"><span class="doc">MPilot Libraries Reference</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
-
-
+</section>
+</section>
 
 
           </article>

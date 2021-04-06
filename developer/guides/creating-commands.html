@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -295,7 +296,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="creating-commands">
 <h1 id="developer-guides-creating-commands--page-root">Creating Commands<a class="headerlink" href="#developer-guides-creating-commands--page-root" title="Permalink to this headline">¶</a></h1>
 <p>It’s a fairly simple task to create new MPilot commands for use in models. Let’s start with an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.commands</span> <span class="kn">import</span> <span class="n">Command</span>
@@ -323,7 +324,7 @@ this:</p>
 )
 </pre></div>
 </div>
-
+<section id="command-name">
 <h2 id="command-name">Command Name<a class="headerlink" href="#command-name" title="Permalink to this headline">¶</a></h2>
 <p>By default, the class name will be used as the command name. In the above example, the class is named <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code>,
 and so it’s referenced as <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code> in the model file. Set the <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code> property
@@ -337,14 +338,14 @@ to use a different name.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Result = Add( ... )
 </pre></div>
 </div>
-
-
+</section>
+<section id="parameters">
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code> attributes define the arguments the command will accept, and the type of output the
 command is expected to produce. See the <a class="reference internal" href="../reference/params.html#module-mpilot.params" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a> module for a full list of valid parameters, or
 <a class="reference internal" href="creating-parameters.html"><span class="doc">create your own</span></a>. Two of particular note that we’ll discuss here are
 <a class="reference internal" href="../reference/params.html#mpilot.params.ListParameter" title="mpilot.params.ListParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListParameter</span></code></a> and <a class="reference internal" href="../reference/params.html#mpilot.params.ResultParameter" title="mpilot.params.ResultParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultParameter</span></code></a>.</p>
-
+<section id="lists">
 <h3 id="lists">Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
 <p>List parameters are useful any time your command needs to accept a list for an argument. Let’s change the example
 command at the top of the page to return the sum of many numbers.</p>
@@ -362,8 +363,8 @@ command at the top of the page to return the sum of many numbers.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ListParameter</span></code> accepts a parameter as its first argument, indicating which type of value is expected by this list.
 In the above example, the list values are expected to be numbers and will cause an exception if they are not numbers
 and can’t be converted.</p>
-
-
+</section>
+<section id="results">
 <h3 id="results">Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
 <p>Result parameters accept the output of a previous command. As with lists, <code class="docutils literal notranslate"><span class="pre">ResultParameter</span></code> accepts a parameter as
 its first argument, indicating the expected output type of the command connected to it.</p>
@@ -387,8 +388,8 @@ input list has been reversed.</p>
 </div>
 <p>This would be accept a list of results from commands that return numpy arrays
 (<a class="reference internal" href="../reference/params.html#mpilot.params.DataParameter" title="mpilot.params.DataParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataParameter</span></code></a>).</p>
-
-
+</section>
+<section id="optional-parameters">
 <h3 id="optional-parameters">Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
 <p>Any parameter can be marked as optional by passing <code class="docutils literal notranslate"><span class="pre">required=False</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">(),</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -400,9 +401,9 @@ input list has been reversed.</p>
   <span class="n">numbers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Numbers'</span><span class="p">,</span> <span class="p">[])</span>
 </pre></div>
 </div>
-
-
-
+</section>
+</section>
+</section>
 
 
           </article>

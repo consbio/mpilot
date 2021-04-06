@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -285,7 +286,7 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="creating-parameters">
 <h1 id="developer-guides-creating-parameters--page-root">Creating Parameters<a class="headerlink" href="#developer-guides-creating-parameters--page-root" title="Permalink to this headline">¶</a></h1>
 <p>If the <a class="reference internal" href="../reference/params.html#module-mpilot.params" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">built</span> <span class="pre">in</span> <span class="pre">parameters</span></code></a> don’t suite your needs, you can create your own, custom
 parameters. Creating a parameter involves subclassing <a class="reference internal" href="../reference/params.html#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> or another parameter class,
@@ -303,7 +304,7 @@ passed to an argument of that type. If the incoming value is invalid, the <code 
 </div>
 <p>This parameter extends <a class="reference internal" href="../reference/params.html#mpilot.params.StringParameter" title="mpilot.params.StringParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringParameter</span></code></a>, restricts it to accept only “foo” or “bar” as
 a valid value, and returns valid, incoming values unmodified.</p>
-
+<section id="parameter-options">
 <h2 id="parameter-options">Parameter Options<a class="headerlink" href="#parameter-options" title="Permalink to this headline">¶</a></h2>
 <p>You can add extra configuration options to your parameter by implementing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Let’s modify the above example
 to accept a list of valid values, rather than the hard-coded “foo” and “bar”.</p>
@@ -326,8 +327,8 @@ to accept a list of valid values, rather than the hard-coded “foo” and “ba
   <span class="p">}</span>
 </pre></div>
 </div>
-
-
+</section>
+</section>
 
 
           </article>

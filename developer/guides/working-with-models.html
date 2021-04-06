@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -299,12 +300,12 @@
         <div class="md-content">
           <article class="md-content__inner md-typeset" role="main">
             
-  
+  <section id="working-with-models">
 <h1 id="developer-guides-working-with-models--page-root">Working with Models<a class="headerlink" href="#developer-guides-working-with-models--page-root" title="Permalink to this headline">¶</a></h1>
 <p>This guide addresses working programmatically with models. This includes loading models from source, creating new
 models, modifying and running models, and writing models back to source. The examples in this guide will mostly focus
 on the <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.program.Program</span></code></a> class, which is the Python representation of the MPilot model.</p>
-
+<section id="loading-a-model-from-source">
 <h2 id="loading-a-model-from-source">Loading a model from source<a class="headerlink" href="#loading-a-model-from-source" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="../reference/program.html#mpilot.program.Program.from_source" title="mpilot.program.Program.from_source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_source()</span></code></a> class method will parse a string containing an MPilot model and
 return a new <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></a> representing the model. For example, the following will open a model
@@ -343,8 +344,8 @@ encountered. The CLI program sets <code class="docutils literal notranslate"><sp
   <span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="o">.</span><span class="n">from_source</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">working_dir</span><span class="o">=</span><span class="n">working_dir</span><span class="p">)</span>
 </pre></div>
 </div>
-
-
+</section>
+<section id="creating-a-new-model">
 <h2 id="creating-a-new-model">Creating a new model<a class="headerlink" href="#creating-a-new-model" title="Permalink to this headline">¶</a></h2>
 <p>Creating a new, empty model is as simple as creating a new instance of <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.program.Program</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.program</span> <span class="kn">import</span> <span class="n">Program</span>
@@ -354,12 +355,12 @@ encountered. The CLI program sets <code class="docutils literal notranslate"><sp
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Program</span></code> constructor takes the same arguments (<code class="docutils literal notranslate"><span class="pre">libraries</span></code> and <code class="docutils literal notranslate"><span class="pre">working_dir</span></code>) as
 <a class="reference internal" href="../reference/program.html#mpilot.program.Program.from_source" title="mpilot.program.Program.from_source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_source()</span></code></a>, as described in the previous section.</p>
-
-
+</section>
+<section id="modifying-the-model">
 <h2 id="modifying-the-model">Modifying the model<a class="headerlink" href="#modifying-the-model" title="Permalink to this headline">¶</a></h2>
 <p>Whether you have loaded a model from source, or created a new, blank model, you can modify it by adding or removing
 commands.</p>
-
+<section id="adding-commands">
 <h3 id="adding-commands">Adding commands<a class="headerlink" href="#adding-commands" title="Permalink to this headline">¶</a></h3>
 <p>Add commands with <a class="reference internal" href="../reference/program.html#mpilot.program.Program.add_command" title="mpilot.program.Program.add_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_command()</span></code></a>. At a minimum, you’ll need to provide a command class,
 a name for the command result, and arguments to run the command.</p>
@@ -391,8 +392,8 @@ a name for the command result, and arguments to run the command.</p>
 )
 </pre></div>
 </div>
-
-
+</section>
+<section id="removing-commands">
 <h3 id="removing-commands">Removing commands<a class="headerlink" href="#removing-commands" title="Permalink to this headline">¶</a></h3>
 <p>Remove commands from the model by deleting them from the <a class="reference internal" href="../reference/program.html#mpilot.program.Program.commands" title="mpilot.program.Program.commands"><code class="xref py py-attr docutils literal notranslate"><span class="pre">commands</span></code></a> property.
 <code class="docutils literal notranslate"><span class="pre">commands</span></code> is a dictionary, where the key is the result name.</p>
@@ -400,14 +401,14 @@ a name for the command result, and arguments to run the command.</p>
 </pre></div>
 </div>
 <p>This will remove a command assigned to the result <code class="docutils literal notranslate"><span class="pre">Var_A</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">Var_A</span> <span class="pre">=</span> <span class="pre">EEMSRead(</span> <span class="pre">...</span> <span class="pre">)</span></code>).</p>
-
-
-
+</section>
+</section>
+<section id="running-the-model">
 <h2 id="running-the-model">Running the model<a class="headerlink" href="#running-the-model" title="Permalink to this headline">¶</a></h2>
 <p>Once the model has been created or loaded from source, and modified as needed, run it with
 <a class="reference internal" href="../reference/program.html#mpilot.program.Program.run" title="mpilot.program.Program.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>. This will build a dependency tree and then execute each command in the model.</p>
-
-
+</section>
+<section id="creating-an-mpilot-command-file">
 <h2 id="creating-an-mpilot-command-file">Creating an MPilot command file<a class="headerlink" href="#creating-an-mpilot-command-file" title="Permalink to this headline">¶</a></h2>
 <p>Models can be serialized back to the MPilot Command File format using the <a class="reference internal" href="../reference/program.html#mpilot.program.Program.to_string" title="mpilot.program.Program.to_string"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_string()</span></code></a>
 and <a class="reference internal" href="../reference/program.html#mpilot.program.Program.to_file" title="mpilot.program.Program.to_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_file()</span></code></a>.</p>
@@ -431,8 +432,8 @@ and <a class="reference internal" href="../reference/program.html#mpilot.program
   <span class="n">p</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
-
-
+</section>
+</section>
 
 
           </article>

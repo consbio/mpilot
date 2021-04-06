@@ -38,7 +38,7 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
 
   :param InFieldNames: (:ref:`param-list` [:ref:`param-result`]) A list of the results to multiply.
 
-.. function:: ADivideByB(A, B)
+.. function:: ADividedByB(A, B)
 
   Performs the operation ``A / B``.
 
