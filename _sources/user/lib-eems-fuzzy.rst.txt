@@ -50,7 +50,7 @@ operations in fuzzy space, such as ``FuzzyOr`` and ``FuzzyAnd``.
 
   :param InFieldName: (:ref:`param-result`) The result to convert to fuzzy space.
   :param IgnoreZeros: (:ref:`param-boolean`) Ignore ``0`` values when determining the mean.
-  :param FuzzyValues: (:ref:`param-list` [:ref`param-number`]) A list of fuzzy values that will be used to map input
+  :param FuzzyValues: (:ref:`param-list` [:ref:`param-number`]) A list of fuzzy values that will be used to map input
     values to fuzzy space.
 
 .. function:: CvtToFuzzyCurveZScore(InFieldName, ZScoreValues, FuzzyValues)
@@ -60,7 +60,7 @@ operations in fuzzy space, such as ``FuzzyOr`` and ``FuzzyAnd``.
   :param InFieldName: (:ref:`param-result`) The result to convert to fuzzy space.
   :param ZScoreValues: (:ref:`param-list` [:ref:`param-number`]) A list of z scores that will be used to map input
     values to fuzzy space.
-  :param FuzzyValues: (:ref`param-list` [:ref:`param-number`]) A list of fuzzy values that will be used to map values
+  :param FuzzyValues: (:ref:`param-list` [:ref:`param-number`]) A list of fuzzy values that will be used to map values
     to fuzzy space. The ``ZScoreValues`` and ``FuzzyValues`` lists must be the same size.
 
 .. function:: CvtToBinary(InFieldName, Threshold, Direction)

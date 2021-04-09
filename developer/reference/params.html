@@ -323,17 +323,21 @@ present.</p>
 </dd></dl>
 <dl class="py class">
 <dt id="mpilot.params.ResultParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">ResultParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ResultParameter" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">ResultParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_fuzzy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ResultParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>output_type</strong> (<a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><em>Parameter</em></a>) – <p>The output type of the result. For example:</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_type</strong> (<a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><em>Parameter</em></a>) – The output type of the result. For example:</p></li>
+<li><p><strong>is_fuzzy</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – <p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the input is required be fuzzy, if <code class="docutils literal notranslate"><span class="pre">False</span></code>, the input cannot be
+fuzzy. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, either fuzzy of non-fuzzy is accepted.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ResultParameter</span><span class="p">(</span><span class="n">NumberParameter</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>… denotes a result that is of a “Number” type. During validation, the <code class="docutils literal notranslate"><span class="pre">output</span></code> type of the result is checked
 against <code class="docutils literal notranslate"><span class="pre">output_type</span></code>.</p>
-</p>
+</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
