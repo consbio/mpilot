@@ -1,7 +1,9 @@
 from __future__ import division
 
 import numpy
+import pytest
 
+from mpilot.exceptions import ResultNotFuzzy, ResultIsFuzzy
 from mpilot.libraries.eems.fuzzy import (
     CvtToFuzzy,
     CvtToFuzzyZScore,
@@ -260,3 +262,23 @@ def test_convert_from_fuzzy():
     )
 
     assert (result.round() == answer).all()
+
+
+def test_fuzzy_validation():
+    arr = numpy.ma.array(
+        [-1.00, -0.78, -0.56, -0.33, -0.11, 0.11, 0.33, 0.56, 0.78, 1.00]
+    )
+    command = create_command_with_result("Result", arr, fuzzy=False)
+
+    with pytest.raises(ResultNotFuzzy):
+        FuzzyNot("NotResul").validate_params({'InFieldName': command})
+
+
+def test_nonfuzzy_validation():
+    arr = numpy.ma.array(
+        [-1.00, -0.78, -0.56, -0.33, -0.11, 0.11, 0.33, 0.56, 0.78, 1.00]
+    )
+    command = create_command_with_result("Result", arr, fuzzy=True)
+
+    with pytest.raises(ResultIsFuzzy):
+        CvtToFuzzy("ConvertResult").validate_params({'InFieldName': command})

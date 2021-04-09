@@ -223,6 +223,44 @@ class ResultTypeNotValid(ProgramError):
 
 
 @python_2_unicode_compatible
+class ResultNotFuzzy(ProgramError):
+    """ The parameter requires fuzzy data, but the specified result is non-fuzzy. """
+
+    def __init__(self, result, lineno=None):
+        # type: (str, int) -> None
+
+        super(ResultNotFuzzy, self).__init__(lineno)
+        self.result = result
+
+    def __str__(self):
+        return "\n".join(
+            (
+                'Problem: The data returned by "{}" is not fuzzy.'.format(self.result),
+                "Solution: Make sure the data passed to this parameter is fuzzy.",
+            )
+        )
+
+
+@python_2_unicode_compatible
+class ResultIsFuzzy(ProgramError):
+    """ The parameter requires non-fuzzy data, but the specified result is fuzzy. """
+
+    def __init__(self, result, lineno=None):
+        # type: (str, int) -> None
+
+        super(ResultIsFuzzy, self).__init__(lineno)
+        self.result = result
+
+    def __str__(self):
+        return "\n".join(
+            (
+                'Problem: The data returned by "{}" is fuzzy.'.format(self.result),
+                "Solution: Make sure the data passed to this parameter is non-fuzzy.",
+            )
+        )
+
+
+@python_2_unicode_compatible
 class RecursiveModelStructure(ProgramError):
     """ The model graph is contains circular references. """
 

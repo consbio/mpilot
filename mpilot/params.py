@@ -14,6 +14,8 @@ from .exceptions import (
     ResultTypeNotValid,
     ResultDoesNotExist,
     InvalidRelativePath,
+    ResultNotFuzzy,
+    ResultIsFuzzy,
 )
 
 
@@ -104,9 +106,10 @@ class PathParameter(StringParameter):
 
 
 class ResultParameter(Parameter):
-    def __init__(self, output_type=None, **kwargs):
+    def __init__(self, output_type=None, is_fuzzy=None, **kwargs):
         super(ResultParameter, self).__init__(**kwargs)
         self.output_type = output_type
+        self.is_fuzzy = is_fuzzy
 
     def clean(self, value, program=None, lineno=None):
         from . import commands
@@ -119,6 +122,12 @@ class ResultParameter(Parameter):
 
         if not isinstance(value, commands.Command):
             raise ParameterNotValid(value, "Result", lineno)
+
+        if self.is_fuzzy is True and not getattr(value, "is_fuzzy", False):
+            raise ResultNotFuzzy(value.result_name, lineno)
+
+        if self.is_fuzzy is False and getattr(value, "is_fuzzy", False):
+            raise ResultIsFuzzy(value.result_name, lineno)
 
         if self.output_type is None:
             return value

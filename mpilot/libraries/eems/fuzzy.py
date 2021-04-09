@@ -6,9 +6,6 @@ import numpy
 import six
 from packaging import version
 
-if six.PY3:
-    from typing import Union, Sequence
-
 from mpilot import params
 from mpilot.commands import Command
 from mpilot.libraries.eems.exceptions import (
@@ -16,7 +13,6 @@ from mpilot.libraries.eems.exceptions import (
     InvalidThresholds,
     MixedArrayLengths,
     DuplicateRawValues,
-    IsNotFuzzy,
     InvalidNumberToConsider,
     InvalidTruestOrFalsest,
 )
@@ -27,28 +23,14 @@ FUZZY_MIN = -1
 FUZZY_MAX = 1
 
 
-class FuzzyCommand(Command):
-    is_fuzzy = False
-
-    def validate_fuzzy_inputs(self, values, lineno=None):
-        # type: (Union[Sequence[Command], Command], int) -> None
-
-        if not isinstance(values, (list, tuple)):
-            values = [values]
-
-        for cmd in values:
-            if not isinstance(cmd, FuzzyCommand) or not cmd.is_fuzzy:
-                raise IsNotFuzzy(lineno=lineno)
-
-
-class CvtToFuzzy(FuzzyCommand):
+class CvtToFuzzy(Command):
     """ Converts input values into fuzzy values using linear interpolation """
 
     is_fuzzy = True
 
     display_name = "Convert to Fuzzy"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "TrueThreshold": params.NumberParameter(required=False),
         "FalseThreshold": params.NumberParameter(required=False),
         "Direction": params.StringParameter(required=False),
@@ -87,14 +69,14 @@ class CvtToFuzzy(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtToFuzzyZScore(FuzzyCommand):
+class CvtToFuzzyZScore(Command):
     """ Converts input values into fuzzy values using linear interpolation based on Z Score """
 
     is_fuzzy = True
 
     display_name = "Convert to Fuzzy by Z Score"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "TrueThresholdZScore": params.NumberParameter(),
         "FalseThresholdZScore": params.NumberParameter(),
     }
@@ -122,14 +104,14 @@ class CvtToFuzzyZScore(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtToFuzzyCat(FuzzyCommand):
+class CvtToFuzzyCat(Command):
     """ Converts integer input values into fuzzy based on user specification """
 
     is_fuzzy = True
 
     display_name = "Convert to Fuzzy by Category"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "RawValues": params.ListParameter(params.NumberParameter()),
         "FuzzyValues": params.ListParameter(params.NumberParameter()),
         "DefaultFuzzyValue": params.NumberParameter(),
@@ -158,14 +140,14 @@ class CvtToFuzzyCat(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtToFuzzyCurve(FuzzyCommand):
+class CvtToFuzzyCurve(Command):
     """ Converts input values into fuzzy based on user-defined curve """
 
     is_fuzzy = True
 
     display_name = "Convert to Fuzzy Curve"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "RawValues": params.ListParameter(params.NumberParameter()),
         "FuzzyValues": params.ListParameter(params.NumberParameter()),
     }
@@ -220,7 +202,7 @@ class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
 
     display_name = "Mean to Mid"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "IgnoreZeros": params.BooleanParameter(),
         "FuzzyValues": params.ListParameter(params.NumberParameter()),
     }
@@ -250,14 +232,14 @@ class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
         )
 
 
-class CvtToFuzzyCurveZScore(FuzzyCommand):
+class CvtToFuzzyCurveZScore(Command):
     """ Converts input values into fuzzy based on user-defined curve """
 
     is_fuzzy = True
 
     display_name = "Convert to Fuzzy Curve by Z Score"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "ZScoreValues": params.ListParameter(params.NumberParameter()),
         "FuzzyValues": params.ListParameter(params.NumberParameter()),
     }
@@ -306,7 +288,7 @@ class CvtToFuzzyCurveZScore(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtToBinary(FuzzyCommand):
+class CvtToBinary(Command):
     """
     Converts input values into binary 0 or 1 based on threshold.
     Direction = LowToHigh for values below threshold to be false and above to be true.
@@ -317,7 +299,7 @@ class CvtToBinary(FuzzyCommand):
 
     display_name = "Convert to Fuzzy Binary"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "Threshold": params.NumberParameter(),
         "Direction": params.StringParameter(),
     }
@@ -341,7 +323,7 @@ class CvtToBinary(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyUnion(SameArrayShapeMixin, FuzzyCommand):
+class FuzzyUnion(SameArrayShapeMixin, Command):
     """ Takes the fuzzy Union (mean) of fuzzy input variables """
 
     is_fuzzy = True
@@ -349,7 +331,7 @@ class FuzzyUnion(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy Union"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         )
     }
     output = params.DataParameter()
@@ -357,9 +339,6 @@ class FuzzyUnion(SameArrayShapeMixin, FuzzyCommand):
     def execute(self, **kwargs):
         arrays = [c.result for c in kwargs["InFieldNames"]]
 
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
-        )
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
         )
@@ -370,7 +349,7 @@ class FuzzyUnion(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyWeightedUnion(SameArrayShapeMixin, FuzzyCommand):
+class FuzzyWeightedUnion(SameArrayShapeMixin, Command):
     """ Takes the weighted fuzzy Union (mean) of fuzzy input variables """
 
     is_fuzzy = True
@@ -378,7 +357,7 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy Weighted Union"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         ),
         "Weights": params.ListParameter(params.NumberParameter()),
     }
@@ -388,9 +367,6 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, FuzzyCommand):
         arrays = [c.result for c in kwargs["InFieldNames"]]
         weights = kwargs["Weights"]
 
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
-        )
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
         )
@@ -404,7 +380,7 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
+class FuzzySelectedUnion(SameArrayShapeMixin, Command):
     """ Takes the fuzzy Union (mean) of N Truest or Falsest fuzzy input variables """
 
     is_fuzzy = True
@@ -412,7 +388,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy Selected Union"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         ),
         "TruestOrFalsest": params.StringParameter(),
         "NumberToConsider": params.NumberParameter(),
@@ -420,19 +396,12 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        for cmd in kwargs["InFieldNames"]:
-            if not isinstance(cmd, FuzzyCommand):
-                raise IsNotFuzzy(lineno=self.argument_lines.get("InFieldNames"))
-
         arrays = [c.result for c in kwargs["InFieldNames"]]
         truest_or_falsest = kwargs["TruestOrFalsest"]
         number_to_consider = kwargs["NumberToConsider"]
 
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
-        )
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
         )
         if len(arrays) < number_to_consider:
             raise InvalidNumberToConsider(
@@ -469,7 +438,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
 
         stacked_arr = numpy.ma.array(
             numpy.vstack([arr.data for arr in arrays]),
-            mask=stacked_mask.copy()  # The array is un-writable (`.sort` will fail) without `.copy()`
+            mask=stacked_mask.copy(),  # The array is un-writable (`.sort` will fail) without `.copy()`
         )
 
         stacked_arr.sort(axis=0, kind="heapsort")
@@ -482,7 +451,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyOr(SameArrayShapeMixin, FuzzyCommand):
+class FuzzyOr(SameArrayShapeMixin, Command):
     """ Takes the fuzzy Or (maximum) of fuzzy input variables """
 
     is_fuzzy = True
@@ -490,15 +459,12 @@ class FuzzyOr(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy Or"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         )
     }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
-        )
         arrays = [c.result for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
@@ -509,7 +475,7 @@ class FuzzyOr(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyAnd(SameArrayShapeMixin, FuzzyCommand):
+class FuzzyAnd(SameArrayShapeMixin, Command):
     """ Takes the fuzzy And (minimum) of fuzzy input variables """
 
     is_fuzzy = True
@@ -517,15 +483,12 @@ class FuzzyAnd(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy And"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         )
     }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
-        )
         arrays = [c.result for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
@@ -536,7 +499,7 @@ class FuzzyAnd(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyXOr(SameArrayShapeMixin, FuzzyCommand):
+class FuzzyXOr(SameArrayShapeMixin, Command):
     """ Computes Fuzzy XOr: Truest - (Truest - 2nd Truest) * (2nd Truest - full False)/(Truest - full False) """
 
     is_fuzzy = True
@@ -544,15 +507,12 @@ class FuzzyXOr(SameArrayShapeMixin, FuzzyCommand):
     display_name = "Fuzzy XOr"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=True)
         )
     }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldNames"], lineno=self.argument_lines.get("InFieldNames")
-        )
         arrays = [c.result for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
@@ -600,19 +560,18 @@ class FuzzyXOr(SameArrayShapeMixin, FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class FuzzyNot(FuzzyCommand):
+class FuzzyNot(Command):
     """ Takes the fuzzy And (minimum) of fuzzy input variables """
 
     is_fuzzy = True
 
     display_name = "Fuzzy Not"
-    inputs = {"InFieldName": params.ResultParameter(params.DataParameter())}
+    inputs = {
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=True)
+    }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldName"], lineno=self.argument_lines.get("InFieldNames")
-        )
         arr = kwargs["InFieldName"].result
 
         result = -arr
@@ -620,23 +579,20 @@ class FuzzyNot(FuzzyCommand):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtFromFuzzy(FuzzyCommand):
+class CvtFromFuzzy(Command):
     """ Converts input fuzzy values into non-fuzzy values using linear interpolation """
 
     is_fuzzy = False
 
     display_name = "Convert from Fuzzy"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=True),
         "TrueThreshold": params.NumberParameter(),
         "FalseThreshold": params.NumberParameter(),
     }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        self.validate_fuzzy_inputs(
-            kwargs["InFieldName"], lineno=self.argument_lines.get("InFieldName")
-        )
         arr = kwargs["InFieldName"].result
         true_threshold = kwargs["TrueThreshold"]
         false_threshold = kwargs["FalseThreshold"]

@@ -35,5 +35,11 @@
   .. autoclass:: ResultTypeNotValid
     :show-inheritance:
 
+  .. autoclass:: ResultNotFuzzy
+    :show-inheritance:
+
+  .. autoclass:: ResultIsFuzzy
+    :show-inheritance:
+
   .. autoclass:: RecursiveModelStructure
     :show-inheritance:

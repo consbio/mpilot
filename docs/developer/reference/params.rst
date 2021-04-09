@@ -28,6 +28,8 @@
     :show-inheritance:
 
     :param Parameter output_type: The output type of the result. For example:
+    :param Optional[bool] is_fuzzy: If ``True``, the input is required be fuzzy, if ``False``, the input cannot be
+      fuzzy. If ``None``, either fuzzy of non-fuzzy is accepted.
 
       .. code-block:: python
 

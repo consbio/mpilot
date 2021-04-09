@@ -25,8 +25,8 @@ class AMinusB(SameArrayShapeMixin, Command):
 
     display_name = "A Minus B"
     inputs = {
-        "A": params.ResultParameter(params.DataParameter()),
-        "B": params.ResultParameter(params.DataParameter()),
+        "A": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
+        "B": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
     }
     output = params.DataParameter()
 
@@ -44,7 +44,7 @@ class Sum(SameArrayShapeMixin, Command):
     display_name = "Sum"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         )
     }
     output = params.DataParameter()
@@ -66,7 +66,7 @@ class WeightedSum(SameArrayShapeMixin, Command):
     display_name = "Weighted Sum"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         ),
         "Weights": params.ListParameter(params.NumberParameter()),
     }
@@ -90,7 +90,7 @@ class Multiply(SameArrayShapeMixin, Command):
     display_name = "Multiply"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         )
     }
     output = params.DataParameter()
@@ -111,8 +111,8 @@ class ADividedByB(SameArrayShapeMixin, Command):
 
     display_name = "A Divided By B"
     inputs = {
-        "A": params.ResultParameter(params.DataParameter()),
-        "B": params.ResultParameter(params.DataParameter()),
+        "A": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
+        "B": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
     }
     output = params.DataParameter()
 
@@ -130,7 +130,7 @@ class Minimum(SameArrayShapeMixin, Command):
     display_name = "Minimum"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         )
     }
     output = params.DataParameter()
@@ -148,7 +148,7 @@ class Maximum(SameArrayShapeMixin, Command):
     display_name = "Maximum"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         )
     }
     output = params.DataParameter()
@@ -166,7 +166,7 @@ class Mean(SameArrayShapeMixin, Command):
     display_name = "Mean"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         )
     }
     output = params.DataParameter()
@@ -184,7 +184,7 @@ class WeightedMean(SameArrayShapeMixin, Command):
     display_name = "Weighted Mean"
     inputs = {
         "InFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
+            params.ResultParameter(params.DataParameter(), is_fuzzy=False)
         ),
         "Weights": params.ListParameter(params.NumberParameter()),
     }
@@ -207,7 +207,7 @@ class Normalize(Command):
 
     display_name = "Normalize"
     inputs = {
-        "InFieldName": params.ResultParameter(params.DataParameter()),
+        "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "StartVal": params.NumberParameter(required=False),
         "EndVal": params.NumberParameter(required=False),
     }
