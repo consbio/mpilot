@@ -15,6 +15,7 @@ from mpilot.exceptions import (
     CommandDoesNotExist,
     MPilotError,
 )
+from mpilot.libraries.eems.exceptions import EmptyInputs, UnexpectedError
 from mpilot.program import Program, EEMS_NETCDF_LIBRARIES, EEMS_CSV_LIBRARIES
 
 
@@ -60,6 +61,14 @@ class ExtraInputsCommand(Command):
 
     def execute(self, **kwargs):
         return kwargs["Extra"]
+
+
+class BrokenCommand(Command):
+    inputs = {}
+    output = params.Parameter()
+
+    def execute(self):
+        return 1 / 0
 
 
 def test_simple_command():
@@ -152,6 +161,14 @@ def test_invalid_result_type():
     assert exc.value.result == "Result_A"
 
 
+def test_empty_inputs():
+    source = "Result = FuzzyUnion(InFieldNames=[])"
+
+    with pytest.raises(EmptyInputs):
+        program = Program.from_source(source)
+        program.run()
+
+
 def test_convert_from_eems():
     source = r"READ(InFileName = C:\path\to\file.gdb, InFieldName = Foo)"
 
@@ -212,3 +229,13 @@ def test_duplicate_commands_error():
     with pytest.raises(MPilotError) as exc:
         Program(libraries=EEMS_CSV_LIBRARIES + EEMS_NETCDF_LIBRARIES)
     assert "duplicated" in str(exc)
+
+
+def test_unexpected_error():
+    """ Tests that unexpected errors are reported correctly """
+
+    source = "Result = BrokenCommand()"
+
+    with pytest.raises(UnexpectedError):
+        p = Program.from_source(source, libraries=EEMS_CSV_LIBRARIES + ("tests",))
+        p.run()

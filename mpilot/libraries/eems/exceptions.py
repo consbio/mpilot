@@ -41,6 +41,14 @@ class InvalidDataFile(ProgramError):
 
 
 @python_2_unicode_compatible
+class EmptyInputs(ProgramError):
+    def __str__(self):
+        return "\n".join(
+            ("Problem: The input data is empty.", "Solution: Double check data inputs.")
+        )
+
+
+@python_2_unicode_compatible
 class MixedArrayShapes(ProgramError):
     def __init__(self, shape_a, shape_b, lineno=None):
         # type: (Tuple[int, ...], Tuple[int, ...], int) -> None
@@ -158,5 +166,25 @@ class InvalidTruestOrFalsest(ProgramError):
             (
                 "Problem: The value '{}' is invalid.".format(self.value),
                 "Solution: Make sure that the value is either Truest or Falsest.",
+            )
+        )
+
+
+@python_2_unicode_compatible
+class UnexpectedError(ProgramError):
+    def __init__(self, exc, lineno=None):
+        # type: (Exception, int) -> None
+
+        super(UnexpectedError, self).__init__(lineno)
+
+        self.exc = exc
+
+    def __str__(self):
+        return "\n".join(
+            (
+                "Problem: An unexpected error occurred while running the model: {}".format(
+                    str(self.exc)
+                ),
+                "Solution: Report this issue at https://github.com/consbio/mpilot/issues",
             )
         )

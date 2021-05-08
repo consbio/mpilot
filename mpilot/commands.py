@@ -3,12 +3,14 @@ from __future__ import print_function
 from collections import namedtuple
 
 import six
-from six import add_metaclass
+from six import add_metaclass, raise_from
+
+from mpilot.libraries.eems.exceptions import UnexpectedError
 
 if six.PY3:
     from typing import List, Any, Dict
 
-from mpilot.exceptions import MissingParameters, NoSuchParameter
+from mpilot.exceptions import MissingParameters, NoSuchParameter, MPilotError
 from mpilot.params import TupleParameter
 
 
@@ -130,9 +132,16 @@ class Command(object):
     def run(self):
         if not self.is_finished:
             self.is_running = True
-            self._result = self.execute(
-                **self.validate_params({arg.name: arg.value for arg in self.arguments})
-            )
+
+            try:
+                self._result = self.execute(
+                    **self.validate_params({arg.name: arg.value for arg in self.arguments})
+                )
+            except Exception as exc:
+                if isinstance(exc, MPilotError):
+                    raise
+                raise_from(UnexpectedError(exc, self.lineno), exc)
+
             self.is_finished = True
 
     def execute(self, **kwargs):
