@@ -561,7 +561,7 @@ class FuzzyXOr(SameArrayShapeMixin, Command):
 
 
 class FuzzyNot(Command):
-    """ Takes the fuzzy And (minimum) of fuzzy input variables """
+    """ Reverses the sign of the input fuzzy values from positive to negative or negative to positive """
 
     is_fuzzy = True
 
