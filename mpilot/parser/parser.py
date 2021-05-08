@@ -58,7 +58,7 @@ class Lexer(object):
         t.value = int(t.value)
         return t
 
-    @TOKEN(r'("(\\.|[^"\\])*")|(\'(\\.|[^"\\])*\')')
+    @TOKEN(r'("(\\.|[^"\\])*")|(\'(\\.|[^\'\\])*\')')
     def t_STRING(self, t):
         t.value = t.value.strip("\"'").encode().decode("unicode_escape")
         return t
