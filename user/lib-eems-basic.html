@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,9 +48,9 @@
   
   
     <title>EEMS Basic &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/material.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -284,8 +284,8 @@
 <p>The EEMS Basic library contains several commands for performing basic, non-fuzzy operations on data. These include
 arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility commands.</p>
 <dl class="py function">
-<dt id="Copy">
-<code class="sig-name descname"><span class="pre">Copy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Copy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Copy">
+<span class="sig-name descname"><span class="pre">Copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a copy of the input data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -294,8 +294,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="AMinusB">
-<code class="sig-name descname"><span class="pre">AMinusB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AMinusB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="AMinusB">
+<span class="sig-name descname"><span class="pre">AMinusB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AMinusB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs the operation <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-</span> <span class="pre">B</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -307,8 +307,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Sum">
-<code class="sig-name descname"><span class="pre">Sum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Sum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Sum">
+<span class="sig-name descname"><span class="pre">Sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the sum of all input arrays at that index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -317,8 +317,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="WeightedSum">
-<code class="sig-name descname"><span class="pre">WeightedSum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedSum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="WeightedSum">
+<span class="sig-name descname"><span class="pre">WeightedSum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedSum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the sum of all input arrays at that index, weighted by the input weights.
 E.g., values <code class="docutils literal notranslate"><span class="pre">8</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>, with weights of <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and <code class="docutils literal notranslate"><span class="pre">0.4</span></code> respectively will produce a result of <code class="docutils literal notranslate"><span class="pre">8.8</span></code>.</p>
 <dl class="field-list simple">
@@ -332,8 +332,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Multiply">
-<code class="sig-name descname"><span class="pre">Multiply</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Multiply" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Multiply">
+<span class="sig-name descname"><span class="pre">Multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Multiply" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multiplies multiple results together.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -342,8 +342,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="ADividedByB">
-<code class="sig-name descname"><span class="pre">ADividedByB</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ADividedByB" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ADividedByB">
+<span class="sig-name descname"><span class="pre">ADividedByB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ADividedByB" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs the operation <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">/</span> <span class="pre">B</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -355,8 +355,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Minimum">
-<code class="sig-name descname"><span class="pre">Minimum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Minimum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Minimum">
+<span class="sig-name descname"><span class="pre">Minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Minimum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the minimum of all input arrays at that index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -365,8 +365,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Maximum">
-<code class="sig-name descname"><span class="pre">Maximum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Maximum" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Maximum">
+<span class="sig-name descname"><span class="pre">Maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Maximum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the maximum of all input arrays at that index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -375,8 +375,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Mean">
-<code class="sig-name descname"><span class="pre">Mean</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Mean">
+<span class="sig-name descname"><span class="pre">Mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the mean of all input arrays at that index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -385,8 +385,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="WeightedMean">
-<code class="sig-name descname"><span class="pre">WeightedMean</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedMean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="WeightedMean">
+<span class="sig-name descname"><span class="pre">WeightedMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedMean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produces an array in which each values is the mean of all inputs arrays at that index, weighted by the input weights.
 E.g., values <code class="docutils literal notranslate"><span class="pre">8</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code> with weights of <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> respectively will produce a result of <code class="docutils literal notranslate"><span class="pre">8.667</span></code></p>
 <dl class="field-list simple">
@@ -400,8 +400,8 @@ weights must match the number of results specified by <code class="docutils lite
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="Normalize">
-<code class="sig-name descname"><span class="pre">Normalize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Normalize" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="Normalize">
+<span class="sig-name descname"><span class="pre">Normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalize values to a specified range, where the minimum value will be mapped to <code class="docutils literal notranslate"><span class="pre">StartVal</span></code>, the maximum value will
 be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal</span></code>, and values between will be processed by linear interpolation between <code class="docutils literal notranslate"><span class="pre">StartVal</span></code> and
 <code class="docutils literal notranslate"><span class="pre">EndVal</span></code>.</p>
@@ -416,8 +416,8 @@ be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="PrintVars">
-<code class="sig-name descname"><span class="pre">PrintVars</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PrintVars" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="PrintVars">
+<span class="sig-name descname"><span class="pre">PrintVars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PrintVars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print or write results for debugging purposes. If <code class="docutils literal notranslate"><span class="pre">OutFileName</span></code> is provided, the results will be written to that
 file, otherwise they will be printed to <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code>.</p>
 <dl class="field-list simple">
@@ -479,7 +479,7 @@ exists.</p></li>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

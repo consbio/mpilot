@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,9 +48,9 @@
   
   
     <title>mpilot.arguments &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/material.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -282,42 +282,38 @@
   <section id="module-mpilot.arguments">
 <span id="mpilot-arguments"></span><h1 id="developer-reference-arguments--page-root"><a class="reference internal" href="#developer-reference-arguments--page-root" title="mpilot.arguments"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a><a class="headerlink" href="#developer-reference-arguments--page-root" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="mpilot.arguments.Argument">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.arguments.</span></code><code class="sig-name descname"><span class="pre">Argument</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.arguments.Argument" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.Argument">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.arguments.</span></span><span class="sig-name descname"><span class="pre">Argument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.arguments.Argument" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py attribute">
-<dt id="mpilot.arguments.Argument.name">
-<code class="sig-name descname"><span class="pre">name</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#mpilot.arguments.Argument.name" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.Argument.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#mpilot.arguments.Argument.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>The name of the argument, e.g., <code class="docutils literal notranslate"><span class="pre">InFieldName</span></code>.</p>
 </dd></dl>
 <dl class="py attribute">
-<dt id="mpilot.arguments.Argument.value">
-<code class="sig-name descname"><span class="pre">value</span></code><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#mpilot.arguments.Argument.value" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.Argument.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="pre">:</span> <span class="pre">Any</span></em><a class="headerlink" href="#mpilot.arguments.Argument.value" title="Permalink to this definition">¶</a></dt>
 <dd><p>The argument value itself. This could be any valid parameter type.</p>
 </dd></dl>
 <dl class="py attribute">
-<dt id="mpilot.arguments.Argument.lineno">
-<code class="sig-name descname"><span class="pre">lineno</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#mpilot.arguments.Argument.lineno" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.Argument.lineno">
+<span class="sig-name descname"><span class="pre">lineno</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#mpilot.arguments.Argument.lineno" title="Permalink to this definition">¶</a></dt>
 <dd><p>The line that the argument appears on in the source file.</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.arguments.ListArgument">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.arguments.</span></code><code class="sig-name descname"><span class="pre">ListArgument</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_linenos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.arguments.ListArgument" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.ListArgument">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.arguments.</span></span><span class="sig-name descname"><span class="pre">ListArgument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_linenos</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.arguments.ListArgument" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py attribute">
-<dt id="mpilot.arguments.ListArgument.list_linenos">
-<code class="sig-name descname"><span class="pre">list_linenos</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.arguments.ListArgument.list_linenos" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.arguments.ListArgument.list_linenos">
+<span class="sig-name descname"><span class="pre">list_linenos</span></span><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.arguments.ListArgument.list_linenos" title="Permalink to this definition">¶</a></dt>
 <dd><p>The line that each list item appear on in the source file. For example, if the source argument looks like this:</p>
-<div class="highlight-none notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>InFieldNames=[
-  Var_A,
-  Var_B,
-  Var_C
-]
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos">2</span>InFieldNames=[
+<span class="linenos">3</span>  Var_A,
+<span class="linenos">4</span>  Var_B,
+<span class="linenos">5</span>  Var_C
+<span class="linenos">6</span>]
 </pre></div>
-</td></tr></table></div>
+</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">list_linenos</span></code> might be:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </pre></div>
@@ -373,7 +369,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

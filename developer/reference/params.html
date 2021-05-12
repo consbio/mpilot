@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,9 +48,9 @@
   
   
     <title>mpilot.params &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/material.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
@@ -282,8 +282,8 @@
   <section id="module-mpilot.params">
 <span id="mpilot-params"></span><h1 id="developer-reference-params--page-root"><a class="reference internal" href="#developer-reference-params--page-root" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a><a class="headerlink" href="#developer-reference-params--page-root" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="mpilot.params.Parameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">Parameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.Parameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.Parameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">Parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.Parameter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>required</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, this argument is required and will cause the model execution to fail if it’s not
@@ -291,29 +291,29 @@ present.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="mpilot.params.Parameter.clean">
-<code class="sig-name descname"><span class="pre">clean</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Any</span><a class="headerlink" href="#mpilot.params.Parameter.clean" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.Parameter.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> → <span class="pre">Any</span><a class="headerlink" href="#mpilot.params.Parameter.clean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean and validate a raw parameter value</p>
 </dd></dl>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.StringParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">StringParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.StringParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.StringParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">StringParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.StringParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.NumberParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">NumberParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.NumberParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.NumberParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">NumberParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.NumberParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.BooleanParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">BooleanParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.BooleanParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.BooleanParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">BooleanParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.BooleanParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.PathParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">PathParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.PathParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.PathParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">PathParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.PathParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.StringParameter" title="mpilot.params.StringParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.StringParameter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -322,8 +322,8 @@ present.</p>
 </dl>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.ResultParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">ResultParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_fuzzy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ResultParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.ResultParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">ResultParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_fuzzy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ResultParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -342,8 +342,8 @@ against <code class="docutils literal notranslate"><span class="pre">output_type
 </dl>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.ListParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">ListParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value_type=&lt;mpilot.params.Parameter</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ListParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.ListParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">ListParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value_type=&lt;mpilot.params.Parameter</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.ListParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -357,18 +357,18 @@ a list of numbers:</p>
 </dl>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.TupleParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">TupleParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.TupleParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.TupleParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">TupleParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.TupleParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.DataParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">DataParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.DataParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.DataParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">DataParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.DataParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.Parameter</span></code></a></p>
 </dd></dl>
 <dl class="py class">
-<dt id="mpilot.params.DataTypeParameter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">mpilot.params.</span></code><code class="sig-name descname"><span class="pre">DataTypeParameter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valid_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Float':</span> <span class="pre">float,</span> <span class="pre">'Integer':</span> <span class="pre">int}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.DataTypeParameter" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mpilot.params.DataTypeParameter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mpilot.params.</span></span><span class="sig-name descname"><span class="pre">DataTypeParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valid_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'Float':</span> <span class="pre">float,</span> <span class="pre">'Integer':</span> <span class="pre">int}</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.params.DataTypeParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#mpilot.params.StringParameter" title="mpilot.params.StringParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.params.StringParameter</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -431,7 +431,7 @@ data types:</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

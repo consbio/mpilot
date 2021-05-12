@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,9 +48,9 @@
   
   
     <title>EEMS NetCDF I/O &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/material.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -284,8 +284,8 @@
 <p>The EEMS NetCDF I/O library contains <code class="docutils literal notranslate"><span class="pre">EEMSRead</span></code> and <code class="docutils literal notranslate"><span class="pre">EEMSWrite</span></code> used for reading variables from NetCDF datasets and
 writing variables to NetCDF datasets respectively.</p>
 <dl class="py function">
-<dt id="EEMSRead">
-<code class="sig-name descname"><span class="pre">EEMSRead</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MissingVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DataType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEMSRead" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="EEMSRead">
+<span class="sig-name descname"><span class="pre">EEMSRead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MissingVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DataType</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEMSRead" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">EEMSRead</span></code> command reads a single variable from a NetCDF dataset. Multiple <code class="docutils literal notranslate"><span class="pre">EEMSRead</span></code> commands can read
 different variables from the same NetCDF dataset.</p>
 <dl class="field-list simple">
@@ -302,8 +302,8 @@ this value will be masked in the loaded array.</p></li>
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt id="EEMSWrite">
-<code class="sig-name descname"><span class="pre">EEMSWrite</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DimensionFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DimensionFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEMSWrite" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="EEMSWrite">
+<span class="sig-name descname"><span class="pre">EEMSWrite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DimensionFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DimensionFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#EEMSWrite" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">EEMSWrite</span></code> command writes one or more variables to a NetCDF dataset. If the dataset already exists, it will be
 overwritten.</p>
 <dl class="field-list simple">
@@ -367,7 +367,7 @@ a template for the new variable(s).</p></li>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.0.1.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
