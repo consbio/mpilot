@@ -3,7 +3,6 @@ from __future__ import division
 from functools import reduce
 
 import numpy
-import six
 from packaging import version
 
 from mpilot import params
@@ -17,7 +16,7 @@ from mpilot.libraries.eems.exceptions import (
     InvalidTruestOrFalsest,
 )
 from mpilot.libraries.eems.mixins import SameArrayShapeMixin
-from mpilot.utils import insure_fuzzy
+from mpilot.utils import insure_fuzzy, make_masked
 
 FUZZY_MIN = -1
 FUZZY_MAX = 1
@@ -396,7 +395,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, Command):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arrays = [c.result for c in kwargs["InFieldNames"]]
+        arrays = [make_masked(c.result) for c in kwargs["InFieldNames"]]
         truest_or_falsest = kwargs["TruestOrFalsest"]
         number_to_consider = kwargs["NumberToConsider"]
 
@@ -513,7 +512,7 @@ class FuzzyXOr(SameArrayShapeMixin, Command):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arrays = [c.result for c in kwargs["InFieldNames"]]
+        arrays = [make_masked(c.result) for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")
         )

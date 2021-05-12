@@ -97,3 +97,9 @@ def convert_eems2_commands(command_nodes):
             )
 
     return converted
+
+
+def make_masked(arr):
+    if is_masked(arr):
+        return arr
+    return numpy.ma.asarray(arr)

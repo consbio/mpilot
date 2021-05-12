@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 from collections import namedtuple
+from traceback import format_exc
 
 import six
 from six import add_metaclass, raise_from
@@ -135,12 +136,14 @@ class Command(object):
 
             try:
                 self._result = self.execute(
-                    **self.validate_params({arg.name: arg.value for arg in self.arguments})
+                    **self.validate_params(
+                        {arg.name: arg.value for arg in self.arguments}
+                    )
                 )
             except Exception as exc:
                 if isinstance(exc, MPilotError):
                     raise
-                raise_from(UnexpectedError(exc, self.lineno), exc)
+                raise_from(UnexpectedError(exc, format_exc(), self.lineno), exc)
 
             self.is_finished = True
 

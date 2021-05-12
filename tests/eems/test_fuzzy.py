@@ -3,6 +3,7 @@ from __future__ import division
 import numpy
 import pytest
 
+from mpilot.commands import Argument
 from mpilot.exceptions import ResultNotFuzzy, ResultIsFuzzy
 from mpilot.libraries.eems.fuzzy import (
     CvtToFuzzy,
@@ -271,7 +272,7 @@ def test_fuzzy_validation():
     command = create_command_with_result("Result", arr, fuzzy=False)
 
     with pytest.raises(ResultNotFuzzy):
-        FuzzyNot("NotResul").validate_params({'InFieldName': command})
+        FuzzyNot("NotResul").validate_params({"InFieldName": command})
 
 
 def test_nonfuzzy_validation():
@@ -281,4 +282,25 @@ def test_nonfuzzy_validation():
     command = create_command_with_result("Result", arr, fuzzy=True)
 
     with pytest.raises(ResultIsFuzzy):
-        CvtToFuzzy("ConvertResult").validate_params({'InFieldName': command})
+        CvtToFuzzy("ConvertResult").validate_params({"InFieldName": command})
+
+
+def test_unmasked_array():
+    arr_1 = numpy.array([-1, -0.5, 1, 0.5, 0.25])
+    arr_2 = numpy.array([1, 0.75, 0.5, 1, 0.5])
+
+    command_1 = create_command_with_result("Result", arr_1, fuzzy=True)
+    command_2 = create_command_with_result("Result", arr_2, fuzzy=True)
+
+    answer = numpy.ma.array([1.0, 0.75, 1.0, 1.0, 0.5])
+    command = FuzzySelectedUnion(
+        "UnionResult",
+        arguments=[
+            Argument("InFieldNames", [command_1, command_2], 1),
+            Argument("TruestOrFalsest", "Truest", 1),
+            Argument("NumberToConsider", 1, 1),
+        ],
+    )
+    result = command.result
+
+    assert (result == answer).all()
