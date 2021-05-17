@@ -6,6 +6,7 @@ import numpy
 
 from mpilot import params
 from mpilot.commands import Command
+from mpilot.libraries.eems.exceptions import MismatchedWeights
 from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 
 
@@ -75,6 +76,10 @@ class WeightedSum(SameArrayShapeMixin, Command):
     def execute(self, **kwargs):
         weights = kwargs["Weights"]
         arrays = [c.result for c in kwargs["InFieldNames"]]
+
+        if len(weights) != len(arrays):
+            raise MismatchedWeights(len(weights), len(arrays))
+
         self.validate_array_shapes(arrays, lineno=self.lineno)
 
         result = arrays[0] * weights[0]
@@ -193,6 +198,10 @@ class WeightedMean(SameArrayShapeMixin, Command):
     def execute(self, **kwargs):
         weights = kwargs["Weights"]
         arrays = [c.result for c in kwargs["InFieldNames"]]
+
+        if len(weights) != len(arrays):
+            raise MismatchedWeights(len(weights), len(arrays))
+
         self.validate_array_shapes(arrays, lineno=self.lineno)
 
         result = arrays[0] * weights[0]

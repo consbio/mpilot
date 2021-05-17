@@ -6,7 +6,7 @@ from traceback import format_exc
 import six
 from six import add_metaclass, raise_from
 
-from mpilot.libraries.eems.exceptions import UnexpectedError
+from .exceptions import UnexpectedError
 
 if six.PY3:
     from typing import List, Any, Dict

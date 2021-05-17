@@ -271,3 +271,24 @@ class RecursiveModelStructure(ProgramError):
                 "Solution: Double check that command references don't create a loop",
             )
         )
+
+
+@python_2_unicode_compatible
+class UnexpectedError(ProgramError):
+    def __init__(self, exc, fmt="", lineno=None):
+        # type: (Exception, str, int) -> None
+
+        super(UnexpectedError, self).__init__(lineno)
+
+        self.exc = exc
+        self.fmt = fmt
+
+    def __str__(self):
+        return "\n".join(
+            (
+                "Problem: An unexpected error occurred while running the model: {}\n\n{}\n".format(
+                    str(self.exc), self.fmt
+                ),
+                "Solution: Report this issue at https://github.com/consbio/mpilot/issues",
+            )
+        )

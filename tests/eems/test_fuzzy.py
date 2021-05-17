@@ -5,6 +5,7 @@ import pytest
 
 from mpilot.commands import Argument
 from mpilot.exceptions import ResultNotFuzzy, ResultIsFuzzy
+from mpilot.libraries.eems.exceptions import MismatchedWeights
 from mpilot.libraries.eems.fuzzy import (
     CvtToFuzzy,
     CvtToFuzzyZScore,
@@ -158,6 +159,20 @@ def test_fuzzy_weighted_union():
     )
 
     assert (result.round(2) == answer).all()
+
+    with pytest.raises(MismatchedWeights) as ex:
+        FuzzyWeightedUnion("UnionResult").execute(
+            InFieldNames=[command_1, command_2], Weights=[1]
+        )
+    assert ex.value.target_length == 2
+    assert ex.value.length == 1
+
+    with pytest.raises(MismatchedWeights) as ex:
+        FuzzyWeightedUnion("UnionResult").execute(
+            InFieldNames=[command_1, command_2], Weights=[1, 2, 3]
+        )
+    assert ex.value.target_length == 2
+    assert ex.value.length == 3
 
 
 def test_fuzzy_selected_union():

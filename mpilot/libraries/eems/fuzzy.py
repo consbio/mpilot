@@ -14,6 +14,7 @@ from mpilot.libraries.eems.exceptions import (
     DuplicateRawValues,
     InvalidNumberToConsider,
     InvalidTruestOrFalsest,
+    MismatchedWeights,
 )
 from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 from mpilot.utils import insure_fuzzy, make_masked
@@ -365,6 +366,9 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, Command):
     def execute(self, **kwargs):
         arrays = [c.result for c in kwargs["InFieldNames"]]
         weights = kwargs["Weights"]
+
+        if len(arrays) != len(weights):
+            raise MismatchedWeights(len(weights), len(arrays))
 
         self.validate_array_shapes(
             arrays, lineno=self.argument_lines.get("InFieldNames")

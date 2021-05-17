@@ -15,7 +15,8 @@ from mpilot.exceptions import (
     CommandDoesNotExist,
     MPilotError,
 )
-from mpilot.libraries.eems.exceptions import EmptyInputs, UnexpectedError
+from mpilot.exceptions import UnexpectedError
+from mpilot.libraries.eems.exceptions import EmptyInputs
 from mpilot.program import Program, EEMS_NETCDF_LIBRARIES, EEMS_CSV_LIBRARIES
 
 

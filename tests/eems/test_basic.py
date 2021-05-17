@@ -1,6 +1,9 @@
 from __future__ import division
 
+import pytest
 import six
+
+from mpilot.libraries.eems.exceptions import MismatchedWeights
 
 if six.PY3:
     from unittest.mock import mock_open, patch
@@ -93,6 +96,20 @@ def test_weighted_sum():
 
     assert (result == answer).all()
 
+    with pytest.raises(MismatchedWeights) as ex:
+        WeightedSum("SumResult").execute(
+            InFieldNames=[a_command, b_command, c_command], Weights=[0.1, 0.5]
+        )
+    assert ex.value.target_length == 3
+    assert ex.value.length == 2
+
+    with pytest.raises(MismatchedWeights) as ex:
+        WeightedSum("SumResult").execute(
+            InFieldNames=[a_command, b_command, c_command], Weights=[0.1, 0.5, 0.4, 0.1]
+        )
+    assert ex.value.target_length == 3
+    assert ex.value.length == 4
+
 
 def test_multiply():
     a = numpy.array([1, 2, 3])
@@ -178,7 +195,13 @@ def test_weighted_mean():
     b = numpy.array([4, 5, 6])
     c = numpy.array([9, 8, 7])
     weights = [0.7, 0.2, 0.1]
-    answer = numpy.array([14.0 / 3 * 0.7, 1, 16 / 3 * 0.1])
+    answer = numpy.array(
+        [
+            1 * 0.7 + 4 * 0.2 + 9 * 0.1,
+            2 * 0.7 + 5 * 0.2 + 8 * 0.1,
+            3 * 0.7 + 6 * 0.2 + 7 * 0.1,
+        ]
+    )
 
     a_command = create_command_with_result("AResult", a)
     b_command = create_command_with_result("BResult", b)
@@ -188,7 +211,21 @@ def test_weighted_mean():
         InFieldNames=[a_command, b_command, c_command], Weights=weights
     )
 
-    return (result == answer).all()
+    assert (result.round(2) == answer.round(2)).all()
+
+    with pytest.raises(MismatchedWeights) as ex:
+        WeightedMean("MeanResult").execute(
+            InFieldNames=[a_command, b_command, c_command], Weights=[0.7, 0.2]
+        )
+    assert ex.value.target_length == 3
+    assert ex.value.length == 2
+
+    with pytest.raises(MismatchedWeights) as ex:
+        WeightedMean("MeanResult").execute(
+            InFieldNames=[a_command, b_command, c_command], Weights=[0.7, 0.2, 0.1, 0.7]
+        )
+    assert ex.value.target_length == 3
+    assert ex.value.length == 4
 
 
 def test_normalize():

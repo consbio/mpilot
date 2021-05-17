@@ -173,21 +173,21 @@ class InvalidTruestOrFalsest(ProgramError):
 
 
 @python_2_unicode_compatible
-class UnexpectedError(ProgramError):
-    def __init__(self, exc, fmt="", lineno=None):
-        # type: (Exception, str, int) -> None
+class MismatchedWeights(ProgramError):
+    def __init__(self, length, target_length, lineno=None):
+        # type: (int, int, int) -> None
 
-        super(UnexpectedError, self).__init__(lineno)
+        super(MismatchedWeights, self).__init__(lineno)
 
-        self.exc = exc
-        self.fmt = fmt
+        self.length = length
+        self.target_length = target_length
 
     def __str__(self):
         return "\n".join(
             (
-                "Problem: An unexpected error occurred while running the model: {}\n\n{}\n".format(
-                    str(self.exc), self.fmt
+                "Problem: The number of weights must match the number of inputs, but there are {} inputs and {} weights.".format(
+                    self.target_length, self.length
                 ),
-                "Solution: Report this issue at https://github.com/consbio/mpilot/issues",
+                "Solution: Make sure that there is one weight for each input.",
             )
         )
