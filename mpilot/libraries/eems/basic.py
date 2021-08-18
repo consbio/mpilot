@@ -239,7 +239,7 @@ class PrintVars(Command):
     display_name = "Print variable(s) to screen or file"
     inputs = {
         "InFieldNames": params.ListParameter(params.ResultParameter()),
-        "OutFileName": params.PathParameter(required=False),
+        "OutFileName": params.PathParameter(must_exist=False, required=False),
     }
     output = params.BooleanParameter()
 
