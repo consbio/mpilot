@@ -48,9 +48,14 @@ class EEMSRead(Command):
                 )
 
             values = []
-            for row in reader:
+            for i, row in enumerate(reader):
                 if row:
-                    values.append(float(row[idx]))
+                    try:
+                        values.append(float(row[idx]))
+                    except ValueError:
+                        raise InvalidDataFile(
+                            f'The data file contains an invalid value in the field "{field_name}" on line {i + 2}.',
+                            solution="Verify that the data file doesn't contain any empty or NULL values, and that all values are numeric.")
 
         fill_value = kwargs.get("MissingVal")
         data_type = kwargs.get("DataType", float)

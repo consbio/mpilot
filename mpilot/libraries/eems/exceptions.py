@@ -29,16 +29,17 @@ class EmptyDataFile(ProgramError):
 
 @python_2_unicode_compatible
 class InvalidDataFile(ProgramError):
-    def __init__(self, problem, lineno=None):
-        # type: (str, int) -> None
+    def __init__(self, problem, solution=None, lineno=None):
+        # type: (str, str, int) -> None
 
         super(InvalidDataFile, self).__init__(lineno)
 
         self.problem = problem
+        self.solution = solution if solution is not None else 'Solution: Double check the data file.'
 
     def __str__(self):
         return "\n".join(
-            ("Problem" + self.problem, "Solution: Double check the data file.")
+            ("Problem: " + self.problem, "Solution: " + self.solution)
         )
 
 
