@@ -11,7 +11,7 @@ from mpilot.libraries.eems.mixins import SameArrayShapeMixin
 
 
 class EEMSRead(Command):
-    """ Reads a variable from a file """
+    """Reads a variable from a file"""
 
     display_name = "Read"
     inputs = {
@@ -30,7 +30,7 @@ class EEMSRead(Command):
         path = kwargs["InFileName"]
 
         with open(path, "r") as f:
-            reader = csv.reader(f)
+            reader = csv.reader(f.readlines())
 
             try:
                 headers = next(reader)
@@ -54,8 +54,11 @@ class EEMSRead(Command):
                         values.append(float(row[idx]))
                     except ValueError:
                         raise InvalidDataFile(
-                            f'The data file contains an invalid value in the field "{field_name}" on line {i + 2}.',
-                            solution="Verify that the data file doesn't contain any empty or NULL values, and that all values are numeric.")
+                            'The data file contains an invalid value in the field "{}" on line {}.'.format(
+                                field_name, i + 2
+                            ),
+                            solution="Verify that the data file doesn't contain any empty or NULL values, and that all values are numeric.",
+                        )
 
         fill_value = kwargs.get("MissingVal")
         data_type = kwargs.get("DataType", float)

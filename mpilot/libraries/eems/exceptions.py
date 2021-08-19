@@ -35,12 +35,14 @@ class InvalidDataFile(ProgramError):
         super(InvalidDataFile, self).__init__(lineno)
 
         self.problem = problem
-        self.solution = solution if solution is not None else 'Solution: Double check the data file.'
+        self.solution = (
+            solution
+            if solution is not None
+            else "Solution: Double check the data file."
+        )
 
     def __str__(self):
-        return "\n".join(
-            ("Problem: " + self.problem, "Solution: " + self.solution)
-        )
+        return "\n".join(("Problem: " + self.problem, "Solution: " + self.solution))
 
 
 @python_2_unicode_compatible
