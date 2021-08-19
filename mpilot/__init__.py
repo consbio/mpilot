@@ -1,3 +1,3 @@
 from .libraries import *
 
-__version__ = '1.0.0b20'
+__version__ = '1.0.0b21'
