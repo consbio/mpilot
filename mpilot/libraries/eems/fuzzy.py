@@ -24,7 +24,7 @@ FUZZY_MAX = 1
 
 
 class CvtToFuzzy(Command):
-    """ Converts input values into fuzzy values using linear interpolation """
+    """Converts input values into fuzzy values using linear interpolation"""
 
     is_fuzzy = True
 
@@ -70,7 +70,7 @@ class CvtToFuzzy(Command):
 
 
 class CvtToFuzzyZScore(Command):
-    """ Converts input values into fuzzy values using linear interpolation based on Z Score """
+    """Converts input values into fuzzy values using linear interpolation based on Z Score"""
 
     is_fuzzy = True
 
@@ -105,7 +105,7 @@ class CvtToFuzzyZScore(Command):
 
 
 class CvtToFuzzyCat(Command):
-    """ Converts integer input values into fuzzy based on user specification """
+    """Converts integer input values into fuzzy based on user specification"""
 
     is_fuzzy = True
 
@@ -141,7 +141,7 @@ class CvtToFuzzyCat(Command):
 
 
 class CvtToFuzzyCurve(Command):
-    """ Converts input values into fuzzy based on user-defined curve """
+    """Converts input values into fuzzy based on user-defined curve"""
 
     is_fuzzy = True
 
@@ -196,7 +196,7 @@ class CvtToFuzzyCurve(Command):
 
 
 class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
-    """ Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data """
+    """Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data"""
 
     is_fuzzy = True
 
@@ -225,15 +225,25 @@ class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
         high_mean = above_mean.compressed().mean()
         low_mean = below_mean.compressed().mean()
 
+        raw_values = [low_value, low_mean, mean_value, high_mean, high_value]
+        fuzzy_values = kwargs["FuzzyValues"][:]
+
+        if raw_values[-1] == raw_values[-2]:
+            del raw_values[-2]
+            del fuzzy_values[-2]
+        if raw_values[0] == raw_values[1]:
+            del raw_values[1]
+            del fuzzy_values[1]
+
         return super(CvtToFuzzyMeanToMid, self).execute(
             InFieldName=kwargs["InFieldName"],
-            RawValues=[low_value, low_mean, mean_value, high_mean, high_value],
-            FuzzyValues=kwargs["FuzzyValues"],
+            RawValues=raw_values,
+            FuzzyValues=fuzzy_values,
         )
 
 
 class CvtToFuzzyCurveZScore(Command):
-    """ Converts input values into fuzzy based on user-defined curve """
+    """Converts input values into fuzzy based on user-defined curve"""
 
     is_fuzzy = True
 
@@ -324,7 +334,7 @@ class CvtToBinary(Command):
 
 
 class FuzzyUnion(SameArrayShapeMixin, Command):
-    """ Takes the fuzzy Union (mean) of fuzzy input variables """
+    """Takes the fuzzy Union (mean) of fuzzy input variables"""
 
     is_fuzzy = True
 
@@ -350,7 +360,7 @@ class FuzzyUnion(SameArrayShapeMixin, Command):
 
 
 class FuzzyWeightedUnion(SameArrayShapeMixin, Command):
-    """ Takes the weighted fuzzy Union (mean) of fuzzy input variables """
+    """Takes the weighted fuzzy Union (mean) of fuzzy input variables"""
 
     is_fuzzy = True
 
@@ -384,7 +394,7 @@ class FuzzyWeightedUnion(SameArrayShapeMixin, Command):
 
 
 class FuzzySelectedUnion(SameArrayShapeMixin, Command):
-    """ Takes the fuzzy Union (mean) of N Truest or Falsest fuzzy input variables """
+    """Takes the fuzzy Union (mean) of N Truest or Falsest fuzzy input variables"""
 
     is_fuzzy = True
 
@@ -455,7 +465,7 @@ class FuzzySelectedUnion(SameArrayShapeMixin, Command):
 
 
 class FuzzyOr(SameArrayShapeMixin, Command):
-    """ Takes the fuzzy Or (maximum) of fuzzy input variables """
+    """Takes the fuzzy Or (maximum) of fuzzy input variables"""
 
     is_fuzzy = True
 
@@ -479,7 +489,7 @@ class FuzzyOr(SameArrayShapeMixin, Command):
 
 
 class FuzzyAnd(SameArrayShapeMixin, Command):
-    """ Takes the fuzzy And (minimum) of fuzzy input variables """
+    """Takes the fuzzy And (minimum) of fuzzy input variables"""
 
     is_fuzzy = True
 
@@ -503,7 +513,7 @@ class FuzzyAnd(SameArrayShapeMixin, Command):
 
 
 class FuzzyXOr(SameArrayShapeMixin, Command):
-    """ Computes Fuzzy XOr: Truest - (Truest - 2nd Truest) * (2nd Truest - full False)/(Truest - full False) """
+    """Computes Fuzzy XOr: Truest - (Truest - 2nd Truest) * (2nd Truest - full False)/(Truest - full False)"""
 
     is_fuzzy = True
 
@@ -564,7 +574,7 @@ class FuzzyXOr(SameArrayShapeMixin, Command):
 
 
 class FuzzyNot(Command):
-    """ Reverses the sign of the input fuzzy values from positive to negative or negative to positive """
+    """Reverses the sign of the input fuzzy values from positive to negative or negative to positive"""
 
     is_fuzzy = True
 
@@ -583,7 +593,7 @@ class FuzzyNot(Command):
 
 
 class CvtFromFuzzy(Command):
-    """ Converts input fuzzy values into non-fuzzy values using linear interpolation """
+    """Converts input fuzzy values into non-fuzzy values using linear interpolation"""
 
     is_fuzzy = False
 

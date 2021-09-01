@@ -106,6 +106,19 @@ def test_mean_to_mid():
     assert (result.round(2) == answer).all()
 
 
+def test_mean_to_mid_with_uneven_distribution():
+    """Tests that the CvtToFuzzyMeanToMid command works when the largest raw value is much larger than other values"""
+
+    arr = numpy.ma.array([0, 25, 88, 999], dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array([-1.0, -0.47, -0.16, 1.0], dtype=float)
+    result = CvtToFuzzyMeanToMid("ConvertResult").execute(
+        InFieldName=command, IgnoreZeros=False, FuzzyValues=[-1.0, -0.2, 0.0, 0.4, 1.0]
+    )
+
+    assert (result.round(2) == answer).all()
+
+
 def test_convert_to_fuzzy_curve_z_score():
     arr = numpy.ma.arange(10, dtype=float)
     command = create_command_with_result("Result", arr)
