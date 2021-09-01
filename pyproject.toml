@@ -4,7 +4,7 @@ target-version = ['py38']
 
 [tool.poetry]
 name = "mpilot"
-version = "1.0.0b21"
+version = "1.0.0"
 description = "MPilot is a plugin-based, environmental modeling framework"
 authors = ["Conservation Biology Institute"]
 license = "MIT"
