@@ -1,4 +1,4 @@
-# MPilot (beta)
+# MPilot
 MPilot is a plugin-based, environmental modeling framework based on a bottom-up, many-to-many workflow that can be 
 represented by a directed (not iterating) graph. MPilot is descended from the Environmental Evaluation Modeling System 
 (EEMS), which was initially a fuzzy logic modeling package based on EMDS.
