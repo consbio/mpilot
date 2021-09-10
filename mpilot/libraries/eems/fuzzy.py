@@ -1,5 +1,6 @@
 from __future__ import division
 
+import copy
 from functools import reduce
 
 import numpy
@@ -7,6 +8,13 @@ from packaging import version
 
 from mpilot import params
 from mpilot.commands import Command
+from mpilot.libraries.eems.basic import (
+    NormalizeZScore,
+    NormalizeCat,
+    NormalizeCurve,
+    NormalizeMeanToMid,
+    NormalizeCurveZScore,
+)
 from mpilot.libraries.eems.exceptions import (
     InvalidDirection,
     InvalidThresholds,
@@ -69,7 +77,7 @@ class CvtToFuzzy(Command):
         return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
 
-class CvtToFuzzyZScore(Command):
+class CvtToFuzzyZScore(NormalizeZScore):
     """Converts input values into fuzzy values using linear interpolation based on Z Score"""
 
     is_fuzzy = True
@@ -77,34 +85,28 @@ class CvtToFuzzyZScore(Command):
     display_name = "Convert to Fuzzy by Z Score"
     inputs = {
         "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
-        "TrueThresholdZScore": params.NumberParameter(),
-        "FalseThresholdZScore": params.NumberParameter(),
+        "TrueThresholdZScore": params.NumberParameter(required=False),
+        "FalseThresholdZScore": params.NumberParameter(required=False),
     }
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arr = kwargs["InFieldName"].result
-        true_threshold = float(kwargs["TrueThresholdZScore"])
-        false_threshold = float(kwargs["FalseThresholdZScore"])
-
-        raw_mean = numpy.ma.mean(arr)
-        raw_std = numpy.ma.std(arr)
-
-        x1 = raw_mean + raw_std * true_threshold
-        x2 = raw_mean + raw_std * false_threshold
-        y1 = FUZZY_MAX
-        y2 = FUZZY_MIN
-
-        result = arr.copy()
-        result -= x1
-        result *= y2 - y1
-        result /= x2 - x1
-        result += y1
-
-        return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
+        return insure_fuzzy(
+            super(CvtToFuzzyZScore, self).execute(
+                **{
+                    "TrueThresholdZScore": FUZZY_MAX,
+                    "FalseThresholdZScore": FUZZY_MIN,
+                    **kwargs,
+                },
+                StartVal=FUZZY_MIN,
+                EndVal=FUZZY_MAX,
+            ),
+            FUZZY_MIN,
+            FUZZY_MAX,
+        )
 
 
-class CvtToFuzzyCat(Command):
+class CvtToFuzzyCat(NormalizeCat):
     """Converts integer input values into fuzzy based on user specification"""
 
     is_fuzzy = True
@@ -119,28 +121,22 @@ class CvtToFuzzyCat(Command):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arr = kwargs["InFieldName"].result
-        raw_values = kwargs["RawValues"]
-        fuzzy_values = kwargs["FuzzyValues"]
-        default_fuzzy_value = kwargs["DefaultFuzzyValue"]
+        kwargs = copy.copy(kwargs)
+        kwargs["NormalValues"] = kwargs["FuzzyValues"]
+        kwargs["DefaultNormalValue"] = kwargs["DefaultFuzzyValue"]
+        del kwargs["FuzzyValues"]
+        del kwargs["DefaultFuzzyValue"]
 
-        if len(raw_values) != len(fuzzy_values):
-            raise MixedArrayLengths(
-                len(raw_values), len(fuzzy_values), lineno=self.lineno
-            )
-
-        if len(raw_values) != len(set(raw_values)):
-            raise DuplicateRawValues(lineno=self.argument_lines.get("RawValues"))
-
-        result = numpy.ma.array(numpy.full(arr.shape, default_fuzzy_value, dtype=float))
-
-        for raw, fuzzy in zip(raw_values, fuzzy_values):
-            result[arr.data == raw] = fuzzy
-
-        return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
+        return insure_fuzzy(
+            super(CvtToFuzzyCat, self).execute(
+                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+            ),
+            FUZZY_MIN,
+            FUZZY_MAX,
+        )
 
 
-class CvtToFuzzyCurve(Command):
+class CvtToFuzzyCurve(NormalizeCurve):
     """Converts input values into fuzzy based on user-defined curve"""
 
     is_fuzzy = True
@@ -154,48 +150,20 @@ class CvtToFuzzyCurve(Command):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arr = kwargs["InFieldName"].result
-        raw_values = kwargs["RawValues"]
-        fuzzy_values = kwargs["FuzzyValues"]
+        kwargs = copy.copy(kwargs)
+        kwargs["NormalValues"] = kwargs["FuzzyValues"]
+        del kwargs["FuzzyValues"]
 
-        if len(raw_values) != len(fuzzy_values):
-            raise MixedArrayLengths(
-                len(raw_values), len(fuzzy_values), lineno=self.lineno
-            )
-
-        if len(raw_values) != len(set(raw_values)):
-            raise DuplicateRawValues(lineno=self.argument_lines.get("RawValues"))
-
-        result = numpy.ma.empty(arr.shape, dtype=float)
-        value_pairs = sorted(zip(raw_values, fuzzy_values))
-
-        # For raw values less than the lowest raw value, set them to the corresponding fuzzy value
-        result[arr <= value_pairs[0][0]] = value_pairs[0][1]
-
-        # Assign fuzzy values for each of the line segments that approximate the curve
-        for i, (raw, fuzzy) in list(enumerate(value_pairs))[1:]:
-            prev_raw = value_pairs[i - 1][0]
-            prev_fuzzy = value_pairs[i - 1][1]
-
-            m = (fuzzy - prev_fuzzy) / (raw - prev_raw)
-            b = prev_fuzzy - m * prev_raw
-
-            where_idx = numpy.where(
-                numpy.logical_and(arr.data > prev_raw, arr.data <= raw)
-            )
-
-            result[where_idx] = arr.data[where_idx]
-            result[where_idx] *= m
-            result[where_idx] += b
-
-        # For raw values greater than the highest raw value, set them to the corresponding fuzzy value
-        result[arr > value_pairs[-1][0]] = value_pairs[-1][1]
-        result.mask = arr.mask.copy()
-
-        return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
+        return insure_fuzzy(
+            super(CvtToFuzzyCurve, self).execute(
+                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+            ),
+            FUZZY_MIN,
+            FUZZY_MAX,
+        )
 
 
-class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
+class CvtToFuzzyMeanToMid(NormalizeMeanToMid):
     """Uses "CvtToFuzzyCurve" to create a non-linear transformation that is a good match for the input data"""
 
     is_fuzzy = True
@@ -209,40 +177,20 @@ class CvtToFuzzyMeanToMid(CvtToFuzzyCurve):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arr = kwargs["InFieldName"].result
-        ignore_zeros = kwargs["IgnoreZeros"]
+        kwargs = copy.copy(kwargs)
+        kwargs["NormalValues"] = kwargs["FuzzyValues"]
+        del kwargs["FuzzyValues"]
 
-        low_value = arr.min()
-        high_value = arr.max()
-
-        if ignore_zeros:
-            arr = arr[arr != 0]
-
-        mean_value = arr.mean()
-        below_mean = arr[arr <= mean_value]
-        above_mean = arr[arr > mean_value]
-
-        high_mean = above_mean.compressed().mean()
-        low_mean = below_mean.compressed().mean()
-
-        raw_values = [low_value, low_mean, mean_value, high_mean, high_value]
-        fuzzy_values = kwargs["FuzzyValues"][:]
-
-        if raw_values[-1] == raw_values[-2]:
-            del raw_values[-2]
-            del fuzzy_values[-2]
-        if raw_values[0] == raw_values[1]:
-            del raw_values[1]
-            del fuzzy_values[1]
-
-        return super(CvtToFuzzyMeanToMid, self).execute(
-            InFieldName=kwargs["InFieldName"],
-            RawValues=raw_values,
-            FuzzyValues=fuzzy_values,
+        return insure_fuzzy(
+            super(CvtToFuzzyMeanToMid, self).execute(
+                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+            ),
+            FUZZY_MIN,
+            FUZZY_MAX,
         )
 
 
-class CvtToFuzzyCurveZScore(Command):
+class CvtToFuzzyCurveZScore(NormalizeCurveZScore):
     """Converts input values into fuzzy based on user-defined curve"""
 
     is_fuzzy = True
@@ -256,46 +204,17 @@ class CvtToFuzzyCurveZScore(Command):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
-        arr = kwargs["InFieldName"].result
-        z_score_values = kwargs["ZScoreValues"]
-        fuzzy_values = kwargs["FuzzyValues"]
+        kwargs = copy.copy(kwargs)
+        kwargs["NormalValues"] = kwargs["FuzzyValues"]
+        del kwargs["FuzzyValues"]
 
-        if len(z_score_values) != len(fuzzy_values):
-            raise MixedArrayLengths(
-                len(z_score_values), len(fuzzy_values), lineno=self.lineno
-            )
-
-        raw_mean = numpy.ma.mean(arr)
-        raw_std = numpy.ma.std(arr)
-
-        raw_values = [raw_mean + value * raw_std for value in z_score_values]
-
-        result = numpy.ma.empty(arr.shape, dtype=float)
-        value_pairs = sorted(zip(raw_values, fuzzy_values))
-
-        # For raw values less than the lowest raw value, set them to the corresponding fuzzy value
-        result[arr <= value_pairs[0][0]] = value_pairs[0][1]
-
-        # Assign fuzzy values for each of the line segments that approximate the curve
-        for i, (raw, fuzzy) in list(enumerate(value_pairs))[1:]:
-            prev_raw = value_pairs[i - 1][0]
-            prev_fuzzy = value_pairs[i - 1][1]
-
-            m = (fuzzy - prev_fuzzy) / (raw - prev_raw)
-            b = prev_fuzzy - m * prev_raw
-
-            where_idx = numpy.where(
-                numpy.logical_and(arr.data > prev_raw, arr.data <= raw)
-            )
-            result[where_idx] = arr.data[where_idx]
-            result[where_idx] *= m
-            result[where_idx] += b
-
-        # For raw values greater than the highest raw value, set them to the corresponding fuzzy value
-        result[arr > value_pairs[-1][0]] = value_pairs[-1][1]
-        result.mask = arr.mask.copy()
-
-        return insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
+        return insure_fuzzy(
+            super(CvtToFuzzyCurveZScore, self).execute(
+                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+            ),
+            FUZZY_MIN,
+            FUZZY_MAX,
+        )
 
 
 class CvtToBinary(Command):

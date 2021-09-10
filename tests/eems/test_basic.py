@@ -25,6 +25,11 @@ from mpilot.libraries.eems.basic import (
     WeightedMean,
     Normalize,
     PrintVars,
+    NormalizeZScore,
+    NormalizeCat,
+    NormalizeCurve,
+    NormalizeMeanToMid,
+    NormalizeCurveZScore,
 )
 from mpilot.parser.parser import ArgumentNode
 from ..utils import create_command_with_result
@@ -235,6 +240,118 @@ def test_normalize():
     command = create_command_with_result("Result", arr)
 
     result = Normalize("NormResult").execute(InFieldName=command)
+
+    assert (result == answer).all()
+
+
+def test_normalize_z_score():
+    arr = numpy.ma.arange(10, dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array(
+        [-1.0, -1.0, -0.87, -0.52, -0.17, 0.17, 0.52, 0.87, 1.0, 1.0]
+    )
+    result = NormalizeZScore("NormalizeResult").execute(
+        InFieldName=command,
+        TrueThresholdZScore=1,
+        FalseThresholdZScore=-1,
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result.round(2) == answer).all()
+
+
+def test_normalize_cat():
+    arr = numpy.ma.array([1, 1, 5, 4, 4, 8, 8, 9], dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array([-1.0, -1.0, 0.1, 0, 0, 0.9, 0.9, 1.0], dtype=float)
+    result = NormalizeCat("ConvertResult").execute(
+        InFieldName=command,
+        RawValues=[1, 4, 5, 8, 9],
+        NormalValues=[-1.0, 0.0, 0.1, 0.9, 1.0],
+        DefaultNormalValue=0,
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result == answer).all()
+
+    result = NormalizeCat("ConvertResult").execute(
+        InFieldName=command,
+        RawValues=[1, 4, 8, 9],
+        NormalValues=[-1.0, 0.0, 0.9, 1.0],
+        DefaultNormalValue=0.1,
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result == answer).all()
+
+
+def test_normalize_curve():
+    arr = numpy.ma.arange(10, dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array(
+        [-1.0, -1.0, -0.5, 0.0, 0.17, 0.33, 0.5, 0.67, 0.83, 1.0], dtype=float
+    )
+    result = NormalizeCurve("ConvertResult").execute(
+        InFieldName=command,
+        RawValues=[1.0, 3.0, 9.0],
+        NormalValues=[-1.0, 0.0, 1.0],
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result.round(2) == answer).all()
+
+
+def test_normalize_mean_to_mid():
+    arr = numpy.ma.arange(10, dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array(
+        [-1.0, -0.6, -0.2, -0.12, -0.04, 0.08, 0.24, 0.4, 0.7, 1.0], dtype=float
+    )
+    result = NormalizeMeanToMid("ConvertResult").execute(
+        InFieldName=command,
+        IgnoreZeros=False,
+        NormalValues=[-1.0, -0.2, 0.0, 0.4, 1.0],
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result.round(2) == answer).all()
+
+
+def test_normalize_mean_to_mid_with_uneven_distribution():
+    """Tests that the NormalizeMeanToMid command works when the largest raw value is much larger than other values"""
+
+    arr = numpy.ma.array([0, 25, 88, 999], dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array([-1.0, -0.47, -0.16, 1.0], dtype=float)
+    result = NormalizeMeanToMid("ConvertResult").execute(
+        InFieldName=command,
+        IgnoreZeros=False,
+        NormalValues=[-1.0, -0.2, 0.0, 0.4, 1.0],
+        StartVal=-1,
+        EndVal=1,
+    )
+
+    assert (result.round(2) == answer).all()
+
+
+def test_normalize_curve_z_score():
+    arr = numpy.ma.arange(10, dtype=float)
+    command = create_command_with_result("Result", arr)
+    answer = numpy.ma.array(
+        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], dtype=float
+    )
+    result = NormalizeCurveZScore("ConvertResult").execute(
+        InFieldName=command,
+        ZScoreValues=[-0.1, 0.0, 0.1],
+        NormalValues=[1.0, 5.0, 9.0],
+        StartVal=-1,
+        EndVal=1,
+    )
 
     assert (result == answer).all()
 
