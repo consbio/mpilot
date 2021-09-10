@@ -416,6 +416,93 @@ be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal
 </dl>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="NormalizeZScore">
+<span class="sig-name descname"><span class="pre">NormalizeZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeZScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts input values into normalized values using linear interpolation based on Z Score.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize</p></li>
+<li><p><strong>TrueThresholdZScore</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The normalized “True” value. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+<li><p><strong>FalseThresholdZScore</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The normalized “False” value. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>StartVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The lowest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>EndVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The highest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NormalizeCat">
+<span class="sig-name descname"><span class="pre">NormalizeCat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultNormalValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts integer input values into normalized values based on user specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to normalize.</p></li>
+<li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
+<li><p><strong>NormalValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of normalized values that will be used to
+normalize values matching those in <code class="docutils literal notranslate"><span class="pre">RawValues</span></code>. The <code class="docutils literal notranslate"><span class="pre">RawValues</span></code> and <code class="docutils literal notranslate"><span class="pre">NormalValues</span></code> lists must be the same
+size.</p></li>
+<li><p><strong>DefaultNormalValue</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) The default normal value used to convert any input value not
+specified in <code class="docutils literal notranslate"><span class="pre">RawValues</span></code>.</p></li>
+<li><p><strong>StartVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The lowest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>EndVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The highest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NormalizeCurve">
+<span class="sig-name descname"><span class="pre">NormalizeCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts input values into normalized values based on user-defined curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
+<li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
+<li><p><strong>NormalValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of normalized values that will be used to map
+values matching those in <code class="docutils literal notranslate"><span class="pre">RawValues</span></code> to normalized ones. The <code class="docutils literal notranslate"><span class="pre">RawValues</span></code> and <code class="docutils literal notranslate"><span class="pre">NormalValues</span></code> lists must be the
+same size.</p></li>
+<li><p><strong>StartVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The lowest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>EndVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The highest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NormalizeMeanToMid">
+<span class="sig-name descname"><span class="pre">NormalizeMeanToMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IgnoreZeros</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeMeanToMid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses “NormalizeCurve” to create a non-linear transformation that is a good match for the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
+<li><p><strong>IgnoreZeros</strong> – (<a class="reference internal" href="index.html#param-boolean"><span class="std std-ref">Boolean</span></a>) Ignore <code class="docutils literal notranslate"><span class="pre">0</span></code> values when determining the mean.</p></li>
+<li><p><strong>NormalValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of normalized values that will be used to map
+input values to normalized ones.</p></li>
+<li><p><strong>StartVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The lowest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>EndVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The highest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="NormalizeCurveZScore">
+<span class="sig-name descname"><span class="pre">NormalizeCurveZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ZScoreValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurveZScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts input values into narmalized values based on user-defined curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
+<li><p><strong>ZScoreValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of z scores that will be used to map input
+values to normalized ones.</p></li>
+<li><p><strong>NormalValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of normalized values that will be used to map
+values to normalized ones. The <code class="docutils literal notranslate"><span class="pre">ZScoreValues</span></code> and <code class="docutils literal notranslate"><span class="pre">NormalValues</span></code> lists must be the same size.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="PrintVars">
 <span class="sig-name descname"><span class="pre">PrintVars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PrintVars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print or write results for debugging purposes. If <code class="docutils literal notranslate"><span class="pre">OutFileName</span></code> is provided, the results will be written to that
