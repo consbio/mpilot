@@ -91,16 +91,16 @@ class CvtToFuzzyZScore(NormalizeZScore):
     output = params.DataParameter()
 
     def execute(self, **kwargs):
+        updated_kwargs = {
+            "TrueThresholdZScore": FUZZY_MAX,
+            "FalseThresholdZScore": FUZZY_MIN,
+            "StartVal": FUZZY_MIN,
+            "EndVal": FUZZY_MAX,
+        }
+        updated_kwargs.update(kwargs)
+
         return insure_fuzzy(
-            super(CvtToFuzzyZScore, self).execute(
-                **{
-                    "TrueThresholdZScore": FUZZY_MAX,
-                    "FalseThresholdZScore": FUZZY_MIN,
-                    **kwargs,
-                },
-                StartVal=FUZZY_MIN,
-                EndVal=FUZZY_MAX,
-            ),
+            super(CvtToFuzzyZScore, self).execute(**updated_kwargs),
             FUZZY_MIN,
             FUZZY_MAX,
         )
@@ -129,7 +129,7 @@ class CvtToFuzzyCat(NormalizeCat):
 
         return insure_fuzzy(
             super(CvtToFuzzyCat, self).execute(
-                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+                StartVal=FUZZY_MIN, EndVal=FUZZY_MAX, **kwargs
             ),
             FUZZY_MIN,
             FUZZY_MAX,
@@ -156,7 +156,7 @@ class CvtToFuzzyCurve(NormalizeCurve):
 
         return insure_fuzzy(
             super(CvtToFuzzyCurve, self).execute(
-                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+                StartVal=FUZZY_MIN, EndVal=FUZZY_MAX, **kwargs
             ),
             FUZZY_MIN,
             FUZZY_MAX,
@@ -183,7 +183,7 @@ class CvtToFuzzyMeanToMid(NormalizeMeanToMid):
 
         return insure_fuzzy(
             super(CvtToFuzzyMeanToMid, self).execute(
-                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+                StartVal=FUZZY_MIN, EndVal=FUZZY_MAX, **kwargs
             ),
             FUZZY_MIN,
             FUZZY_MAX,
@@ -210,7 +210,7 @@ class CvtToFuzzyCurveZScore(NormalizeCurveZScore):
 
         return insure_fuzzy(
             super(CvtToFuzzyCurveZScore, self).execute(
-                **kwargs, StartVal=FUZZY_MIN, EndVal=FUZZY_MAX
+                StartVal=FUZZY_MIN, EndVal=FUZZY_MAX, **kwargs
             ),
             FUZZY_MIN,
             FUZZY_MAX,

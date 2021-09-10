@@ -1,5 +1,6 @@
 from __future__ import division
 
+import copy
 from functools import reduce
 
 import numpy
@@ -306,7 +307,9 @@ class NormalizeCat(Command):
         if len(raw_values) != len(set(raw_values)):
             raise DuplicateRawValues(lineno=self.argument_lines.get("RawValues"))
 
-        result = numpy.ma.array(numpy.full(arr.shape, default_normal_value, dtype=float))
+        result = numpy.ma.array(
+            numpy.full(arr.shape, default_normal_value, dtype=float)
+        )
 
         for raw, normal in zip(raw_values, normal_values):
             result[arr.data == raw] = normal
@@ -413,9 +416,11 @@ class NormalizeMeanToMid(NormalizeCurve):
             del raw_values[1]
             del normal_values[1]
 
-        return super(NormalizeMeanToMid, self).execute(
-            **{**kwargs, "RawValues": raw_values, "NormalValues": normal_values}
-        )
+        kwargs = copy.copy(kwargs)
+        kwargs["RawValues"] = raw_values
+        kwargs["NormalValues"] = normal_values
+
+        return super(NormalizeMeanToMid, self).execute(**kwargs)
 
 
 class NormalizeCurveZScore(Command):
