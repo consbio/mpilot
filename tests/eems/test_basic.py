@@ -2,6 +2,7 @@ from __future__ import division
 
 import pytest
 import six
+from numpy.ma import is_masked, MaskedArray
 
 from mpilot.libraries.eems.exceptions import MismatchedWeights
 
@@ -70,9 +71,9 @@ def test_a_minus_b():
 
 
 def test_sum():
-    a = numpy.array([1, 2, 3])
-    b = numpy.array([4, 5, 6])
-    c = numpy.array([9, 8, 7])
+    a = numpy.ma.masked_array([1, 2, 3])
+    b = numpy.ma.masked_array([4, 5, 6])
+    c = numpy.ma.masked_array([9, 8, 7])
     answer = numpy.array([14, 15, 16])
 
     a_command = create_command_with_result("AResult", a)
@@ -81,6 +82,7 @@ def test_sum():
 
     result = Sum("SumResult").execute(InFieldNames=[a_command, b_command, c_command])
 
+    assert isinstance(result, MaskedArray)
     assert (result == answer).all()
 
 
