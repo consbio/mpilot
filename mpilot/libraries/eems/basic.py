@@ -4,6 +4,7 @@ import copy
 from functools import reduce
 
 import numpy
+import six
 
 from mpilot import params
 from mpilot.commands import Command
@@ -60,7 +61,11 @@ class Sum(SameArrayShapeMixin, Command):
         arrays = [c.result for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(arrays, lineno=self.lineno)
 
-        result = numpy.copy(arrays[0], subok=True)
+        if six.PY3:
+            result = numpy.copy(arrays[0], subok=True)
+        else:
+            result = arrays[0][:]
+
         for arr in arrays[1:]:
             result += arr
 
