@@ -286,8 +286,6 @@ class NormalizeCat(Command):
         "RawValues": params.ListParameter(params.NumberParameter()),
         "NormalValues": params.ListParameter(params.NumberParameter()),
         "DefaultNormalValue": params.NumberParameter(),
-        "StartVal": params.NumberParameter(required=False),
-        "EndVal": params.NumberParameter(required=False),
     }
     output = params.DataParameter()
 
@@ -296,8 +294,6 @@ class NormalizeCat(Command):
         raw_values = kwargs["RawValues"]
         normal_values = kwargs["NormalValues"]
         default_normal_value = kwargs["DefaultNormalValue"]
-        start = kwargs.get("StartVal", 0)
-        end = kwargs.get("EndVal", 1)
 
         if len(raw_values) != len(normal_values):
             raise MixedArrayLengths(
@@ -314,8 +310,7 @@ class NormalizeCat(Command):
         for raw, normal in zip(raw_values, normal_values):
             result[arr.data == raw] = normal
 
-        # despite the name, `insure_fuzzy` works to constrain values to any range
-        return insure_fuzzy(result, start, end)
+        return result
 
 
 class NormalizeCurve(Command):
@@ -326,8 +321,6 @@ class NormalizeCurve(Command):
         "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "RawValues": params.ListParameter(params.NumberParameter()),
         "NormalValues": params.ListParameter(params.NumberParameter()),
-        "StartVal": params.NumberParameter(required=False),
-        "EndVal": params.NumberParameter(required=False),
     }
     output = params.DataParameter()
 
@@ -335,8 +328,6 @@ class NormalizeCurve(Command):
         arr = kwargs["InFieldName"].result
         raw_values = kwargs["RawValues"]
         normal_values = kwargs["NormalValues"]
-        start = kwargs.get("StartVal", 0)
-        end = kwargs.get("EndVal", 1)
 
         if len(raw_values) != len(normal_values):
             raise MixedArrayLengths(
@@ -372,8 +363,7 @@ class NormalizeCurve(Command):
         result[arr > value_pairs[-1][0]] = value_pairs[-1][1]
         result.mask = arr.mask.copy()
 
-        # despite the name, `insure_fuzzy` works to constrain values to any range
-        return insure_fuzzy(result, start, end)
+        return result
 
 
 class NormalizeMeanToMid(NormalizeCurve):
@@ -384,8 +374,6 @@ class NormalizeMeanToMid(NormalizeCurve):
         "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "IgnoreZeros": params.BooleanParameter(),
         "NormalValues": params.ListParameter(params.NumberParameter()),
-        "StartVal": params.NumberParameter(required=False),
-        "EndVal": params.NumberParameter(required=False),
     }
     output = params.DataParameter()
 
@@ -431,8 +419,6 @@ class NormalizeCurveZScore(Command):
         "InFieldName": params.ResultParameter(params.DataParameter(), is_fuzzy=False),
         "ZScoreValues": params.ListParameter(params.NumberParameter()),
         "NormalValues": params.ListParameter(params.NumberParameter()),
-        "StartVal": params.NumberParameter(required=False),
-        "EndVal": params.NumberParameter(required=False),
     }
     output = params.DataParameter()
 
@@ -440,8 +426,6 @@ class NormalizeCurveZScore(Command):
         arr = kwargs["InFieldName"].result
         z_score_values = kwargs["ZScoreValues"]
         normal_values = kwargs["NormalValues"]
-        start = kwargs.get("StartVal", 0)
-        end = kwargs.get("EndVal", 1)
 
         if len(z_score_values) != len(normal_values):
             raise MixedArrayLengths(
@@ -478,7 +462,7 @@ class NormalizeCurveZScore(Command):
         result[arr > value_pairs[-1][0]] = value_pairs[-1][1]
         result.mask = arr.mask.copy()
 
-        return insure_fuzzy(result, start, end)
+        return result
 
 
 class PrintVars(Command):

@@ -272,8 +272,6 @@ def test_normalize_cat():
         RawValues=[1, 4, 5, 8, 9],
         NormalValues=[-1.0, 0.0, 0.1, 0.9, 1.0],
         DefaultNormalValue=0,
-        StartVal=-1,
-        EndVal=1,
     )
 
     assert (result == answer).all()
@@ -283,8 +281,6 @@ def test_normalize_cat():
         RawValues=[1, 4, 8, 9],
         NormalValues=[-1.0, 0.0, 0.9, 1.0],
         DefaultNormalValue=0.1,
-        StartVal=-1,
-        EndVal=1,
     )
 
     assert (result == answer).all()
@@ -300,8 +296,6 @@ def test_normalize_curve():
         InFieldName=command,
         RawValues=[1.0, 3.0, 9.0],
         NormalValues=[-1.0, 0.0, 1.0],
-        StartVal=-1,
-        EndVal=1,
     )
 
     assert (result.round(2) == answer).all()
@@ -317,8 +311,6 @@ def test_normalize_mean_to_mid():
         InFieldName=command,
         IgnoreZeros=False,
         NormalValues=[-1.0, -0.2, 0.0, 0.4, 1.0],
-        StartVal=-1,
-        EndVal=1,
     )
 
     assert (result.round(2) == answer).all()
@@ -334,8 +326,6 @@ def test_normalize_mean_to_mid_with_uneven_distribution():
         InFieldName=command,
         IgnoreZeros=False,
         NormalValues=[-1.0, -0.2, 0.0, 0.4, 1.0],
-        StartVal=-1,
-        EndVal=1,
     )
 
     assert (result.round(2) == answer).all()
@@ -344,18 +334,14 @@ def test_normalize_mean_to_mid_with_uneven_distribution():
 def test_normalize_curve_z_score():
     arr = numpy.ma.arange(10, dtype=float)
     command = create_command_with_result("Result", arr)
-    answer = numpy.ma.array(
-        [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], dtype=float
-    )
+    answer = numpy.ma.array([0, 0, 0, 0, 0, 0.17, 0.52, 0.87, 1, 1], dtype=float)
     result = NormalizeCurveZScore("ConvertResult").execute(
         InFieldName=command,
-        ZScoreValues=[-0.1, 0.0, 0.1],
-        NormalValues=[1.0, 5.0, 9.0],
-        StartVal=-1,
-        EndVal=1,
+        ZScoreValues=[0, 1, 2],
+        NormalValues=[0, 1, 1],
     )
 
-    assert (result == answer).all()
+    assert (result.round(2) == answer).all()
 
 
 def test_print_vars():
