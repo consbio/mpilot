@@ -39,7 +39,7 @@ class Lexer(object):
     t_FALSE = "False"
     t_LBRACK = r"\["
     t_LPAREN = r"\("
-    t_PLAIN_STRING = r"[^\#\:\,\=\(\)\[\]\"\r\n]+"
+    t_PLAIN_STRING = r"[^\#\:\,\=\(\)\[\]\"\'\r\n]+"
     t_RBRACK = r"\]"
     t_RPAREN = r"\)"
     t_TRUE = "True"
@@ -184,6 +184,13 @@ class Parser(object):
 
         p[0] = p[1] + ":" + p[3]
 
+    def p_plain_string_with_number(self, p):
+        """
+        plain_string : number plain_string
+        """
+
+        p[0] = str(p[1]) + p[2]
+
     def p_number(self, p):
         """
         number : INT
@@ -253,7 +260,7 @@ class Parser(object):
     def p_tuple_pair(self, p):
         """
         tuple_pair : STRING COLON expression
-                   | PLAIN_STRING COLON expression
+                   | plain_string COLON expression
                    | ID COLON expression
         """
 

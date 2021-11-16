@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'COLON COMMA EQUAL FALSE FLOAT ID INT LBRACK LPAREN PLAIN_STRING RBRACK RPAREN STRING TRUE\n        program : commands\n        \n        commands : command commands\n        \n        commands : command\n        \n        command : ID EQUAL ID arguments\n        \n        command : ID arguments\n        \n        arguments : LPAREN argument_list RPAREN\n        \n        arguments : LPAREN RPAREN\n        \n        argument_list : argument COMMA argument_list\n        \n        argument_list : argument COMMA\n                      | argument\n        \n        argument : ID EQUAL expression\n        \n        expression : ID\n                   | plain_string\n                   | STRING\n                   | number\n                   | list\n                   | boolean\n        \n        expression : ID expression\n        \n        plain_string : PLAIN_STRING\n                     | ID\n        \n        plain_string : plain_string COLON plain_string\n        \n        number : INT\n               | FLOAT\n        \n        list : LBRACK elements RBRACK\n        \n        list : LBRACK RBRACK\n        \n        elements : element COMMA elements\n        \n        elements : element COMMA\n                 | element\n        \n        element : expression\n        \n        elements : tuple_pairs\n        \n        tuple_pairs : tuple_pair COMMA tuple_pairs\n        \n        tuple_pairs : tuple_pair COMMA\n                    | tuple_pair\n        \n        tuple_pair : STRING COLON expression\n                   | PLAIN_STRING COLON expression\n                   | ID COLON expression\n        \n        boolean : TRUE\n                | FALSE\n        '
+_lr_signature = 'COLON COMMA EQUAL FALSE FLOAT ID INT LBRACK LPAREN PLAIN_STRING RBRACK RPAREN STRING TRUE\n        program : commands\n        \n        commands : command commands\n        \n        commands : command\n        \n        command : ID EQUAL ID arguments\n        \n        command : ID arguments\n        \n        arguments : LPAREN argument_list RPAREN\n        \n        arguments : LPAREN RPAREN\n        \n        argument_list : argument COMMA argument_list\n        \n        argument_list : argument COMMA\n                      | argument\n        \n        argument : ID EQUAL expression\n        \n        expression : ID\n                   | plain_string\n                   | STRING\n                   | number\n                   | list\n                   | boolean\n        \n        expression : ID expression\n        \n        plain_string : PLAIN_STRING\n                     | ID\n        \n        plain_string : plain_string COLON plain_string\n        \n        plain_string : number plain_string\n        \n        number : INT\n               | FLOAT\n        \n        list : LBRACK elements RBRACK\n        \n        list : LBRACK RBRACK\n        \n        elements : element COMMA elements\n        \n        elements : element COMMA\n                 | element\n        \n        element : expression\n        \n        elements : tuple_pairs\n        \n        tuple_pairs : tuple_pair COMMA tuple_pairs\n        \n        tuple_pairs : tuple_pair COMMA\n                    | tuple_pair\n        \n        tuple_pair : STRING COLON expression\n                   | plain_string COLON expression\n                   | ID COLON expression\n        \n        boolean : TRUE\n                | FALSE\n        '
     
-_lr_action_items = {'ID':([0,3,6,7,8,11,14,15,16,17,19,29,33,40,46,47,48,49,50,],[4,4,9,-5,13,-7,-4,-6,13,19,19,40,44,19,40,55,19,19,19,]),'$end':([1,2,3,5,7,11,14,15,],[0,-1,-3,-2,-5,-7,-4,-6,]),'EQUAL':([4,13,],[6,17,]),'LPAREN':([4,9,],[8,8,]),'RPAREN':([8,10,12,16,18,19,20,21,22,23,24,25,26,27,28,30,31,32,35,43,44,45,],[11,15,-10,-9,-8,-12,-11,-13,-14,-15,-16,-17,-19,-22,-23,-37,-38,-18,-25,-21,-20,-24,]),'COMMA':([12,19,20,21,22,23,24,25,26,27,28,30,31,32,35,36,38,39,40,41,42,43,44,45,56,57,58,],[16,-12,-11,-13,-14,-15,-16,-17,-19,-22,-23,-37,-38,-18,-25,46,-29,47,-12,-14,-19,-21,-20,-24,-36,-34,-35,]),'STRING':([17,19,29,40,46,47,48,49,50,],[22,22,41,22,41,53,22,22,22,]),'PLAIN_STRING':([17,19,29,33,40,46,47,48,49,50,],[26,26,42,26,26,42,54,26,26,26,]),'INT':([17,19,29,40,46,48,49,50,],[27,27,27,27,27,27,27,27,]),'FLOAT':([17,19,29,40,46,48,49,50,],[28,28,28,28,28,28,28,28,]),'LBRACK':([17,19,29,40,46,48,49,50,],[29,29,29,29,29,29,29,29,]),'TRUE':([17,19,29,40,46,48,49,50,],[30,30,30,30,30,30,30,30,]),'FALSE':([17,19,29,40,46,48,49,50,],[31,31,31,31,31,31,31,31,]),'RBRACK':([19,21,22,23,24,25,26,27,28,29,30,31,32,34,35,36,37,38,39,40,41,42,43,44,45,46,47,51,52,56,57,58,],[-12,-13,-14,-15,-16,-17,-19,-22,-23,35,-37,-38,-18,45,-25,-28,-30,-29,-33,-12,-14,-19,-21,-20,-24,-27,-32,-26,-31,-36,-34,-35,]),'COLON':([19,21,26,40,41,42,43,44,53,54,55,],[-20,33,-19,48,49,50,33,-20,49,50,48,]),}
+_lr_action_items = {'ID':([0,3,6,7,8,11,14,15,16,17,19,23,27,28,29,33,34,43,48,49,50,51,52,],[4,4,9,-5,13,-7,-4,-6,13,19,19,36,-23,-24,43,36,36,19,43,57,19,19,19,]),'$end':([1,2,3,5,7,11,14,15,],[0,-1,-3,-2,-5,-7,-4,-6,]),'EQUAL':([4,13,],[6,17,]),'LPAREN':([4,9,],[8,8,]),'RPAREN':([8,10,12,16,18,19,20,21,22,23,24,25,26,27,28,30,31,32,35,36,38,46,47,],[11,15,-10,-9,-8,-12,-11,-13,-14,-15,-16,-17,-19,-23,-24,-38,-39,-18,-22,-20,-26,-21,-25,]),'COMMA':([12,19,20,21,22,23,24,25,26,27,28,30,31,32,35,36,38,39,41,42,43,44,45,46,47,58,59,60,61,],[16,-12,-11,-13,-14,-15,-16,-17,-19,-23,-24,-38,-39,-18,-22,-20,-26,48,-30,49,-12,-13,-14,-21,-25,-37,-13,-36,-35,]),'STRING':([17,19,29,43,48,49,50,51,52,],[22,22,45,22,45,55,22,22,22,]),'PLAIN_STRING':([17,19,23,27,28,29,33,34,43,48,49,50,51,52,],[26,26,26,-23,-24,26,26,26,26,26,26,26,26,26,]),'INT':([17,19,23,27,28,29,33,34,43,48,49,50,51,52,],[27,27,27,-23,-24,27,27,27,27,27,27,27,27,27,]),'FLOAT':([17,19,23,27,28,29,33,34,43,48,49,50,51,52,],[28,28,28,-23,-24,28,28,28,28,28,28,28,28,28,]),'LBRACK':([17,19,29,43,48,50,51,52,],[29,29,29,29,29,29,29,29,]),'TRUE':([17,19,29,43,48,50,51,52,],[30,30,30,30,30,30,30,30,]),'FALSE':([17,19,29,43,48,50,51,52,],[31,31,31,31,31,31,31,31,]),'RBRACK':([19,21,22,23,24,25,26,27,28,29,30,31,32,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,53,54,58,59,60,61,],[-12,-13,-14,-15,-16,-17,-19,-23,-24,38,-38,-39,-18,-22,-20,47,-26,-29,-31,-30,-34,-12,-13,-14,-21,-25,-28,-33,-27,-32,-37,-13,-36,-35,]),'COLON':([19,21,26,35,36,43,44,45,46,55,56,57,59,],[-20,33,-19,33,-20,50,51,52,33,52,51,50,33,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'commands':([0,3,],[2,5,]),'command':([0,3,],[3,3,]),'arguments':([4,9,],[7,14,]),'argument_list':([8,16,],[10,18,]),'argument':([8,16,],[12,12,]),'expression':([17,19,29,40,46,48,49,50,],[20,32,38,32,38,56,57,58,]),'plain_string':([17,19,29,33,40,46,48,49,50,],[21,21,21,43,21,21,21,21,21,]),'number':([17,19,29,40,46,48,49,50,],[23,23,23,23,23,23,23,23,]),'list':([17,19,29,40,46,48,49,50,],[24,24,24,24,24,24,24,24,]),'boolean':([17,19,29,40,46,48,49,50,],[25,25,25,25,25,25,25,25,]),'elements':([29,46,],[34,51,]),'element':([29,46,],[36,36,]),'tuple_pairs':([29,46,47,],[37,37,52,]),'tuple_pair':([29,46,47,],[39,39,39,]),}
+_lr_goto_items = {'program':([0,],[1,]),'commands':([0,3,],[2,5,]),'command':([0,3,],[3,3,]),'arguments':([4,9,],[7,14,]),'argument_list':([8,16,],[10,18,]),'argument':([8,16,],[12,12,]),'expression':([17,19,29,43,48,50,51,52,],[20,32,41,32,41,58,60,61,]),'plain_string':([17,19,23,29,33,34,43,48,49,50,51,52,],[21,21,35,44,46,35,21,44,56,21,59,21,]),'number':([17,19,23,29,33,34,43,48,49,50,51,52,],[23,23,34,23,34,34,23,23,34,23,23,23,]),'list':([17,19,29,43,48,50,51,52,],[24,24,24,24,24,24,24,24,]),'boolean':([17,19,29,43,48,50,51,52,],[25,25,25,25,25,25,25,25,]),'elements':([29,48,],[37,53,]),'element':([29,48,],[39,39,]),'tuple_pairs':([29,48,49,],[40,40,54,]),'tuple_pair':([29,48,49,],[42,42,42,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -48,21 +48,22 @@ _lr_productions = [
   ('plain_string -> PLAIN_STRING','plain_string',1,'p_plain_string','parser.py',174),
   ('plain_string -> ID','plain_string',1,'p_plain_string','parser.py',175),
   ('plain_string -> plain_string COLON plain_string','plain_string',3,'p_plain_string_with_colon','parser.py',182),
-  ('number -> INT','number',1,'p_number','parser.py',189),
-  ('number -> FLOAT','number',1,'p_number','parser.py',190),
-  ('list -> LBRACK elements RBRACK','list',3,'p_list','parser.py',197),
-  ('list -> LBRACK RBRACK','list',2,'p_list_empty','parser.py',204),
-  ('elements -> element COMMA elements','elements',3,'p_elements','parser.py',211),
-  ('elements -> element COMMA','elements',2,'p_elements_element','parser.py',218),
-  ('elements -> element','elements',1,'p_elements_element','parser.py',219),
-  ('element -> expression','element',1,'p_element_expression','parser.py',226),
-  ('elements -> tuple_pairs','elements',1,'p_element_tuple_pairs','parser.py',233),
-  ('tuple_pairs -> tuple_pair COMMA tuple_pairs','tuple_pairs',3,'p_tuple_pairs','parser.py',240),
-  ('tuple_pairs -> tuple_pair COMMA','tuple_pairs',2,'p_tuple_pairs_pair','parser.py',247),
-  ('tuple_pairs -> tuple_pair','tuple_pairs',1,'p_tuple_pairs_pair','parser.py',248),
-  ('tuple_pair -> STRING COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',255),
-  ('tuple_pair -> PLAIN_STRING COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',256),
-  ('tuple_pair -> ID COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',257),
-  ('boolean -> TRUE','boolean',1,'p_boolean','parser.py',264),
-  ('boolean -> FALSE','boolean',1,'p_boolean','parser.py',265),
+  ('plain_string -> number plain_string','plain_string',2,'p_plain_string_with_number','parser.py',189),
+  ('number -> INT','number',1,'p_number','parser.py',196),
+  ('number -> FLOAT','number',1,'p_number','parser.py',197),
+  ('list -> LBRACK elements RBRACK','list',3,'p_list','parser.py',204),
+  ('list -> LBRACK RBRACK','list',2,'p_list_empty','parser.py',211),
+  ('elements -> element COMMA elements','elements',3,'p_elements','parser.py',218),
+  ('elements -> element COMMA','elements',2,'p_elements_element','parser.py',225),
+  ('elements -> element','elements',1,'p_elements_element','parser.py',226),
+  ('element -> expression','element',1,'p_element_expression','parser.py',233),
+  ('elements -> tuple_pairs','elements',1,'p_element_tuple_pairs','parser.py',240),
+  ('tuple_pairs -> tuple_pair COMMA tuple_pairs','tuple_pairs',3,'p_tuple_pairs','parser.py',247),
+  ('tuple_pairs -> tuple_pair COMMA','tuple_pairs',2,'p_tuple_pairs_pair','parser.py',254),
+  ('tuple_pairs -> tuple_pair','tuple_pairs',1,'p_tuple_pairs_pair','parser.py',255),
+  ('tuple_pair -> STRING COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',262),
+  ('tuple_pair -> plain_string COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',263),
+  ('tuple_pair -> ID COLON expression','tuple_pair',3,'p_tuple_pair','parser.py',264),
+  ('boolean -> TRUE','boolean',1,'p_boolean','parser.py',271),
+  ('boolean -> FALSE','boolean',1,'p_boolean','parser.py',272),
 ]

@@ -4,7 +4,7 @@ from mpilot.parser.parser import Parser, CommandNode, ArgumentNode, ExpressionNo
 
 
 def test_parse():
-    """ Tests that basic parsing works correctly """
+    """Tests that basic parsing works correctly"""
 
     source = """
     Result_A = Command1(
@@ -39,7 +39,7 @@ def test_parse():
 
 
 def test_parse_numbers():
-    """ Tests that numbers parse correctly """
+    """Tests that numbers parse correctly"""
 
     commands = Parser().parse("A = Command(P = 1)").commands
     assert isinstance(commands[0].arguments[0].value.value, int)
@@ -63,7 +63,7 @@ def test_parse_numbers():
 
 
 def test_parse_plain_string():
-    """ Tests that plain strings parse correctly """
+    """Tests that plain strings parse correctly"""
 
     commands = Parser().parse("A = Command(P = /Path/To/123.txt)").commands
     assert isinstance(commands[0].arguments[0].value.value, str)
@@ -86,7 +86,7 @@ def test_parse_plain_string():
 
 
 def test_parse_quoted_string():
-    """ Tests that strings delineated with quotes parse correctly """
+    """Tests that strings delineated with quotes parse correctly"""
 
     commands = Parser().parse('A = Command(P = "/Path/To/123.txt")').commands
     assert isinstance(commands[0].arguments[0].value.value, six.string_types)
@@ -102,7 +102,7 @@ def test_parse_quoted_string():
 
 
 def test_parse_list():
-    """ Tests that lists parse correctly """
+    """Tests that lists parse correctly"""
 
     commands = Parser().parse("A = Command(P = [1, 2, 3])").commands
     assert isinstance(commands[0].arguments[0].value.value, list)
@@ -122,7 +122,7 @@ def test_parse_list():
 
 
 def test_parse_tuple():
-    """ Tests that tuples parse correctly """
+    """Tests that tuples parse correctly"""
 
     commands = Parser().parse('A = Command(P = ["A": "abc"])').commands
     assert isinstance(commands[0].arguments[0].value.value, dict)
@@ -135,9 +135,23 @@ def test_parse_tuple():
         "B": ExpressionNode("b", 1),
     }
 
+    commands = Parser().parse("A = Command(P = [A: 5abc, B: b])").commands
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {
+        "A": ExpressionNode("5abc", 1),
+        "B": ExpressionNode("b", 1),
+    }
+
+    commands = Parser().parse("A = Command(P = [A: %abc, B: b])").commands
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {
+        "A": ExpressionNode("%abc", 1),
+        "B": ExpressionNode("b", 1),
+    }
+
 
 def test_v2_source():
-    """ Tests that a EEMS 2.0 read command parses and is identified as version 2 """
+    """Tests that a EEMS 2.0 read command parses and is identified as version 2"""
 
     program = Parser().parse("READ(InFileName = foo.gdb, InFieldName = Test)")
     assert program.version == 2
@@ -145,7 +159,7 @@ def test_v2_source():
 
 
 def test_parse_comments():
-    """ Tests that comments parse correctly (don't cause an exception, aren't interpreted) """
+    """Tests that comments parse correctly (don't cause an exception, aren't interpreted)"""
 
     source = """
     # This is a comment
@@ -155,12 +169,14 @@ def test_parse_comments():
     """
 
     program = Parser().parse(source.strip())
-    assert program.commands == [CommandNode(
-        "Result_A",
-        "Command1",
-        [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
-        2,
-    )]
+    assert program.commands == [
+        CommandNode(
+            "Result_A",
+            "Command1",
+            [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
+            2,
+        )
+    ]
 
     source = """
     # Result_B = Command1(Param_A = Bar)
@@ -170,9 +186,11 @@ def test_parse_comments():
     """
 
     program = Parser().parse(source.strip())
-    assert program.commands == [CommandNode(
-        "Result_A",
-        "Command1",
-        [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
-        2,
-    )]
+    assert program.commands == [
+        CommandNode(
+            "Result_A",
+            "Command1",
+            [ArgumentNode("Param_A", ExpressionNode("Foo", 3), 3)],
+            2,
+        )
+    ]
