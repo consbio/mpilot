@@ -92,7 +92,7 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
     :param StartVal: (:ref:`param-number`) *Optional*. The lowest value of the normalized array. Defaults to ``0``.
     :param EndVal: (:ref:`param-number`) *Optional*. The highest value of the normalized array. Defaults to ``1``.
 
-.. function:: NormalizeCat(InFieldName, RawValues, NormalValues, DefaultNormalValue, StartVal, EndVal)
+.. function:: NormalizeCat(InFieldName, RawValues, NormalValues, DefaultNormalValue)
 
   Converts integer input values into normalized values based on user specification.
 
@@ -103,10 +103,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
     size.
   :param DefaultNormalValue: (:ref:`param-number`) The default normal value used to convert any input value not
     specified in ``RawValues``.
-  :param StartVal: (:ref:`param-number`) *Optional*. The lowest value of the normalized array. Defaults to ``0``.
-  :param EndVal: (:ref:`param-number`) *Optional*. The highest value of the normalized array. Defaults to ``1``.
 
-.. function:: NormalizeCurve(InFieldName, RawValues, NormalValues, StartVal, EndVal)
+.. function:: NormalizeCurve(InFieldName, RawValues, NormalValues)
 
   Converts input values into normalized values based on user-defined curve
 
@@ -115,10 +113,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
   :param NormalValues: (:ref:`param-list` [:ref:`param-number`]) A list of normalized values that will be used to map
     values matching those in ``RawValues`` to normalized ones. The ``RawValues`` and ``NormalValues`` lists must be the
     same size.
-  :param StartVal: (:ref:`param-number`) *Optional*. The lowest value of the normalized array. Defaults to ``0``.
-  :param EndVal: (:ref:`param-number`) *Optional*. The highest value of the normalized array. Defaults to ``1``.
 
-.. function:: NormalizeMeanToMid(InFieldName, IgnoreZeros, NormalValues, StartVal, EndVal)
+.. function:: NormalizeMeanToMid(InFieldName, IgnoreZeros, NormalValues)
 
   Uses "NormalizeCurve" to create a non-linear transformation that is a good match for the input data.
 
@@ -126,10 +122,8 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
   :param IgnoreZeros: (:ref:`param-boolean`) Ignore ``0`` values when determining the mean.
   :param NormalValues: (:ref:`param-list` [:ref:`param-number`]) A list of normalized values that will be used to map
     input values to normalized ones.
-  :param StartVal: (:ref:`param-number`) *Optional*. The lowest value of the normalized array. Defaults to ``0``.
-  :param EndVal: (:ref:`param-number`) *Optional*. The highest value of the normalized array. Defaults to ``1``.
 
-.. function:: NormalizeCurveZScore(InFieldName, ZScoreValues, NormalValues, StartVal, EndVal)
+.. function:: NormalizeCurveZScore(InFieldName, ZScoreValues, NormalValues)
 
   Converts input values into narmalized values based on user-defined curve
 
