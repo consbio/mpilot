@@ -73,6 +73,10 @@ class Lexer(object):
 
 class Parser(object):
     tokens = Lexer.tokens
+    precedence = (
+        ('left', 'INT', 'FLOAT', 'COLON'),
+        ('left', 'TUPLE_PAIR'),
+    )
 
     def __init__(self):
         self.parser = yacc.yacc(module=self, debug=False)
@@ -152,8 +156,7 @@ class Parser(object):
 
     def p_expression(self, p):
         """
-        expression : ID
-                   | plain_string
+        expression : permissive_plain_string
                    | STRING
                    | number
                    | list
@@ -161,13 +164,6 @@ class Parser(object):
         """
 
         p[0] = ExpressionNode(p[1], p.lineno(1))
-
-    def p_expression_identifier_expression(self, p):
-        """
-        expression : ID expression
-        """
-
-        p[0] = ExpressionNode(p[1] + str(p[2].value), p.lineno(1))
 
     def p_plain_string(self, p):
         """
@@ -177,19 +173,29 @@ class Parser(object):
 
         p[0] = p[1]
 
-    def p_plain_string_with_colon(self, p):
-        """
-        plain_string : plain_string COLON plain_string
-        """
-
-        p[0] = p[1] + ":" + p[3]
-
     def p_plain_string_with_number(self, p):
         """
-        plain_string : number plain_string
+        plain_string : INT plain_string
+                     | FLOAT plain_string
+                     | PLAIN_STRING plain_string
+                     | ID plain_string
         """
 
         p[0] = str(p[1]) + p[2]
+
+    def p_permissive_plain_string(self, p):
+        """
+        permissive_plain_string : plain_string
+        """
+
+        p[0] = p[1]
+
+    def p_permissive_plain_stirng_with_colon(self, p):
+        """
+        permissive_plain_string : permissive_plain_string COLON permissive_plain_string
+        """
+
+        p[0] = p[1] + ":" + p[3]
 
     def p_number(self, p):
         """
@@ -228,16 +234,16 @@ class Parser(object):
 
         p[0] = [p[1]]
 
-    def p_element_expression(self, p):
+    def p_elements_tuple_pairs(self, p):
         """
-        element : expression
+        elements : tuple_pairs
         """
 
         p[0] = p[1]
 
-    def p_element_tuple_pairs(self, p):
+    def p_element_expression(self, p):
         """
-        elements : tuple_pairs
+        element : expression
         """
 
         p[0] = p[1]
@@ -259,12 +265,20 @@ class Parser(object):
 
     def p_tuple_pair(self, p):
         """
-        tuple_pair : STRING COLON expression
-                   | plain_string COLON expression
-                   | ID COLON expression
+        tuple_pair : STRING COLON tuple_value
+                   | plain_string COLON tuple_value %prec TUPLE_PAIR
         """
 
-        p[0] = (p[1], p[3])
+        p[0] = (p[1], ExpressionNode(p[3], p.lineno(1)))
+
+    def p_tuple_value(self, p):
+        """
+        tuple_value : STRING
+                    | permissive_plain_string
+                    | number
+        """
+
+        p[0] = p[1]
 
     def p_boolean(self, p):
         """

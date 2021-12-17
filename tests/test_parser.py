@@ -149,6 +149,13 @@ def test_parse_tuple():
         "B": ExpressionNode("b", 1),
     }
 
+    commands = Parser().parse("A = Command(P = [A: https://databasin.org, B: Link. https://consbio.org])").commands
+    assert isinstance(commands[0].arguments[0].value.value, dict)
+    assert commands[0].arguments[0].value.value == {
+        "A": ExpressionNode("https://databasin.org", 1),
+        "B": ExpressionNode("Link. https://consbio.org", 1),
+    }
+
 
 def test_v2_source():
     """Tests that a EEMS 2.0 read command parses and is identified as version 2"""
