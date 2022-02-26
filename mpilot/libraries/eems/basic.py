@@ -61,10 +61,7 @@ class Sum(SameArrayShapeMixin, Command):
         arrays = [c.result for c in kwargs["InFieldNames"]]
         self.validate_array_shapes(arrays, lineno=self.lineno)
 
-        if six.PY3:
-            result = numpy.copy(arrays[0], subok=True)
-        else:
-            result = arrays[0][:]
+        result = arrays[0].copy()
 
         for arr in arrays[1:]:
             result += arr

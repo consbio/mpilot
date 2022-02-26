@@ -84,6 +84,7 @@ def test_sum():
 
     assert isinstance(result, MaskedArray)
     assert (result == answer).all()
+    assert (a == numpy.ma.masked_array([1, 2, 3])).all()
 
 
 def test_weighted_sum():
