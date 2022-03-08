@@ -25,7 +25,10 @@ packages = [
 python = "~2.7 || >=3.6"
 ply = "^3.11"
 six = "*"
-click = "<8.0"
+click = [
+    { version = "^8.0.4", python = ">=3.6" },
+    { version = "^7.1.2", python = "~2.7"}
+]
 numpy = [
     { version = "^1.19.4", python = ">=3.6" },
     { version = "<=1.16.6", python = "~2.7" }
