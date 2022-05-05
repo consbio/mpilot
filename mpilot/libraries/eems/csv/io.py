@@ -92,7 +92,7 @@ class EEMSWrite(SameArrayShapeMixin, Command):
         self.validate_array_shapes(arrays)
 
         with open(kwargs["OutFileName"], "w") as f:
-            writer = csv.writer(f)
+            writer = csv.writer(f, lineterminator="\n")
 
             # Write headers
             writer.writerow([c.result_name for c in commands])
