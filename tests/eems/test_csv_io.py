@@ -10,7 +10,7 @@ from tests.utils import create_command_with_result
 if six.PY3:
     from unittest.mock import mock_open, patch, call
 else:
-    from mock import mock_open, patch
+    from mock import mock_open, patch, call
 
 from mpilot.libraries.eems.csv.io import EEMSRead, EEMSWrite
 
