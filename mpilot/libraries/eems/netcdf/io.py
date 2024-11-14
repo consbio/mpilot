@@ -25,7 +25,7 @@ class EEMSRead(Command):
             required=False,
             valid_types={
                 "Float": numpy.float64,
-                "Integer": numpy.int,
+                "Integer": int,
                 "Positive Float": numpy.float64,
                 "Positive Integer": numpy.uint,
                 "Fuzzy": numpy.float64,
