@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>User Guide &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="MPilot Libraries Reference" href="libraries-ref.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -214,7 +212,7 @@
       
         
 <nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">Contents</label>
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#user-index--page-root" class="md-nav__link">User Guide</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -303,7 +301,7 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">Contents</label>
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#user-index--page-root" class="md-nav__link">User Guide</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -354,12 +352,12 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="user-guide">
-<h1 id="user-index--page-root">User Guide<a class="headerlink" href="#user-index--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="user-index--page-root">User Guide<a class="headerlink" href="#user-index--page-root" title="Link to this heading">¶</a></h1>
 <p>This documentation covers installing MPilot, the process of creating and running MPilot models, and the process of
 using the <code class="docutils literal notranslate"><span class="pre">mpilot</span></code> command-line program. It also includes a reference of all built-in MPilot commands, including the
 EEMS commands, used to created fuzzy logic models.</p>
 <section id="installing-mpilot">
-<h2 id="installing-mpilot">Installing MPilot<a class="headerlink" href="#installing-mpilot" title="Permalink to this headline">¶</a></h2>
+<h2 id="installing-mpilot">Installing MPilot<a class="headerlink" href="#installing-mpilot" title="Link to this heading">¶</a></h2>
 <p>MPilot requires the <a class="reference external" href="https://www.python.org/">Python</a> programming language. You will also need a program called
 <code class="docutils literal notranslate"><span class="pre">Pip</span></code>, which comes installed with all newer versions of Python. If you have an old version of Python, you may need to
 <a class="reference external" href="https://pip.pypa.io/en/stable/installing/">install Pip</a> separately.</p>
@@ -379,7 +377,7 @@ the NetCDF C library is out of the scope of this document, but you can find more
 </div>
 </section>
 <section id="a-quick-example">
-<h2 id="a-quick-example">A Quick Example<a class="headerlink" href="#a-quick-example" title="Permalink to this headline">¶</a></h2>
+<h2 id="a-quick-example">A Quick Example<a class="headerlink" href="#a-quick-example" title="Link to this heading">¶</a></h2>
 <p>This example will help you understand the basics of creating and MPilot command file and running it using the <cite>mpilot</cite>
 command. In this example, we’ll read two variables from a CSV file, apply a <strong>Fuzzy Union</strong>, and write the result to a
 new CSV file. First, create a CSV file called <code class="docutils literal notranslate"><span class="pre">input.csv</span></code> with two columns, <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>:</p>
@@ -447,7 +445,7 @@ between <code class="docutils literal notranslate"><span class="pre">-1</span></
 <code class="docutils literal notranslate"><span class="pre">B</span></code>, as well as the result column, <code class="docutils literal notranslate"><span class="pre">Union</span></code>.</p>
 </section>
 <section id="the-mpilot-program">
-<h2 id="the-mpilot-program">The <code class="docutils literal notranslate"><span class="pre">mpilot</span></code> program<a class="headerlink" href="#the-mpilot-program" title="Permalink to this headline">¶</a></h2>
+<h2 id="the-mpilot-program">The <code class="docutils literal notranslate"><span class="pre">mpilot</span></code> program<a class="headerlink" href="#the-mpilot-program" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">mpilot</span></code> is the command-line program used to run models. It is run with the <code class="docutils literal notranslate"><span class="pre">library</span></code> to use, and the path to the
 command file (model):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpilot</span> <span class="o">&lt;</span><span class="n">library</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">command</span> <span class="n">file</span><span class="o">&gt;</span>
@@ -457,7 +455,7 @@ command file (model):</p>
 use EEMS commands intended for use with NetCDF data. Run <code class="docutils literal notranslate"><span class="pre">mpilot</span> <span class="pre">--help</span></code> for a full list of options.</p>
 </section>
 <section id="command-file-syntax">
-<h2 id="command-file-syntax">Command File Syntax<a class="headerlink" href="#command-file-syntax" title="Permalink to this headline">¶</a></h2>
+<h2 id="command-file-syntax">Command File Syntax<a class="headerlink" href="#command-file-syntax" title="Link to this heading">¶</a></h2>
 <p>MPilot models are expressed using the <cite>.mpt</cite> command file syntax. These files are easy to write and to understand. They
 consist of all the commands that make up the model.</p>
 <p>Each command follows the same structure:</p>
@@ -471,10 +469,10 @@ previous command). Each parameter takes the form of <code class="docutils litera
 commas.</p>
 </section>
 <section id="parameter-types">
-<h2 id="parameter-types">Parameter Types<a class="headerlink" href="#parameter-types" title="Permalink to this headline">¶</a></h2>
+<h2 id="parameter-types">Parameter Types<a class="headerlink" href="#parameter-types" title="Link to this heading">¶</a></h2>
 <p>These are the parameter types that may be used by MPilot commands.</p>
 <section id="string">
-<span id="param-string"></span><h3 id="string">String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h3>
+<span id="param-string"></span><h3 id="string">String<a class="headerlink" href="#string" title="Link to this heading">¶</a></h3>
 <p>String parameters may be surrounded by quotes, or not. Strings not surrounded by quotes may not contain the following
 characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+()[]</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># With quotes</span>
@@ -486,7 +484,7 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 </div>
 </section>
 <section id="number">
-<span id="param-number"></span><h3 id="number">Number<a class="headerlink" href="#number" title="Permalink to this headline">¶</a></h3>
+<span id="param-number"></span><h3 id="number">Number<a class="headerlink" href="#number" title="Link to this heading">¶</a></h3>
 <p>Numbers may be integer of decimal values:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integer</span>
 <span class="n">Param</span> <span class="o">=</span> <span class="mi">12</span>
@@ -497,7 +495,7 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 </div>
 </section>
 <section id="boolean">
-<span id="param-boolean"></span><h3 id="boolean">Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h3>
+<span id="param-boolean"></span><h3 id="boolean">Boolean<a class="headerlink" href="#boolean" title="Link to this heading">¶</a></h3>
 <p>A boolean parameter may be <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="n">true</span>
 <span class="n">Param</span> <span class="o">=</span> <span class="n">false</span>
@@ -505,7 +503,7 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 </div>
 </section>
 <section id="path">
-<span id="param-path"></span><h3 id="path">Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h3>
+<span id="param-path"></span><h3 id="path">Path<a class="headerlink" href="#path" title="Link to this heading">¶</a></h3>
 <p>A path parameter is the same as a string, but must refer to a valid path. For some commands, the path must already exist
 (e.g., a read command) while for others it will be created (e.g., a write command):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="s2">"C:\path</span><span class="se">\t</span><span class="s2">o</span><span class="se">\f</span><span class="s2">ile.csv"</span>
@@ -513,7 +511,7 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 </div>
 </section>
 <section id="result">
-<span id="param-result"></span><h3 id="result">Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
+<span id="param-result"></span><h3 id="result">Result<a class="headerlink" href="#result" title="Link to this heading">¶</a></h3>
 <p>A result parameter refers to the output of another command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">CommandA</span><span class="p">()</span>
 <span class="n">Out</span> <span class="o">=</span> <span class="n">Write</span><span class="p">(</span><span class="n">ResultParam</span> <span class="o">=</span> <span class="n">A</span><span class="p">)</span>
@@ -521,7 +519,7 @@ characters: <code class="docutils literal notranslate"><span class="pre">#:,=-+(
 </div>
 </section>
 <section id="list">
-<span id="param-list"></span><h3 id="list">List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h3>
+<span id="param-list"></span><h3 id="list">List<a class="headerlink" href="#list" title="Link to this heading">¶</a></h3>
 <p>A list parameter contains any number of values of a specific type. For example, a list of strings, a list of numbers,
 or a list of results:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -529,7 +527,7 @@ or a list of results:</p>
 </div>
 </section>
 <section id="tuple">
-<span id="param-tuple"></span><h3 id="tuple">Tuple<a class="headerlink" href="#tuple" title="Permalink to this headline">¶</a></h3>
+<span id="param-tuple"></span><h3 id="tuple">Tuple<a class="headerlink" href="#tuple" title="Link to this heading">¶</a></h3>
 <p>A tuple parameter is similar to a list, but consists of any number of key/value pairs. Both the key and value are
 strings, and are separated by a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="p">[</span><span class="n">Color</span><span class="p">:</span><span class="s2">"Blue"</span><span class="p">]</span>
@@ -537,7 +535,7 @@ strings, and are separated by a colon <code class="docutils literal notranslate"
 </div>
 </section>
 <section id="data-type">
-<span id="param-data-type"></span><h3 id="data-type">Data Type<a class="headerlink" href="#data-type" title="Permalink to this headline">¶</a></h3>
+<span id="param-data-type"></span><h3 id="data-type">Data Type<a class="headerlink" href="#data-type" title="Link to this heading">¶</a></h3>
 <p>One of several possible data types, such as “Float” or “Integer”, determined by the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Param</span> <span class="o">=</span> <span class="n">Float</span>
 </pre></div>
@@ -545,7 +543,7 @@ strings, and are separated by a colon <code class="docutils literal notranslate"
 </section>
 </section>
 <section id="built-in-command-libraries">
-<h2 id="built-in-command-libraries">Built-In Command Libraries<a class="headerlink" href="#built-in-command-libraries" title="Permalink to this headline">¶</a></h2>
+<h2 id="built-in-command-libraries">Built-In Command Libraries<a class="headerlink" href="#built-in-command-libraries" title="Link to this heading">¶</a></h2>
 <p>MPilot includes built-in commands, currently limited to those used for creating EEMS models. A full reference of
 built-in commands is at <a class="reference internal" href="libraries-ref.html"><span class="doc">MPilot Libraries Reference</span></a>.</p>
 <div class="toctree-wrapper compound">
@@ -572,7 +570,7 @@ built-in commands is at <a class="reference internal" href="libraries-ref.html">
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> MPilot Documentation </span>
+                      class="md-footer-nav__direction"> "Previous" </span> MPilot Documentation </span>
               </div>
             </a>
           
@@ -582,7 +580,7 @@ built-in commands is at <a class="reference internal" href="libraries-ref.html">
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> MPilot Libraries Reference </span>
+                class="md-footer-nav__direction"> "Next" </span> MPilot Libraries Reference </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -600,7 +598,7 @@ built-in commands is at <a class="reference internal" href="libraries-ref.html">
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>EEMS Fuzzy &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Developer Resources" href="../developer/index.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -264,7 +262,42 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#user-lib-eems-fuzzy--page-root" class="md-nav__link">EEMS Fuzzy</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#CvtToFuzzy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzy()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToFuzzyZScore" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzyZScore()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToFuzzyCat" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzyCat()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToFuzzyCurve" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzyCurve()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToFuzzyMeanToMid" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzyMeanToMid()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToFuzzyCurveZScore" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToFuzzyCurveZScore()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtToBinary" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtToBinary()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyUnion" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyUnion()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyWeightedUnion" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyWeightedUnion()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzySelectedUnion" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzySelectedUnion()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyOr" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyOr()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyAnd" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyAnd()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyXOr" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyXOr()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#FuzzyNot" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">FuzzyNot()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#CvtFromFuzzy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">CvtFromFuzzy()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
     
 <li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/user/lib-eems-fuzzy.rst.txt">Show Source</a> </li>
 
@@ -280,15 +313,15 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="eems-fuzzy">
-<h1 id="user-lib-eems-fuzzy--page-root">EEMS Fuzzy<a class="headerlink" href="#user-lib-eems-fuzzy--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="user-lib-eems-fuzzy--page-root">EEMS Fuzzy<a class="headerlink" href="#user-lib-eems-fuzzy--page-root" title="Link to this heading">¶</a></h1>
 <p>The EEMS Fuzzy library consists of commands related to converting data to and from fuzzy space, and performing
 operations in fuzzy space, such as <code class="docutils literal notranslate"><span class="pre">FuzzyOr</span></code> and <code class="docutils literal notranslate"><span class="pre">FuzzyAnd</span></code>.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzy">
-<span class="sig-name descname"><span class="pre">CvtToFuzzy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzy" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into fuzzy values using linear interpolation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>TrueThreshold</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The “true” value in fuzzy space. The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
@@ -303,10 +336,10 @@ The default is <code class="docutils literal notranslate"><span class="pre">LowT
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzyZScore">
-<span class="sig-name descname"><span class="pre">CvtToFuzzyZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyZScore" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzyZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyZScore" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into fuzzy values using linear interpolation based on Z Score.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>TrueThreshold</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The “true” value in fuzzy space. The default is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
@@ -317,10 +350,10 @@ The default is <code class="docutils literal notranslate"><span class="pre">LowT
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzyCat">
-<span class="sig-name descname"><span class="pre">CvtToFuzzyCat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultFuzzyValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzyCat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultFuzzyValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCat" title="Link to this definition">¶</a></dt>
 <dd><p>Converts integer input values into fuzzy based on user specification.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
@@ -334,10 +367,10 @@ matching those in <code class="docutils literal notranslate"><span class="pre">R
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzyCurve">
-<span class="sig-name descname"><span class="pre">CvtToFuzzyCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCurve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzyCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCurve" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into fuzzy based on user-defined curve</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
@@ -349,10 +382,10 @@ matching those in <code class="docutils literal notranslate"><span class="pre">R
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzyMeanToMid">
-<span class="sig-name descname"><span class="pre">CvtToFuzzyMeanToMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IgnoreZeros</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyMeanToMid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzyMeanToMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IgnoreZeros</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyMeanToMid" title="Link to this definition">¶</a></dt>
 <dd><p>Uses “CvtToFuzzyCurve” to create a non-linear transformation that is a good match for the input data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>IgnoreZeros</strong> – (<a class="reference internal" href="index.html#param-boolean"><span class="std std-ref">Boolean</span></a>) Ignore <code class="docutils literal notranslate"><span class="pre">0</span></code> values when determining the mean.</p></li>
@@ -364,10 +397,10 @@ values to fuzzy space.</p></li>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToFuzzyCurveZScore">
-<span class="sig-name descname"><span class="pre">CvtToFuzzyCurveZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ZScoreValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCurveZScore" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToFuzzyCurveZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ZScoreValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FuzzyValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToFuzzyCurveZScore" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into fuzzy based on user-defined curve.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>ZScoreValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of z scores that will be used to map input
@@ -380,10 +413,10 @@ to fuzzy space. The <code class="docutils literal notranslate"><span class="pre"
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtToBinary">
-<span class="sig-name descname"><span class="pre">CvtToBinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToBinary" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtToBinary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtToBinary" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into binary 0 or 1 based on threshold.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to fuzzy space.</p></li>
 <li><p><strong>Threshold</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) This threshold value used to bisect the input values into 0 and 1.</p></li>
@@ -395,20 +428,20 @@ If <code class="docutils literal notranslate"><span class="pre">HighToLow</span>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyUnion">
-<span class="sig-name descname"><span class="pre">FuzzyUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyUnion" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyUnion" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the fuzzy union (mean) of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to union.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyWeightedUnion">
-<span class="sig-name descname"><span class="pre">FuzzyWeightedUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyWeightedUnion" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyWeightedUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyWeightedUnion" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the weighted fuzzy union (mean) weighted of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to union.</p></li>
 <li><p><strong>Weights</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of weights; one for each input. The number of
@@ -419,11 +452,11 @@ weights must match the number of results specified by <code class="docutils lite
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzySelectedUnion">
-<span class="sig-name descname"><span class="pre">FuzzySelectedUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TruestOrFalsest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NumberToConsider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzySelectedUnion" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzySelectedUnion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TruestOrFalsest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NumberToConsider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzySelectedUnion" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the the fuzzy union (mean) of N Truest or Falsest of each input at that
 index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to union.</p></li>
 <li><p><strong>TruestOrFalsest</strong> – (<a class="reference internal" href="index.html#param-string"><span class="std std-ref">String</span></a>) Either <code class="docutils literal notranslate"><span class="pre">Truest</span></code> or <code class="docutils literal notranslate"><span class="pre">Falsest</span></code>.</p></li>
@@ -434,10 +467,10 @@ index.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyOr">
-<span class="sig-name descname"><span class="pre">FuzzyOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyOr" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyOr" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the fuzzy <code class="docutils literal notranslate"><span class="pre">OR</span></code> of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to perform the <code class="docutils literal notranslate"><span class="pre">OR</span></code>
 operation on.</p>
 </dd>
@@ -445,10 +478,10 @@ operation on.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyAnd">
-<span class="sig-name descname"><span class="pre">FuzzyAnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyAnd" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyAnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyAnd" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the fuzzy <code class="docutils literal notranslate"><span class="pre">AND</span></code> of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to perform the <code class="docutils literal notranslate"><span class="pre">AND</span></code>
 operation on.</p>
 </dd>
@@ -456,10 +489,10 @@ operation on.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyXOr">
-<span class="sig-name descname"><span class="pre">FuzzyXOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyXOr" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyXOr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyXOr" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the fuzzy <code class="docutils literal notranslate"><span class="pre">XOR</span></code> of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to perform the <code class="docutils literal notranslate"><span class="pre">XOR</span></code>
 operation on.</p>
 </dd>
@@ -467,10 +500,10 @@ operation on.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="FuzzyNot">
-<span class="sig-name descname"><span class="pre">FuzzyNot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyNot" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FuzzyNot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#FuzzyNot" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the fuzzy <code class="docutils literal notranslate"><span class="pre">NOT</span></code> of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the fuzzy results to perform the <code class="docutils literal notranslate"><span class="pre">NOT</span></code>
 operation on.</p>
 </dd>
@@ -478,11 +511,11 @@ operation on.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="CvtFromFuzzy">
-<span class="sig-name descname"><span class="pre">CvtFromFuzzy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtFromFuzzy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">CvtFromFuzzy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThreshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThreshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CvtFromFuzzy" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input fuzzy values into non-fuzzy values using linear interpolation. This is essentially the reverse
 operation of <a class="reference internal" href="#CvtToFuzzy" title="CvtToFuzzy"><code class="xref py py-func docutils literal notranslate"><span class="pre">CvtToFuzzy()</span></code></a>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The fuzzy result to convert to normal space.</p></li>
 <li><p><strong>TrueThreshold</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) The “true” value in normal space. <code class="docutils literal notranslate"><span class="pre">1</span></code> in fuzzy space will be mapped to
@@ -514,7 +547,7 @@ to this value.</p></li>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> EEMS Basic </span>
+                      class="md-footer-nav__direction"> "Previous" </span> EEMS Basic </span>
               </div>
             </a>
           
@@ -524,7 +557,7 @@ to this value.</p></li>
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Developer Resources </span>
+                class="md-footer-nav__direction"> "Next" </span> Developer Resources </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -542,7 +575,7 @@ to this value.</p></li>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

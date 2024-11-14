@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>EEMS Basic &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/material.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../_static/material.css?v=79c92029" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="EEMS Fuzzy" href="lib-eems-fuzzy.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -264,7 +262,46 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#user-lib-eems-basic--page-root" class="md-nav__link">EEMS Basic</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#Copy" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Copy()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#AMinusB" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">AMinusB()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Sum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Sum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#WeightedSum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">WeightedSum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Multiply" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Multiply()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#ADividedByB" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">ADividedByB()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Minimum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Minimum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Maximum" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Maximum()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Mean" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Mean()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#WeightedMean" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">WeightedMean()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#Normalize" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Normalize()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#NormalizeZScore" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NormalizeZScore()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#NormalizeCat" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NormalizeCat()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#NormalizeCurve" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NormalizeCurve()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#NormalizeMeanToMid" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NormalizeMeanToMid()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#NormalizeCurveZScore" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">NormalizeCurveZScore()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#PrintVars" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">PrintVars()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
     
 <li class="md-nav__item"><a class="md-nav__extra_link" href="../_sources/user/lib-eems-basic.rst.txt">Show Source</a> </li>
 
@@ -280,25 +317,25 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="eems-basic">
-<h1 id="user-lib-eems-basic--page-root">EEMS Basic<a class="headerlink" href="#user-lib-eems-basic--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="user-lib-eems-basic--page-root">EEMS Basic<a class="headerlink" href="#user-lib-eems-basic--page-root" title="Link to this heading">¶</a></h1>
 <p>The EEMS Basic library contains several commands for performing basic, non-fuzzy operations on data. These include
 arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility commands.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="Copy">
-<span class="sig-name descname"><span class="pre">Copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Copy" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Copy" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a copy of the input data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to copy.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="AMinusB">
-<span class="sig-name descname"><span class="pre">AMinusB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AMinusB" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">AMinusB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#AMinusB" title="Link to this definition">¶</a></dt>
 <dd><p>Performs the operation <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">-</span> <span class="pre">B</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>)</p></li>
 <li><p><strong>B</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>)</p></li>
@@ -308,21 +345,21 @@ arithmetic commands (e.g., Sum, AMinusB), aggregation commands, and utility comm
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Sum">
-<span class="sig-name descname"><span class="pre">Sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Sum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Sum" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the sum of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to sum.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="WeightedSum">
-<span class="sig-name descname"><span class="pre">WeightedSum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedSum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">WeightedSum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedSum" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the sum of all input arrays at that index, weighted by the input weights.
 E.g., values <code class="docutils literal notranslate"><span class="pre">8</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>, with weights of <code class="docutils literal notranslate"><span class="pre">0.6</span></code> and <code class="docutils literal notranslate"><span class="pre">0.4</span></code> respectively will produce a result of <code class="docutils literal notranslate"><span class="pre">8.8</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to sum.</p></li>
 <li><p><strong>Weights</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of weights; one for each input. The number of
@@ -333,20 +370,20 @@ weights must match the number of results specified by <code class="docutils lite
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Multiply">
-<span class="sig-name descname"><span class="pre">Multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Multiply" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Multiply" title="Link to this definition">¶</a></dt>
 <dd><p>Multiplies multiple results together.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to multiply.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="ADividedByB">
-<span class="sig-name descname"><span class="pre">ADividedByB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ADividedByB" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ADividedByB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ADividedByB" title="Link to this definition">¶</a></dt>
 <dd><p>Performs the operation <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">/</span> <span class="pre">B</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The numerator.</p></li>
 <li><p><strong>B</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The denominator.</p></li>
@@ -356,41 +393,41 @@ weights must match the number of results specified by <code class="docutils lite
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Minimum">
-<span class="sig-name descname"><span class="pre">Minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Minimum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Minimum" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the minimum of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to derive minimum values from.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Maximum">
-<span class="sig-name descname"><span class="pre">Maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Maximum" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Maximum" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the maximum of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to derive maximum values from.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Mean">
-<span class="sig-name descname"><span class="pre">Mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Mean" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each value is the mean of all input arrays at that index.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to derive mean values from.</p>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="WeightedMean">
-<span class="sig-name descname"><span class="pre">WeightedMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedMean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">WeightedMean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WeightedMean" title="Link to this definition">¶</a></dt>
 <dd><p>Produces an array in which each values is the mean of all inputs arrays at that index, weighted by the input weights.
 E.g., values <code class="docutils literal notranslate"><span class="pre">8</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code> with weights of <code class="docutils literal notranslate"><span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> respectively will produce a result of <code class="docutils literal notranslate"><span class="pre">8.667</span></code></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) A list of the results to derive mean values from.</p></li>
 <li><p><strong>Weights</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of weights; one for each input. The number of
@@ -401,12 +438,12 @@ weights must match the number of results specified by <code class="docutils lite
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="Normalize">
-<span class="sig-name descname"><span class="pre">Normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Normalize" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Normalize" title="Link to this definition">¶</a></dt>
 <dd><p>Normalize values to a specified range, where the minimum value will be mapped to <code class="docutils literal notranslate"><span class="pre">StartVal</span></code>, the maximum value will
 be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal</span></code>, and values between will be processed by linear interpolation between <code class="docutils literal notranslate"><span class="pre">StartVal</span></code> and
 <code class="docutils literal notranslate"><span class="pre">EndVal</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
 <li><p><strong>StartVal</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The lowest value of the normalized array. Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
@@ -417,10 +454,10 @@ be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NormalizeZScore">
-<span class="sig-name descname"><span class="pre">NormalizeZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeZScore" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NormalizeZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TrueThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">FalseThresholdZScore</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">StartVal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">EndVal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeZScore" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into normalized values using linear interpolation based on Z Score.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize</p></li>
 <li><p><strong>TrueThresholdZScore</strong> – (<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>) <em>Optional</em>. The normalized “True” value. Defaults to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
@@ -433,10 +470,10 @@ be mapped to <code class="docutils literal notranslate"><span class="pre">EndVal
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NormalizeCat">
-<span class="sig-name descname"><span class="pre">NormalizeCat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultNormalValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NormalizeCat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultNormalValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCat" title="Link to this definition">¶</a></dt>
 <dd><p>Converts integer input values into normalized values based on user specification.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to convert to normalize.</p></li>
 <li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
@@ -451,10 +488,10 @@ specified in <code class="docutils literal notranslate"><span class="pre">RawVal
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NormalizeCurve">
-<span class="sig-name descname"><span class="pre">NormalizeCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurve" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NormalizeCurve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RawValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurve" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into normalized values based on user-defined curve</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
 <li><p><strong>RawValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of unique values from the input data.</p></li>
@@ -467,10 +504,10 @@ same size.</p></li>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NormalizeMeanToMid">
-<span class="sig-name descname"><span class="pre">NormalizeMeanToMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IgnoreZeros</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeMeanToMid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NormalizeMeanToMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IgnoreZeros</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeMeanToMid" title="Link to this definition">¶</a></dt>
 <dd><p>Uses “NormalizeCurve” to create a non-linear transformation that is a good match for the input data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
 <li><p><strong>IgnoreZeros</strong> – (<a class="reference internal" href="index.html#param-boolean"><span class="std std-ref">Boolean</span></a>) Ignore <code class="docutils literal notranslate"><span class="pre">0</span></code> values when determining the mean.</p></li>
@@ -482,10 +519,10 @@ input values to normalized ones.</p></li>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="NormalizeCurveZScore">
-<span class="sig-name descname"><span class="pre">NormalizeCurveZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ZScoreValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurveZScore" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">NormalizeCurveZScore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ZScoreValues</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NormalValues</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NormalizeCurveZScore" title="Link to this definition">¶</a></dt>
 <dd><p>Converts input values into narmalized values based on user-defined curve</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldName</strong> – (<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>) The result to normalize.</p></li>
 <li><p><strong>ZScoreValues</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-number"><span class="std std-ref">Number</span></a>]) A list of z scores that will be used to map input
@@ -498,11 +535,11 @@ values to normalized ones. The <code class="docutils literal notranslate"><span 
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="PrintVars">
-<span class="sig-name descname"><span class="pre">PrintVars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PrintVars" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PrintVars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">InFieldNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">OutFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PrintVars" title="Link to this definition">¶</a></dt>
 <dd><p>Print or write results for debugging purposes. If <code class="docutils literal notranslate"><span class="pre">OutFileName</span></code> is provided, the results will be written to that
 file, otherwise they will be printed to <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>InFieldNames</strong> – (<a class="reference internal" href="index.html#param-list"><span class="std std-ref">List</span></a> [<a class="reference internal" href="index.html#param-result"><span class="std std-ref">Result</span></a>]) The results to print.</p></li>
 <li><p><strong>OutFileName</strong> – (<a class="reference internal" href="index.html#param-path"><span class="std std-ref">Path</span></a>) <em>Optional</em>. The file to write results to. This file will be overwritten if it
@@ -532,7 +569,7 @@ exists.</p></li>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> EEMS NetCDF I/O </span>
+                      class="md-footer-nav__direction"> "Previous" </span> EEMS NetCDF I/O </span>
               </div>
             </a>
           
@@ -542,7 +579,7 @@ exists.</p></li>
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> EEMS Fuzzy </span>
+                class="md-footer-nav__direction"> "Next" </span> EEMS Fuzzy </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -560,7 +597,7 @@ exists.</p></li>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

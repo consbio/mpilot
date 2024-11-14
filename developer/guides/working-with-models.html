@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>Working with Models &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Creating Commands" href="creating-commands.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -264,7 +262,7 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">Contents</label>
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#developer-guides-working-with-models--page-root" class="md-nav__link">Working with Models</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -301,12 +299,12 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="working-with-models">
-<h1 id="developer-guides-working-with-models--page-root">Working with Models<a class="headerlink" href="#developer-guides-working-with-models--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="developer-guides-working-with-models--page-root">Working with Models<a class="headerlink" href="#developer-guides-working-with-models--page-root" title="Link to this heading">¶</a></h1>
 <p>This guide addresses working programmatically with models. This includes loading models from source, creating new
 models, modifying and running models, and writing models back to source. The examples in this guide will mostly focus
 on the <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.program.Program</span></code></a> class, which is the Python representation of the MPilot model.</p>
 <section id="loading-a-model-from-source">
-<h2 id="loading-a-model-from-source">Loading a model from source<a class="headerlink" href="#loading-a-model-from-source" title="Permalink to this headline">¶</a></h2>
+<h2 id="loading-a-model-from-source">Loading a model from source<a class="headerlink" href="#loading-a-model-from-source" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="../reference/program.html#mpilot.program.Program.from_source" title="mpilot.program.Program.from_source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_source()</span></code></a> class method will parse a string containing an MPilot model and
 return a new <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></a> representing the model. For example, the following will open a model
 file, read the contents, and call <code class="docutils literal notranslate"><span class="pre">from_source</span></code>, then run the model:</p>
@@ -346,7 +344,7 @@ encountered. The CLI program sets <code class="docutils literal notranslate"><sp
 </div>
 </section>
 <section id="creating-a-new-model">
-<h2 id="creating-a-new-model">Creating a new model<a class="headerlink" href="#creating-a-new-model" title="Permalink to this headline">¶</a></h2>
+<h2 id="creating-a-new-model">Creating a new model<a class="headerlink" href="#creating-a-new-model" title="Link to this heading">¶</a></h2>
 <p>Creating a new, empty model is as simple as creating a new instance of <a class="reference internal" href="../reference/program.html#mpilot.program.Program" title="mpilot.program.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">mpilot.program.Program</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.program</span> <span class="kn">import</span> <span class="n">Program</span>
 
@@ -357,11 +355,11 @@ encountered. The CLI program sets <code class="docutils literal notranslate"><sp
 <a class="reference internal" href="../reference/program.html#mpilot.program.Program.from_source" title="mpilot.program.Program.from_source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_source()</span></code></a>, as described in the previous section.</p>
 </section>
 <section id="modifying-the-model">
-<h2 id="modifying-the-model">Modifying the model<a class="headerlink" href="#modifying-the-model" title="Permalink to this headline">¶</a></h2>
+<h2 id="modifying-the-model">Modifying the model<a class="headerlink" href="#modifying-the-model" title="Link to this heading">¶</a></h2>
 <p>Whether you have loaded a model from source, or created a new, blank model, you can modify it by adding or removing
 commands.</p>
 <section id="adding-commands">
-<h3 id="adding-commands">Adding commands<a class="headerlink" href="#adding-commands" title="Permalink to this headline">¶</a></h3>
+<h3 id="adding-commands">Adding commands<a class="headerlink" href="#adding-commands" title="Link to this heading">¶</a></h3>
 <p>Add commands with <a class="reference internal" href="../reference/program.html#mpilot.program.Program.add_command" title="mpilot.program.Program.add_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_command()</span></code></a>. At a minimum, you’ll need to provide a command class,
 a name for the command result, and arguments to run the command.</p>
 <p>You can import the command class directly, or find it by name using
@@ -394,7 +392,7 @@ a name for the command result, and arguments to run the command.</p>
 </div>
 </section>
 <section id="removing-commands">
-<h3 id="removing-commands">Removing commands<a class="headerlink" href="#removing-commands" title="Permalink to this headline">¶</a></h3>
+<h3 id="removing-commands">Removing commands<a class="headerlink" href="#removing-commands" title="Link to this heading">¶</a></h3>
 <p>Remove commands from the model by deleting them from the <a class="reference internal" href="../reference/program.html#mpilot.program.Program.commands" title="mpilot.program.Program.commands"><code class="xref py py-attr docutils literal notranslate"><span class="pre">commands</span></code></a> property.
 <code class="docutils literal notranslate"><span class="pre">commands</span></code> is a dictionary, where the key is the result name.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">p</span><span class="o">.</span><span class="n">commands</span><span class="p">[</span><span class="s1">'Var_A'</span><span class="p">]</span>
@@ -404,12 +402,12 @@ a name for the command result, and arguments to run the command.</p>
 </section>
 </section>
 <section id="running-the-model">
-<h2 id="running-the-model">Running the model<a class="headerlink" href="#running-the-model" title="Permalink to this headline">¶</a></h2>
+<h2 id="running-the-model">Running the model<a class="headerlink" href="#running-the-model" title="Link to this heading">¶</a></h2>
 <p>Once the model has been created or loaded from source, and modified as needed, run it with
 <a class="reference internal" href="../reference/program.html#mpilot.program.Program.run" title="mpilot.program.Program.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>. This will build a dependency tree and then execute each command in the model.</p>
 </section>
 <section id="creating-an-mpilot-command-file">
-<h2 id="creating-an-mpilot-command-file">Creating an MPilot command file<a class="headerlink" href="#creating-an-mpilot-command-file" title="Permalink to this headline">¶</a></h2>
+<h2 id="creating-an-mpilot-command-file">Creating an MPilot command file<a class="headerlink" href="#creating-an-mpilot-command-file" title="Link to this heading">¶</a></h2>
 <p>Models can be serialized back to the MPilot Command File format using the <a class="reference internal" href="../reference/program.html#mpilot.program.Program.to_string" title="mpilot.program.Program.to_string"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_string()</span></code></a>
 and <a class="reference internal" href="../reference/program.html#mpilot.program.Program.to_file" title="mpilot.program.Program.to_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_file()</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Program</span><span class="p">()</span>
@@ -454,7 +452,7 @@ and <a class="reference internal" href="../reference/program.html#mpilot.program
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Programming Guides </span>
+                      class="md-footer-nav__direction"> "Previous" </span> Programming Guides </span>
               </div>
             </a>
           
@@ -464,7 +462,7 @@ and <a class="reference internal" href="../reference/program.html#mpilot.program
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Creating Commands </span>
+                class="md-footer-nav__direction"> "Next" </span> Creating Commands </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -482,7 +480,7 @@ and <a class="reference internal" href="../reference/program.html#mpilot.program
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

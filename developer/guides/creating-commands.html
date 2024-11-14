@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>Creating Commands &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Creating Parameters" href="creating-parameters.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -264,7 +262,7 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">Contents</label>
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#developer-guides-creating-commands--page-root" class="md-nav__link">Creating Commands</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -297,7 +295,7 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="creating-commands">
-<h1 id="developer-guides-creating-commands--page-root">Creating Commands<a class="headerlink" href="#developer-guides-creating-commands--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="developer-guides-creating-commands--page-root">Creating Commands<a class="headerlink" href="#developer-guides-creating-commands--page-root" title="Link to this heading">¶</a></h1>
 <p>It’s a fairly simple task to create new MPilot commands for use in models. Let’s start with an example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.commands</span> <span class="kn">import</span> <span class="n">Command</span>
 <span class="kn">from</span> <span class="nn">mpilot</span> <span class="kn">import</span> <span class="n">params</span>
@@ -325,7 +323,7 @@ this:</p>
 </pre></div>
 </div>
 <section id="command-name">
-<h2 id="command-name">Command Name<a class="headerlink" href="#command-name" title="Permalink to this headline">¶</a></h2>
+<h2 id="command-name">Command Name<a class="headerlink" href="#command-name" title="Link to this heading">¶</a></h2>
 <p>By default, the class name will be used as the command name. In the above example, the class is named <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code>,
 and so it’s referenced as <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code> in the model file. Set the <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code> property
 to use a different name.</p>
@@ -340,13 +338,13 @@ to use a different name.</p>
 </div>
 </section>
 <section id="parameters">
-<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">output</span></code> attributes define the arguments the command will accept, and the type of output the
 command is expected to produce. See the <a class="reference internal" href="../reference/params.html#module-mpilot.params" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a> module for a full list of valid parameters, or
 <a class="reference internal" href="creating-parameters.html"><span class="doc">create your own</span></a>. Two of particular note that we’ll discuss here are
 <a class="reference internal" href="../reference/params.html#mpilot.params.ListParameter" title="mpilot.params.ListParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ListParameter</span></code></a> and <a class="reference internal" href="../reference/params.html#mpilot.params.ResultParameter" title="mpilot.params.ResultParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResultParameter</span></code></a>.</p>
 <section id="lists">
-<h3 id="lists">Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<h3 id="lists">Lists<a class="headerlink" href="#lists" title="Link to this heading">¶</a></h3>
 <p>List parameters are useful any time your command needs to accept a list for an argument. Let’s change the example
 command at the top of the page to return the sum of many numbers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SumNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
@@ -365,7 +363,7 @@ In the above example, the list values are expected to be numbers and will cause 
 and can’t be converted.</p>
 </section>
 <section id="results">
-<h3 id="results">Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<h3 id="results">Results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
 <p>Result parameters accept the output of a previous command. As with lists, <code class="docutils literal notranslate"><span class="pre">ResultParameter</span></code> accepts a parameter as
 its first argument, indicating the expected output type of the command connected to it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Reverse</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
@@ -390,7 +388,7 @@ input list has been reversed.</p>
 (<a class="reference internal" href="../reference/params.html#mpilot.params.DataParameter" title="mpilot.params.DataParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataParameter</span></code></a>).</p>
 </section>
 <section id="optional-parameters">
-<h3 id="optional-parameters">Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+<h3 id="optional-parameters">Optional Parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
 <p>Any parameter can be marked as optional by passing <code class="docutils literal notranslate"><span class="pre">required=False</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">(),</span> <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -424,7 +422,7 @@ input list has been reversed.</p>
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Working with Models </span>
+                      class="md-footer-nav__direction"> "Previous" </span> Working with Models </span>
               </div>
             </a>
           
@@ -434,7 +432,7 @@ input list has been reversed.</p>
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Creating Parameters </span>
+                class="md-footer-nav__direction"> "Next" </span> Creating Parameters </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -452,7 +450,7 @@ input list has been reversed.</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

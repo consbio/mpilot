@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>Creating Parameters &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Python Module Reference" href="../reference/index.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -264,7 +262,7 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">Contents</label>
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
         <li class="md-nav__item"><a href="#developer-guides-creating-parameters--page-root" class="md-nav__link">Creating Parameters</a><nav class="md-nav">
               <ul class="md-nav__list">
@@ -287,7 +285,7 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="creating-parameters">
-<h1 id="developer-guides-creating-parameters--page-root">Creating Parameters<a class="headerlink" href="#developer-guides-creating-parameters--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="developer-guides-creating-parameters--page-root">Creating Parameters<a class="headerlink" href="#developer-guides-creating-parameters--page-root" title="Link to this heading">¶</a></h1>
 <p>If the <a class="reference internal" href="../reference/params.html#module-mpilot.params" title="mpilot.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">built</span> <span class="pre">in</span> <span class="pre">parameters</span></code></a> don’t suite your needs, you can create your own, custom
 parameters. Creating a parameter involves subclassing <a class="reference internal" href="../reference/params.html#mpilot.params.Parameter" title="mpilot.params.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> or another parameter class,
 and overriding the <a class="reference internal" href="../reference/params.html#mpilot.params.Parameter.clean" title="mpilot.params.Parameter.clean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clean()</span></code></a> method to validate and (if necessary) transform the values
@@ -305,7 +303,7 @@ passed to an argument of that type. If the incoming value is invalid, the <code 
 <p>This parameter extends <a class="reference internal" href="../reference/params.html#mpilot.params.StringParameter" title="mpilot.params.StringParameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringParameter</span></code></a>, restricts it to accept only “foo” or “bar” as
 a valid value, and returns valid, incoming values unmodified.</p>
 <section id="parameter-options">
-<h2 id="parameter-options">Parameter Options<a class="headerlink" href="#parameter-options" title="Permalink to this headline">¶</a></h2>
+<h2 id="parameter-options">Parameter Options<a class="headerlink" href="#parameter-options" title="Link to this heading">¶</a></h2>
 <p>You can add extra configuration options to your parameter by implementing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Let’s modify the above example
 to accept a list of valid values, rather than the hard-coded “foo” and “bar”.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FooBarParameter</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">):</span>
@@ -349,7 +347,7 @@ to accept a list of valid values, rather than the hard-coded “foo” and “ba
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Creating Commands </span>
+                      class="md-footer-nav__direction"> "Previous" </span> Creating Commands </span>
               </div>
             </a>
           
@@ -359,7 +357,7 @@ to accept a list of valid values, rather than the hard-coded “foo” and “ba
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> Python Module Reference </span>
+                class="md-footer-nav__direction"> "Next" </span> Python Module Reference </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -377,7 +375,7 @@ to accept a list of valid values, rather than the hard-coded “foo” and “ba
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

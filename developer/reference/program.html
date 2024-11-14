@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>mpilot.program &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="mpilot.parser.parser" href="parser.html" />
@@ -103,7 +101,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -263,7 +261,40 @@
               <div class="md-sidebar__inner">
                 
 <nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
   <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#developer-reference-program--page-root" class="md-nav__link"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mpilot.program.Program" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program</span></code></a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mpilot.program.Program.commands" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.commands</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.command_library" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.command_library</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.working_dir" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.working_dir</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.load_commands" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.load_commands()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.from_source" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.from_source()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.find_command_class" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.find_command_class()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.add_command" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.add_command()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.to_string" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.to_string()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.to_file" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.to_file()</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.Program.run" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">Program.run()</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.EEMS_CSV_LIBRARIES" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">EEMS_CSV_LIBRARIES</span></code></a>
+        </li>
+        <li class="md-nav__item"><a href="#mpilot.program.EEMS_NETCDF_LIBRARIES" class="md-nav__link"><code class="docutils literal notranslate"><span class="pre">EEMS_NETCDF_LIBRARIES</span></code></a>
+        </li></ul>
+            </nav>
+        </li>
     
 <li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/developer/reference/program.rst.txt">Show Source</a> </li>
 
@@ -279,16 +310,16 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="module-mpilot.program">
-<span id="mpilot-program"></span><h1 id="developer-reference-program--page-root"><a class="reference internal" href="#developer-reference-program--page-root" title="mpilot.program"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a><a class="headerlink" href="#developer-reference-program--page-root" title="Permalink to this headline">¶</a></h1>
+<span id="mpilot-program"></span><h1 id="developer-reference-program--page-root"><a class="reference internal" href="#developer-reference-program--page-root" title="mpilot.program"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a><a class="headerlink" href="#developer-reference-program--page-root" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.program.Program">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">Program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">EEMS_CSV_LIBRARIES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">Program</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">EEMS_CSV_LIBRARIES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program" title="Link to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">Program</span></code> class contains the command instances that comprise the model, and is responsible for running the
 model by building a dependency tree and running any “leaf” nodes (those which no other nodes depend on). Before the
 leaf nodes are run, they resolve their dependencies, which in turn resolve <em>their</em> dependencies, and so on in a
 recursive nature until the root nodes are run.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>libraries</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – A list of command libraries to use in this program. The specified libraries will be
 used to look up commands. Command names must be unique across libraries; importing two libraries that have the
@@ -300,37 +331,37 @@ relative paths are invalid and will raise an exception. Defaults to <code class=
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.program.Program.commands">
-<span class="sig-name descname"><span class="pre">commands</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.program.Program.commands" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">commands</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.program.Program.commands" title="Link to this definition">¶</a></dt>
 <dd><p>A lookup of commands in the program by result name, in the form of <code class="docutils literal notranslate"><span class="pre">{result_name:</span> <span class="pre">command,</span> <span class="pre">...}</span></code>.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.program.Program.command_library">
-<span class="sig-name descname"><span class="pre">command_library</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.program.Program.command_library" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">command_library</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.program.Program.command_library" title="Link to this definition">¶</a></dt>
 <dd><p>A lookup of command classes by name.</p>
 </dd></dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.program.Program.working_dir">
-<span class="sig-name descname"><span class="pre">working_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mpilot.program.Program.working_dir" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">working_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mpilot.program.Program.working_dir" title="Link to this definition">¶</a></dt>
 <dd><p>The program’s working directory, if set.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.load_commands">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">module</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.load_commands" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_commands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ModuleType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.load_commands" title="Link to this definition">¶</a></dt>
 <dd><p>Discovers and loads commands from the given module and any sub modules. This method is mostly used internally.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.from_source">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">EEMS_CSV_LIBRARIES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program.from_source" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">libraries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">EEMS_CSV_LIBRARIES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program.from_source" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a program from MPilot source code</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.find_command_class">
-<span class="sig-name descname"><span class="pre">find_command_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">mpilot.commands.Command</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#mpilot.program.Program.find_command_class" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">find_command_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#mpilot.program.Program.find_command_class" title="Link to this definition">¶</a></dt>
 <dd><p>Looks up and returns a command class by name, or returns None if the command doesn’t exist.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.add_command">
-<span class="sig-name descname"><span class="pre">add_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.add_command" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><span class="pre">Command</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.add_command" title="Link to this definition">¶</a></dt>
 <dd><p>Adds a command to the program and the arguments required to run it. This is the primary method used when
 constructing a model programmatically. The command class can be obtained by importing it from the appropriate
 module, or by using <a class="reference internal" href="#mpilot.program.Program.find_command_class" title="mpilot.program.Program.find_command_class"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_command_class()</span></code></a> to search for a command by name.</p>
@@ -340,7 +371,7 @@ module, or by using <a class="reference internal" href="#mpilot.program.Program.
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>command_cls</strong> (<em>Type</em><em>[</em><a class="reference internal" href="commands.html#mpilot.commands.Command" title="mpilot.commands.Command"><em>Command</em></a><em>]</em>) – The class of the command to add. This can be obtained by calling
 <a class="reference internal" href="#mpilot.program.Program.find_command_class" title="mpilot.program.Program.find_command_class"><code class="xref py py-meth docutils literal notranslate"><span class="pre">find_command_class()</span></code></a> with the name of the command.</p></li>
@@ -357,26 +388,26 @@ set to <code class="docutils literal notranslate"><span class="pre">None</span><
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.to_string">
-<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#mpilot.program.Program.to_string" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#mpilot.program.Program.to_string" title="Link to this definition">¶</a></dt>
 <dd><p>Returns a string with commands formatted in the MPilot command file syntax.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_or_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">TextIO</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.to_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_or_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TextIO</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#mpilot.program.Program.to_file" title="Link to this definition">¶</a></dt>
 <dd><p>Writes the program as an MPilot command file.</p>
 </dd></dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mpilot.program.Program.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program.run" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.program.Program.run" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 </dd></dl>
 <dl class="py data">
 <dt class="sig sig-object py" id="mpilot.program.EEMS_CSV_LIBRARIES">
-<span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">EEMS_CSV_LIBRARIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Libraries</span> <span class="pre">required</span> <span class="pre">for</span> <span class="pre">CSV-based</span> <span class="pre">EEMS</span> <span class="pre">models</span></em><a class="headerlink" href="#mpilot.program.EEMS_CSV_LIBRARIES" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">EEMS_CSV_LIBRARIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Libraries</span> <span class="pre">required</span> <span class="pre">for</span> <span class="pre">CSV-based</span> <span class="pre">EEMS</span> <span class="pre">models</span></em><a class="headerlink" href="#mpilot.program.EEMS_CSV_LIBRARIES" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 <dl class="py data">
 <dt class="sig sig-object py" id="mpilot.program.EEMS_NETCDF_LIBRARIES">
-<span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">EEMS_NETCDF_LIBRARIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Libraries</span> <span class="pre">required</span> <span class="pre">for</span> <span class="pre">NetCDF-based</span> <span class="pre">EEMS</span> <span class="pre">models</span></em><a class="headerlink" href="#mpilot.program.EEMS_NETCDF_LIBRARIES" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mpilot.program.</span></span><span class="sig-name descname"><span class="pre">EEMS_NETCDF_LIBRARIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">Libraries</span> <span class="pre">required</span> <span class="pre">for</span> <span class="pre">NetCDF-based</span> <span class="pre">EEMS</span> <span class="pre">models</span></em><a class="headerlink" href="#mpilot.program.EEMS_NETCDF_LIBRARIES" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 </section>
 
@@ -399,7 +430,7 @@ set to <code class="docutils literal notranslate"><span class="pre">None</span><
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code> </span>
+                      class="md-footer-nav__direction"> "Previous" </span> <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code> </span>
               </div>
             </a>
           
@@ -416,7 +447,7 @@ set to <code class="docutils literal notranslate"><span class="pre">None</span><
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

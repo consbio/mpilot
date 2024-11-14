@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -48,12 +47,11 @@
   
   
     <title>Python Module Reference &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="mpilot.arguments" href="arguments.html" />
@@ -104,7 +102,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder="Search"
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
              autocapitalize="off" autocomplete="off" spellcheck="false"
              data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
@@ -291,15 +289,118 @@
           <article class="md-content__inner md-typeset" role="main">
             
   <section id="python-module-reference">
-<h1 id="developer-reference-index--page-root">Python Module Reference<a class="headerlink" href="#developer-reference-index--page-root" title="Permalink to this headline">¶</a></h1>
+<h1 id="developer-reference-index--page-root">Python Module Reference<a class="headerlink" href="#developer-reference-index--page-root" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="program.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="arguments.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arguments.html#mpilot.arguments.Argument"><code class="docutils literal notranslate"><span class="pre">Argument</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arguments.html#mpilot.arguments.Argument.name"><code class="docutils literal notranslate"><span class="pre">Argument.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="arguments.html#mpilot.arguments.Argument.value"><code class="docutils literal notranslate"><span class="pre">Argument.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="arguments.html#mpilot.arguments.Argument.lineno"><code class="docutils literal notranslate"><span class="pre">Argument.lineno</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="arguments.html#mpilot.arguments.ListArgument"><code class="docutils literal notranslate"><span class="pre">ListArgument</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="arguments.html#mpilot.arguments.ListArgument.list_linenos"><code class="docutils literal notranslate"><span class="pre">ListArgument.list_linenos</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="commands.html#mpilot.commands.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.inputs"><code class="docutils literal notranslate"><span class="pre">Command.inputs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.output"><code class="docutils literal notranslate"><span class="pre">Command.output</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.allow_extra_inputs"><code class="docutils literal notranslate"><span class="pre">Command.allow_extra_inputs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.result"><code class="docutils literal notranslate"><span class="pre">Command.result</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.metadata"><code class="docutils literal notranslate"><span class="pre">Command.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.get_argument_value"><code class="docutils literal notranslate"><span class="pre">Command.get_argument_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.validate_params"><code class="docutils literal notranslate"><span class="pre">Command.validate_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.run"><code class="docutils literal notranslate"><span class="pre">Command.run()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="commands.html#mpilot.commands.Command.execute"><code class="docutils literal notranslate"><span class="pre">Command.execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.MPilotError"><code class="docutils literal notranslate"><span class="pre">MPilotError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ProgramError"><code class="docutils literal notranslate"><span class="pre">ProgramError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.CommandDoesNotExist"><code class="docutils literal notranslate"><span class="pre">CommandDoesNotExist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.DuplicateResult"><code class="docutils literal notranslate"><span class="pre">DuplicateResult</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.MissingParameters"><code class="docutils literal notranslate"><span class="pre">MissingParameters</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.NoSuchParameter"><code class="docutils literal notranslate"><span class="pre">NoSuchParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ParameterNotValid"><code class="docutils literal notranslate"><span class="pre">ParameterNotValid</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.PathDoesNotExist"><code class="docutils literal notranslate"><span class="pre">PathDoesNotExist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.InvalidRelativePath"><code class="docutils literal notranslate"><span class="pre">InvalidRelativePath</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ResultDoesNotExist"><code class="docutils literal notranslate"><span class="pre">ResultDoesNotExist</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ResultTypeNotValid"><code class="docutils literal notranslate"><span class="pre">ResultTypeNotValid</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ResultNotFuzzy"><code class="docutils literal notranslate"><span class="pre">ResultNotFuzzy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.ResultIsFuzzy"><code class="docutils literal notranslate"><span class="pre">ResultIsFuzzy</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exceptions.html#mpilot.exceptions.RecursiveModelStructure"><code class="docutils literal notranslate"><span class="pre">RecursiveModelStructure</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="params.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.params</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="params.html#mpilot.params.Parameter.clean"><code class="docutils literal notranslate"><span class="pre">Parameter.clean()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.StringParameter"><code class="docutils literal notranslate"><span class="pre">StringParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.NumberParameter"><code class="docutils literal notranslate"><span class="pre">NumberParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.BooleanParameter"><code class="docutils literal notranslate"><span class="pre">BooleanParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.PathParameter"><code class="docutils literal notranslate"><span class="pre">PathParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.ResultParameter"><code class="docutils literal notranslate"><span class="pre">ResultParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.ListParameter"><code class="docutils literal notranslate"><span class="pre">ListParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.TupleParameter"><code class="docutils literal notranslate"><span class="pre">TupleParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.DataParameter"><code class="docutils literal notranslate"><span class="pre">DataParameter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="params.html#mpilot.params.DataTypeParameter"><code class="docutils literal notranslate"><span class="pre">DataTypeParameter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parser.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.parser.parser</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parser.html#mpilot.parser.parser.Parser"><code class="docutils literal notranslate"><span class="pre">Parser</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.Parser.parse"><code class="docutils literal notranslate"><span class="pre">Parser.parse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html#mpilot.parser.parser.ProgramNode"><code class="docutils literal notranslate"><span class="pre">ProgramNode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ProgramNode.commands"><code class="docutils literal notranslate"><span class="pre">ProgramNode.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ProgramNode.version"><code class="docutils literal notranslate"><span class="pre">ProgramNode.version</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html#mpilot.parser.parser.CommandNode"><code class="docutils literal notranslate"><span class="pre">CommandNode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.CommandNode.result_name"><code class="docutils literal notranslate"><span class="pre">CommandNode.result_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.CommandNode.command"><code class="docutils literal notranslate"><span class="pre">CommandNode.command</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.CommandNode.arguments"><code class="docutils literal notranslate"><span class="pre">CommandNode.arguments</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.CommandNode.lineno"><code class="docutils literal notranslate"><span class="pre">CommandNode.lineno</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html#mpilot.parser.parser.ArgumentNode"><code class="docutils literal notranslate"><span class="pre">ArgumentNode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ArgumentNode.name"><code class="docutils literal notranslate"><span class="pre">ArgumentNode.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ArgumentNode.value"><code class="docutils literal notranslate"><span class="pre">ArgumentNode.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ArgumentNode.lineno"><code class="docutils literal notranslate"><span class="pre">ArgumentNode.lineno</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parser.html#mpilot.parser.parser.ExpressionNode"><code class="docutils literal notranslate"><span class="pre">ExpressionNode</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ExpressionNode.value"><code class="docutils literal notranslate"><span class="pre">ExpressionNode.value</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parser.html#mpilot.parser.parser.ExpressionNode.lineno"><code class="docutils literal notranslate"><span class="pre">ExpressionNode.lineno</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="program.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.program</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="program.html#mpilot.program.Program"><code class="docutils literal notranslate"><span class="pre">Program</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.commands"><code class="docutils literal notranslate"><span class="pre">Program.commands</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.command_library"><code class="docutils literal notranslate"><span class="pre">Program.command_library</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.working_dir"><code class="docutils literal notranslate"><span class="pre">Program.working_dir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.load_commands"><code class="docutils literal notranslate"><span class="pre">Program.load_commands()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.from_source"><code class="docutils literal notranslate"><span class="pre">Program.from_source()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.find_command_class"><code class="docutils literal notranslate"><span class="pre">Program.find_command_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.add_command"><code class="docutils literal notranslate"><span class="pre">Program.add_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.to_string"><code class="docutils literal notranslate"><span class="pre">Program.to_string()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.to_file"><code class="docutils literal notranslate"><span class="pre">Program.to_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="program.html#mpilot.program.Program.run"><code class="docutils literal notranslate"><span class="pre">Program.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="program.html#mpilot.program.EEMS_CSV_LIBRARIES"><code class="docutils literal notranslate"><span class="pre">EEMS_CSV_LIBRARIES</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="program.html#mpilot.program.EEMS_NETCDF_LIBRARIES"><code class="docutils literal notranslate"><span class="pre">EEMS_NETCDF_LIBRARIES</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -323,7 +424,7 @@
               <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
                 <span class="md-flex__ellipsis">
                   <span
-                      class="md-footer-nav__direction"> Previous </span> Creating Parameters </span>
+                      class="md-footer-nav__direction"> "Previous" </span> Creating Parameters </span>
               </div>
             </a>
           
@@ -333,7 +434,7 @@
                rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
                 class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> Next </span> <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code> </span>
+                class="md-footer-nav__direction"> "Next" </span> <code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.arguments</span></code> </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink"><i
                 class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
@@ -351,7 +452,7 @@
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
