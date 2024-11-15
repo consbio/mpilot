@@ -4,7 +4,6 @@ import copy
 from functools import reduce
 
 import numpy
-import six
 
 from mpilot import params
 from mpilot.commands import Command

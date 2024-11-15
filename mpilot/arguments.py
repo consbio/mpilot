@@ -1,7 +1,7 @@
 import six
 
 if six.PY3:
-    from typing import Any, List
+    from typing import Any, List  # noqa: F401 (used for typing)
 
 
 class Argument(object):

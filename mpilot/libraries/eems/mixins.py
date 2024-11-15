@@ -1,8 +1,8 @@
-import numpy
+import numpy  # noqa: F401 (used for typing)
 import six
 
 if six.PY3:
-    from typing import Sequence
+    from typing import Sequence  # noqa: F401 (used for typing)
 
 from mpilot.libraries.eems.exceptions import MixedArrayShapes, EmptyInputs
 

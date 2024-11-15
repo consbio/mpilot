@@ -5,7 +5,7 @@ import numpy
 import six
 
 if six.PY3:
-    from typing import Any
+    from typing import Any  # noqa: F401 (used for typing)
 
 from .arguments import Argument
 from .exceptions import (

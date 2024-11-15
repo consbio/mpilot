@@ -2,7 +2,7 @@ import six
 from six import python_2_unicode_compatible
 
 if six.PY3:
-    from typing import Union, Sequence, Set, Any
+    from typing import Union, Sequence, Set, Any  # noqa: F401 (used for typing)
 
 
 class MPilotError(Exception):

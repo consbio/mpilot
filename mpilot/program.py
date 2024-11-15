@@ -9,8 +9,8 @@ import six
 if six.PY3:
     from importlib.util import module_from_spec
 
-    from typing import Dict, Any, Union, TextIO, Sequence, Type
-    from types import ModuleType
+    from typing import Dict, Any, Union, TextIO, Sequence, Type  # noqa: F401 (used for typing)
+    from types import ModuleType  # noqa: F401 (used for typing)
 
 from .arguments import Argument, ListArgument
 from .commands import Command

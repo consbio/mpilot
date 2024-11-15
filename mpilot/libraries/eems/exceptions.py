@@ -1,12 +1,10 @@
-from traceback import format_exc
-
 import six
 from six import python_2_unicode_compatible
 
 from mpilot.exceptions import ProgramError
 
 if six.PY3:
-    from typing import Tuple
+    from typing import Tuple  # noqa: F401 (used for typing)
 
 
 @python_2_unicode_compatible
@@ -35,11 +33,7 @@ class InvalidDataFile(ProgramError):
         super(InvalidDataFile, self).__init__(lineno)
 
         self.problem = problem
-        self.solution = (
-            solution
-            if solution is not None
-            else "Solution: Double check the data file."
-        )
+        self.solution = solution if solution is not None else "Solution: Double check the data file."
 
     def __str__(self):
         return "\n".join(("Problem: " + self.problem, "Solution: " + self.solution))
@@ -48,9 +42,7 @@ class InvalidDataFile(ProgramError):
 @python_2_unicode_compatible
 class EmptyInputs(ProgramError):
     def __str__(self):
-        return "\n".join(
-            ("Problem: The input data is empty.", "Solution: Double check data inputs.")
-        )
+        return "\n".join(("Problem: The input data is empty.", "Solution: Double check data inputs."))
 
 
 @python_2_unicode_compatible
@@ -116,9 +108,7 @@ class MixedArrayLengths(ProgramError):
     def __str__(self):
         return "\n".join(
             (
-                "Problem: Array lengths don't match: {} and {}".format(
-                    self.len_a, self.len_b
-                ),
+                "Problem: Array lengths don't match: {} and {}".format(self.len_a, self.len_b),
                 "Solution: Make sure that the array lengths are equal.",
             )
         )

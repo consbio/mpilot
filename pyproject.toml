@@ -1,6 +1,7 @@
-[tool.black]
+[tool.ruff]
 line-length = 120
-target-version = ['py38']
+target-version = "py39"
+exclude = ["parsetab.py"]
 
 [tool.poetry]
 name = "mpilot"
@@ -37,15 +38,6 @@ cftime = [
     { version = "^1.6.4", optional = true }
 ]
 
-[tool.poetry.dev-dependencies]
-black = { version = "^20.8b1", python = ">=3.9" }
-sphinx = [
-    { version = "^7.4.7", python = ">=3.9", optional = true }
-]
-sphinx-material = [
-    { version = "^0.0.36", python = ">=3.9", optional = true }
-]
-
 [tool.poetry.extras]
 netcdf = ["netCDF4", "cftime"]
 
@@ -54,6 +46,9 @@ mpilot = 'mpilot.cli.mpilot:main'
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
+ruff = "^0.7.3"
+sphinx = "^7.4.7"
+sphinx-material = "^0.0.36"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

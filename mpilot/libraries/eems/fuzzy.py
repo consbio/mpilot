@@ -18,8 +18,6 @@ from mpilot.libraries.eems.basic import (
 from mpilot.libraries.eems.exceptions import (
     InvalidDirection,
     InvalidThresholds,
-    MixedArrayLengths,
-    DuplicateRawValues,
     InvalidNumberToConsider,
     InvalidTruestOrFalsest,
     MismatchedWeights,

@@ -9,7 +9,7 @@ from six import add_metaclass, raise_from
 from .exceptions import UnexpectedError
 
 if six.PY3:
-    from typing import List, Any, Dict
+    from typing import List, Any, Dict  # noqa: F401 (used for typing)
 
 from mpilot.exceptions import MissingParameters, NoSuchParameter, MPilotError
 from mpilot.params import TupleParameter
@@ -148,4 +148,4 @@ class Command(object):
             self.is_finished = True
 
     def execute(self, **kwargs):
-        raise NotImplemented
+        raise NotImplementedError

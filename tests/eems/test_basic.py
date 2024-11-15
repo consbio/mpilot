@@ -2,7 +2,7 @@ from __future__ import division
 
 import pytest
 import six
-from numpy.ma import is_masked, MaskedArray
+from numpy.ma import MaskedArray
 
 from mpilot.libraries.eems.exceptions import MismatchedWeights
 

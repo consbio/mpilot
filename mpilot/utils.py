@@ -3,7 +3,7 @@ import six
 from numpy.ma import is_masked
 
 if six.PY3:
-    from typing import Sequence, Any
+    from typing import Sequence, Any  # noqa: F401 (used for typing)
 
 from mpilot.exceptions import ProgramError
 from mpilot.parser.parser import CommandNode
