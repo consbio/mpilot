@@ -22,30 +22,20 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "~2.7 || >=3.9"
+python = ">=3.9"
 ply = "^3.11"
 six = "*"
-click = [
-    { version = "^8.0.4", python = ">=3.9" },
-    { version = "^7.1.2", python = "~2.7"}
-]
-numpy = [
-    { version = "^1.26.4", python = ">=3.9" },
-    { version = "<=1.16.6", python = "~2.7" }
-]
+click = "^8.0.4"
+numpy = "^1.26.4"
 netCDF4 = [
-    { version = "^1.7.2", python = ">=3.9", optional = true },
-    { version = "^1.4.3.2", python = "~2.7", optional = true }
+    { version = "^1.7.2", python = ">=3.9", optional = true }
 ]
 cftime = [
     { version = "==1.5.1.1", optional = true }
 ]
-packaging = "*"
 
 [tool.poetry.dev-dependencies]
 black = { version = "^20.8b1", python = ">=3.9" }
-mock = { version = "^3.0.5", python = "~2.7" }
-setuptools = { version = "^44.1.1", python = "~2.7" }
 sphinx = [
     { version = "^3.5.1", python = ">=3.9", optional = true }
 ]
