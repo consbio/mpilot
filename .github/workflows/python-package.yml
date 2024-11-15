@@ -72,7 +72,7 @@ jobs:
         python -m pip install poetry
         poetry env use system
         poetry install -E netcdf
-        poetry run pip install pytest==4.6.11
+        poetry run pip install pytest
     - name: Test with pytest
       run: |
         poetry run pytest
