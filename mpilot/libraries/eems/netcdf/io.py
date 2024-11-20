@@ -133,6 +133,8 @@ class EEMSWrite(SameArrayShapeMixin, Command):
                     command.result.dtype.char,
                     dimensions,
                     fill_value=command.result.fill_value,
+                    compression="zlib",
+                    complevel=1,
                 )
                 variable[:] = numpy.ma.MaskedArray(command.result.data, mask)
 
