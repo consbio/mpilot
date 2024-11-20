@@ -8,13 +8,14 @@ from mpilot import params
 from mpilot.commands import Command
 from mpilot.utils import insure_fuzzy
 from .exceptions import NoSuchVariable, InvalidPositiveData, InvalidFuzzyData
+from ..mixins import SameArrayShapeMixin
 
 FUZZY_MIN = -1
 FUZZY_MAX = 1
 
 
 class EEMSRead(Command):
-    """ Reads a variable from a file, converting floats to nearest int when necessary. """
+    """Reads a variable from a file, converting floats to nearest int when necessary."""
 
     display_name = "Read"
     inputs = {
@@ -37,26 +38,22 @@ class EEMSRead(Command):
     def execute(self, **kwargs):
         path = kwargs["InFileName"]
         variable_name = kwargs["InFieldName"]
-        data_type = kwargs.get("DataType", numpy.float64)
+        data_type = kwargs.get("DataType", "Float")
 
         with Dataset(kwargs["InFileName"], "r") as dataset:
             if kwargs["InFieldName"] not in dataset.variables:
                 raise NoSuchVariable(path, variable_name, lineno=self.lineno)
 
-        variable = dataset[variable_name]
-        data = variable[:]
+            variable = dataset[variable_name]
+            data = variable[:]
 
-        if (
-            self.arguments.get("DataType", "Float")
-            in ("Positive Integer", "Positive Float")
-            and data.min() < 0
-        ):
-            raise InvalidPositiveData(
-                path, self.arguments["DataType"], lineno=self.lineno
-            )
+        if data_type in ("Positive Integer", "Positive Float") and data.min() < 0:
+            raise InvalidPositiveData(path, self.arguments["DataType"], lineno=self.lineno)
 
-        if numpy.issubdtype(data.dtype, numpy.float) and data_type in (
-            numpy.int,
+        data_type = self.inputs["DataType"].valid_types[kwargs.get("DataType", "Float")]
+
+        if numpy.issubdtype(data.dtype, numpy.float64) and data_type in (
+            int,
             numpy.uint,
         ):
             data = numpy.rint(data, out=data)  # round in-place
@@ -65,10 +62,10 @@ class EEMSRead(Command):
             data,
             mask=data.mask if is_masked(data) else False,
             dtype=data_type,
-            fill_value=999999 if data_type in (numpy.int, numpy.uint) else None,
+            fill_value=999999 if data_type in (int, numpy.uint) else None,
         )
 
-        if self.arguments.get("DataType", "Float") == "Fuzzy":
+        if kwargs.get("DataType", "Float") == "Fuzzy":
             fuzzy_pad = 0.01 * (FUZZY_MAX - FUZZY_MIN)
 
             if data.max() > FUZZY_MAX + fuzzy_pad or data.min() < FUZZY_MIN - fuzzy_pad:
@@ -82,28 +79,24 @@ class EEMSRead(Command):
         if "MissingValue" in kwargs:
             missing_value = (
                 int(kwargs["MissingValue"])
-                if numpy.issubdtype(result.mask.dtype, numpy.int)
+                if numpy.issubdtype(result.mask.dtype, int)
                 else float(kwargs["MissingValue"])
             )
 
-            self.result.mask = numpy.where(
-                result.data == missing_value, True, result.mask or False
-            )
+            self.result.mask = numpy.where(result.data == missing_value, True, result.mask or False)
 
         result.data[result.mask] = result.fill_value
 
         return result
 
 
-class EEMSWrite(Command):
-    """ Writes one or more file """
+class EEMSWrite(SameArrayShapeMixin, Command):
+    """Writes one or more file"""
 
     display_name = "Write"
     inputs = {
         "OutFileName": params.PathParameter(),
-        "OutFieldNames": params.ListParameter(
-            params.ResultParameter(params.DataParameter())
-        ),
+        "OutFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter())),
         "DimensionFileName": params.PathParameter(must_exist=True),
         "DimensionFieldName": params.StringParameter(),
     }
@@ -115,21 +108,20 @@ class EEMSWrite(Command):
         self.validate_array_shapes(arrays)
 
         with Dataset(kwargs["OutFileName"], "w") as dataset:
-            with Dataset(kwargs["DimensionsFileName"]) as dim_dataset:
+            with Dataset(kwargs["DimensionFileName"]) as dim_dataset:
                 dimensions = dim_dataset[kwargs["DimensionFieldName"]].dimensions
                 for dimension in dimensions:
-                    in_variable = dim_dataset[dimension]
-                    out_variable = dataset.createDimension(dimension, in_variable.size)
+                    in_dimension_variable = dim_dataset[dimension]
+                    dataset.createDimension(dimension, in_dimension_variable.size)
+                    out_dimension_variable = dataset.createVariable(dimension, in_dimension_variable.dtype, [dimension])
 
-                    for attribute in dir(in_variable):
-                        if attribute not in dir(out_variable) and attribute not in (
+                    for attribute in dir(in_dimension_variable):
+                        if attribute not in dir(out_dimension_variable) and attribute not in (
                             "_FillValue",
                             "missing_value",
                         ):
-                            setattr(
-                                out_variable, attribute, getattr(in_variable, attribute)
-                            )
-                    out_variable[:] = in_variable[:]
+                            setattr(out_dimension_variable, attribute, getattr(in_dimension_variable, attribute))
+                    out_dimension_variable[:] = in_dimension_variable[:]
 
             mask = numpy.copy(arrays[0].mask)
             for arr in arrays[1:]:
