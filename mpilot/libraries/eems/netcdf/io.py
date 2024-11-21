@@ -93,7 +93,7 @@ class EEMSWrite(SameArrayShapeMixin, Command):
 
     display_name = "Write"
     inputs = {
-        "OutFileName": params.PathParameter(),
+        "OutFileName": params.PathParameter(must_exist=False),
         "OutFieldNames": params.ListParameter(params.ResultParameter(params.DataParameter())),
         "DimensionFileName": params.PathParameter(must_exist=True),
         "DimensionFieldName": params.StringParameter(),
