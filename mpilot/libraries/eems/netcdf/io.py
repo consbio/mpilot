@@ -47,10 +47,8 @@ class EEMSRead(Command):
             variable = dataset[variable_name]
             data = variable[:]
 
-        if data_type in ("Positive Integer", "Positive Float") and data.min() < 0:
-            raise InvalidPositiveData(path, self.arguments["DataType"], lineno=self.lineno)
-
-        data_type = self.inputs["DataType"].valid_types[kwargs.get("DataType", "Float")]
+        if self.get_argument_value("DataType", "Float") in ("Positive Integer", "Positive Float") and data.min() < 0:
+            raise InvalidPositiveData(path, kwargs["DataType"], lineno=self.lineno)
 
         if numpy.issubdtype(data.dtype, numpy.float64) and data_type in (
             int,
@@ -71,7 +69,7 @@ class EEMSRead(Command):
             if data.max() > FUZZY_MAX + fuzzy_pad or data.min() < FUZZY_MIN - fuzzy_pad:
                 raise InvalidFuzzyData(path, lineno=self.lineno)
 
-            insure_fuzzy(result)
+            insure_fuzzy(result, FUZZY_MIN, FUZZY_MAX)
 
         result.soften_mask()
 

@@ -33,7 +33,9 @@ def test_eems_write():
 
 def test_eems_read():
     in_file = Path(__file__).parent / "data" / "netcdf_test.nc"
-    read_result = EEMSRead("ReadResult").execute(InFileName=str(in_file), InFieldName="elevation", DataType="Float")
+    read_result = EEMSRead("ReadResult").execute(
+        InFileName=str(in_file), InFieldName="elevation", DataType=numpy.float64
+    )
 
     expected_result = numpy.ma.masked_array(
         numpy.array(
