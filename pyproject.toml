@@ -5,7 +5,7 @@ exclude = ["parsetab.py"]
 
 [tool.poetry]
 name = "mpilot"
-version = "1.2.7"
+version = "1.2.8"
 description = "MPilot is a plugin-based, environmental modeling framework"
 authors = ["Conservation Biology Institute"]
 license = "MIT"
