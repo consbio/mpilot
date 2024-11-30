@@ -119,7 +119,36 @@ class EEMSWrite(SameArrayShapeMixin, Command):
                             "missing_value",
                         ):
                             setattr(out_dimension_variable, attribute, getattr(in_dimension_variable, attribute))
+
+                    for ncattr in in_dimension_variable.ncattrs():
+                        out_dimension_variable.setncattr(ncattr, in_dimension_variable.getncattr(ncattr))
+
                     out_dimension_variable[:] = in_dimension_variable[:]
+
+                # Discover CRS metadata (ESRI and CF)
+                esri_pe = None
+                grid_mapping = None
+                for variable in dim_dataset.variables.values():
+                    if "esri_pe_string" in variable.ncattrs():
+                        esri_pe = variable.getncattr("esri_pe_string")
+                        if "grid_mapping" in variable.ncattrs():
+                            grid_mapping_name = variable.getncattr("grid_mapping")
+                            if grid_mapping_name in dim_dataset.variables:
+                                grid_mapping = grid_mapping_name
+                                grid_mapping_in = dim_dataset.variables[grid_mapping]
+
+                                for dimension in grid_mapping_in.dimensions:
+                                    if dimension not in dataset.dimensions:
+                                        dataset.createDimension(dimension, dim_dataset.dimensions[dimension].size)
+
+                                grid_mapping_out = dataset.createVariable(
+                                    grid_mapping, grid_mapping_in.dtype, grid_mapping_in.dimensions
+                                )
+
+                                for ncattr in grid_mapping_in.ncattrs():
+                                    grid_mapping_out.setncattr(ncattr, grid_mapping_in.getncattr(ncattr))
+
+                        break
 
             mask = numpy.copy(arrays[0].mask)
             for arr in arrays[1:]:
@@ -135,5 +164,11 @@ class EEMSWrite(SameArrayShapeMixin, Command):
                     complevel=1,
                 )
                 variable[:] = numpy.ma.MaskedArray(command.result.data, mask)
+
+                # Apply CRS metadata
+                if esri_pe:
+                    variable.setncattr("esri_pe_string", esri_pe)
+                if grid_mapping:
+                    variable.setncattr("grid_mapping", grid_mapping)
 
         return True
