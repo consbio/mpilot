@@ -37,7 +37,6 @@ netCDF4 = [
 cftime = [
     { version = "^1.6.4", optional = true }
 ]
-sphinx-material = "^0.0.36"
 
 [tool.poetry.extras]
 netcdf = ["netCDF4", "cftime"]
