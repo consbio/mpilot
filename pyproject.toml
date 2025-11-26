@@ -32,11 +32,12 @@ six = "*"
 click = "^8.0.4"
 numpy = "^2.3.5"
 netCDF4 = [
-    { version = "^1.7.2", python = ">=3.9", optional = true }
+    { version = "^1.7.2", python = ">=3.11", optional = true }
 ]
 cftime = [
     { version = "^1.6.4", optional = true }
 ]
+sphinx-material = "^0.0.36"
 
 [tool.poetry.extras]
 netcdf = ["netCDF4", "cftime"]
@@ -47,7 +48,7 @@ mpilot = 'mpilot.cli.mpilot:main'
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
 ruff = "^0.7.3"
-sphinx = "^7.4.7"
+sphinx = "^8.2.3"
 sphinx-material = "^0.0.36"
 
 [build-system]
