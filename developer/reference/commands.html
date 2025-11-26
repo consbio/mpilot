@@ -47,10 +47,10 @@
   
   
     <title>mpilot.commands &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=75810a84" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -308,12 +308,12 @@
 <span id="mpilot-commands"></span><h1 id="developer-reference-commands--page-root"><a class="reference internal" href="#developer-reference-commands--page-root" title="mpilot.commands"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.commands</span></code></a><a class="headerlink" href="#developer-reference-commands--page-root" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.commands.Command">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.commands.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.commands.Command" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.commands.</span></span><span class="sig-name descname"><span class="pre">Command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.commands.Command" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.commands.Command.inputs">
 <span class="sig-name descname"><span class="pre">inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="params.html#mpilot.params.Parameter" title="mpilot.params.Parameter"><span class="pre">Parameter</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.commands.Command.inputs" title="Link to this definition">¶</a></dt>
 <dd><p>Individual command implementation are expected to set <code class="docutils literal notranslate"><span class="pre">inputs</span></code> to define their arguments. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EEMSRead</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EEMSRead</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'InFileName'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">PathParameter</span><span class="p">(</span><span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
     <span class="s1">'InFieldName'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">StringParameter</span><span class="p">()</span>
@@ -326,7 +326,7 @@
 <span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="params.html#mpilot.params.Parameter" title="mpilot.params.Parameter"><span class="pre">Parameter</span></a></em><a class="headerlink" href="#mpilot.commands.Command.output" title="Link to this definition">¶</a></dt>
 <dd><p>The output parameter type for the command. Individual command implementations are expected to set this to the
 appropriate parameter for their expected output. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EEMSRead</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EEMSRead</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
   <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">DataParameter</span><span class="p">()</span>
 </pre></div>
@@ -439,7 +439,7 @@ command. This method should not be called directly.</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

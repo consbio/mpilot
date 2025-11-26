@@ -47,10 +47,10 @@
   
   
     <title>Creating Commands &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=75810a84" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -297,17 +297,17 @@
   <section id="creating-commands">
 <h1 id="developer-guides-creating-commands--page-root">Creating Commands<a class="headerlink" href="#developer-guides-creating-commands--page-root" title="Link to this heading">¶</a></h1>
 <p>It’s a fairly simple task to create new MPilot commands for use in models. Let’s start with an example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.commands</span> <span class="kn">import</span> <span class="n">Command</span>
-<span class="kn">from</span> <span class="nn">mpilot</span> <span class="kn">import</span> <span class="n">params</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpilot.commands</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpilot</span><span class="w"> </span><span class="kn">import</span> <span class="n">params</span>
 
-<span class="k">class</span> <span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'A'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
     <span class="s1">'B'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
   <span class="p">}</span>
   <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
 
-  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'A'</span><span class="p">]</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'B'</span><span class="p">]</span>
 
@@ -327,7 +327,7 @@ this:</p>
 <p>By default, the class name will be used as the command name. In the above example, the class is named <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code>,
 and so it’s referenced as <code class="docutils literal notranslate"><span class="pre">AddNumbers</span></code> in the model file. Set the <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code> property
 to use a different name.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AddNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s1">'Add'</span>
   <span class="o">...</span>
 </pre></div>
@@ -347,13 +347,13 @@ command is expected to produce. See the <a class="reference internal" href="../r
 <h3 id="lists">Lists<a class="headerlink" href="#lists" title="Link to this heading">¶</a></h3>
 <p>List parameters are useful any time your command needs to accept a list for an argument. Let’s change the example
 command at the top of the page to return the sum of many numbers.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SumNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SumNumbers</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'Numbers'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">())</span>
   <span class="p">}</span>
   <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()</span>
 
-  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">numbers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'Numbers'</span><span class="p">]</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 </pre></div>
@@ -366,13 +366,13 @@ and can’t be converted.</p>
 <h3 id="results">Results<a class="headerlink" href="#results" title="Link to this heading">¶</a></h3>
 <p>Result parameters accept the output of a previous command. As with lists, <code class="docutils literal notranslate"><span class="pre">ResultParameter</span></code> accepts a parameter as
 its first argument, indicating the expected output type of the command connected to it.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Reverse</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Reverse</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">'InFieldName'</span><span class="p">:</span> <span class="n">params</span><span class="o">.</span><span class="n">ResultParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">()))</span>
   <span class="p">}</span>
   <span class="n">output</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">ListParameter</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">NumberParameter</span><span class="p">())</span>
 
-  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">li</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">'InFieldName]</span>
     <span class="k">return</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">li</span><span class="p">)</span>
 </pre></div>
@@ -394,7 +394,7 @@ input list has been reversed.</p>
 </pre></div>
 </div>
 <p>Be sure to account for missing optional parameters in the <code class="docutils literal notranslate"><span class="pre">execute</span></code> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
   <span class="c1"># Defaults to an empty list if not provided</span>
   <span class="n">numbers</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'Numbers'</span><span class="p">,</span> <span class="p">[])</span>
 </pre></div>
@@ -450,7 +450,7 @@ input list has been reversed.</p>
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

@@ -47,10 +47,10 @@
   
   
     <title>Creating Parameters &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=75810a84" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -291,10 +291,10 @@ parameters. Creating a parameter involves subclassing <a class="reference intern
 and overriding the <a class="reference internal" href="../reference/params.html#mpilot.params.Parameter.clean" title="mpilot.params.Parameter.clean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">clean()</span></code></a> method to validate and (if necessary) transform the values
 passed to an argument of that type. If the incoming value is invalid, the <code class="docutils literal notranslate"><span class="pre">clean</span></code> method should raise an exception
 (see <a class="reference internal" href="../reference/exceptions.html#module-mpilot.exceptions" title="mpilot.exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpilot.exceptions</span></code></a>).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpilot.params</span> <span class="kn">import</span> <span class="n">StringParameter</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpilot.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringParameter</span>
 
-<span class="k">class</span> <span class="nc">FooBarParameter</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">):</span>
-  <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">program</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FooBarParameter</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">program</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">):</span>
       <span class="k">raise</span> <span class="n">ParameterNotValid</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">"FooBar"</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">value</span>
@@ -306,20 +306,20 @@ a valid value, and returns valid, incoming values unmodified.</p>
 <h2 id="parameter-options">Parameter Options<a class="headerlink" href="#parameter-options" title="Link to this heading">¶</a></h2>
 <p>You can add extra configuration options to your parameter by implementing <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. Let’s modify the above example
 to accept a list of valid values, rather than the hard-coded “foo” and “bar”.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FooBarParameter</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">):</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid</span><span class="o">=</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FooBarParameter</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid</span><span class="o">=</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">StringParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span>
 
-  <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">program</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">program</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
       <span class="k">raise</span> <span class="n">ParameterNotValid</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">"FooBar"</span><span class="p">,</span> <span class="n">lineno</span><span class="o">=</span><span class="n">lineno</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">value</span>
 </pre></div>
 </div>
 <p>When using this parameter in a command, now we could now provide different valid values.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCommand</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyCommand</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
   <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">Speed</span> <span class="o">=</span> <span class="n">FooBarParameter</span><span class="p">(</span><span class="n">valid</span><span class="o">=</span><span class="p">(</span><span class="s1">'fast'</span><span class="p">,</span> <span class="s1">'slow'</span><span class="p">))</span>
   <span class="p">}</span>
@@ -375,7 +375,7 @@ to accept a list of valid values, rather than the hard-coded “foo” and “ba
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>

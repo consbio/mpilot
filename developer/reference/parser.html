@@ -47,10 +47,10 @@
   
   
     <title>mpilot.parser.parser &#8212; MPilot Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=83e35b93" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=75810a84" />
     <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -334,7 +334,7 @@
 names, and names and types. Validation of the latter is handled by <code class="docutils literal notranslate"><span class="pre">mpilot.program.Program</span></code>.</p>
 <dl class="py class" id="module-mpilot.parser.parser">
 <dt class="sig sig-object py" id="mpilot.parser.parser.Parser">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">Parser</span></span><a class="headerlink" href="#mpilot.parser.parser.Parser" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">Parser</span></span><a class="headerlink" href="#mpilot.parser.parser.Parser" title="Link to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="mpilot.parser.parser.Parser.parse">
 <span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference internal" href="#mpilot.parser.parser.ProgramNode" title="mpilot.parser.parser.ProgramNode"><span class="pre">ProgramNode</span></a></span></span><a class="headerlink" href="#mpilot.parser.parser.Parser.parse" title="Link to this definition">¶</a></dt>
@@ -343,7 +343,7 @@ names, and names and types. Validation of the latter is handled by <code class="
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ProgramNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ProgramNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ProgramNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ProgramNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ProgramNode" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ProgramNode.commands">
 <span class="sig-name descname"><span class="pre">commands</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mpilot.parser.parser.CommandNode" title="mpilot.parser.parser.CommandNode"><span class="pre">CommandNode</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mpilot.parser.parser.ProgramNode.commands" title="Link to this definition">¶</a></dt>
@@ -357,7 +357,7 @@ names, and names and types. Validation of the latter is handled by <code class="
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.parser.parser.CommandNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">CommandNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.CommandNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">CommandNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arguments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.CommandNode" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.parser.parser.CommandNode.result_name">
 <span class="sig-name descname"><span class="pre">result_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mpilot.parser.parser.CommandNode.result_name" title="Link to this definition">¶</a></dt>
@@ -381,7 +381,7 @@ names, and names and types. Validation of the latter is handled by <code class="
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ArgumentNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ArgumentNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ArgumentNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ArgumentNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ArgumentNode" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ArgumentNode.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mpilot.parser.parser.ArgumentNode.name" title="Link to this definition">¶</a></dt>
@@ -400,7 +400,7 @@ names, and names and types. Validation of the latter is handled by <code class="
 </dd></dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ExpressionNode">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ExpressionNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ExpressionNode" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mpilot.parser.parser.</span></span><span class="sig-name descname"><span class="pre">ExpressionNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mpilot.parser.parser.ExpressionNode" title="Link to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt class="sig sig-object py" id="mpilot.parser.parser.ExpressionNode.value">
 <span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#mpilot.parser.parser.ExpressionNode.value" title="Link to this definition">¶</a></dt>
@@ -461,7 +461,7 @@ names, and names and types. Validation of the latter is handled by <code class="
               
           </div>
             Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
              and
             <a href="https://github.com/bashtage/sphinx-material/">Material for
               Sphinx</a>
