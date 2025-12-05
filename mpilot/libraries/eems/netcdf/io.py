@@ -111,7 +111,12 @@ class EEMSWrite(SameArrayShapeMixin, Command):
                 for dimension in dimensions:
                     in_dimension_variable = dim_dataset[dimension]
                     dataset.createDimension(dimension, in_dimension_variable.size)
-                    out_dimension_variable = dataset.createVariable(dimension, in_dimension_variable.dtype, [dimension])
+                    out_dimension_variable = dataset.createVariable(
+                        dimension,
+                        in_dimension_variable.dtype,
+                        [dimension],
+                        fill_value=in_dimension_variable.get_fill_value(),
+                    )
 
                     for attribute in dir(in_dimension_variable):
                         if attribute not in dir(out_dimension_variable) and attribute not in (
@@ -121,7 +126,8 @@ class EEMSWrite(SameArrayShapeMixin, Command):
                             setattr(out_dimension_variable, attribute, getattr(in_dimension_variable, attribute))
 
                     for ncattr in in_dimension_variable.ncattrs():
-                        out_dimension_variable.setncattr(ncattr, in_dimension_variable.getncattr(ncattr))
+                        if ncattr != "_FillValue":
+                            out_dimension_variable.setncattr(ncattr, in_dimension_variable.getncattr(ncattr))
 
                     out_dimension_variable[:] = in_dimension_variable[:]
 
